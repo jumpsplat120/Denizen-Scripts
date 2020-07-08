@@ -1,3 +1,5 @@
+# | Kept for historical purposes, as there is now a tag that will do all of this; <ColorTag.with_hue[]>
+
 cycle_hue:
     type: procedure
     debug: false

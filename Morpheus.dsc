@@ -1,7 +1,7 @@
 # | ===== START OF EDITABLE CONFIG ===== | #
 
 morpheus_config:
-    type: yaml data
+    type: data
     percent: .50
     wake_message: "Wakey, wakey, rise and shine... good morning everyone!"
 

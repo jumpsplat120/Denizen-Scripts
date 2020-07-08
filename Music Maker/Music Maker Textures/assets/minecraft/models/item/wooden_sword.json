@@ -1,0 +1,25 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "item/wooden_sword"
+	},
+	"overrides": [
+		{ "predicate": { "custom_model_data": 1}, "model": "item/wooden_sword/1" },
+		{ "predicate": { "custom_model_data": 2}, "model": "item/wooden_sword/2" },
+		{ "predicate": { "custom_model_data": 3}, "model": "item/wooden_sword/3" },
+		{ "predicate": { "custom_model_data": 4}, "model": "item/wooden_sword/4" },
+		{ "predicate": { "custom_model_data": 5}, "model": "item/wooden_sword/5" },
+		{ "predicate": { "custom_model_data": 6}, "model": "item/wooden_sword/6" },
+		{ "predicate": { "custom_model_data": 7}, "model": "item/wooden_sword/7" },
+		{ "predicate": { "custom_model_data": 8}, "model": "item/wooden_sword/8" },
+		{ "predicate": { "custom_model_data": 9}, "model": "item/wooden_sword/9" },
+		{ "predicate": { "custom_model_data": 10}, "model": "item/wooden_sword/10" },
+		{ "predicate": { "custom_model_data": 11}, "model": "item/wooden_sword/11" },
+		{ "predicate": { "custom_model_data": 12}, "model": "item/wooden_sword/12" },
+		{ "predicate": { "custom_model_data": 13}, "model": "item/wooden_sword/13" },
+		{ "predicate": { "custom_model_data": 14}, "model": "item/wooden_sword/14" },
+		{ "predicate": { "custom_model_data": 15}, "model": "item/wooden_sword/15" },
+		{ "predicate": { "custom_model_data": 16}, "model": "item/wooden_sword/16" },
+		{ "predicate": { "custom_model_data": 17}, "model": "item/wooden_sword/17" }
+	]
+}

@@ -100,7 +100,7 @@ bookshelf:
                 - define checked <player.has_flag[checked_out]>
                 - if <context.item.material> == <material[written_book]>:
                     - if !<[shelf_has_book]>:
-                        - if <player.flag[checked_out]> == <context.item>:
+                        - if <player.flag[checked_out]||false> == <context.item>:
                             - narrate <[fmt]><[n].data_key[fake]>
                             - stop
                         - define item <context.item>

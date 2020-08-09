@@ -9,7 +9,7 @@
 # @author jumpsplat120
 # @date 08/07/2020
 # @denizen-build b4994-DEV
-# @script-version 1.0
+# @script-version 1.1
 #
 # Installation:
 # Just put the script in your scripts folder and reload.
@@ -46,14 +46,6 @@ narration:
     fade: "The book faded away."
 
 # --------------------------END CONFIG--------------------------
-
-drop_books_if_appropriate:
-    type: task
-    debug: false
-    script:
-        - if <server.has_flag[<context.location>]>:
-            - determine passively <list[<server.flag[<context.location>].get[1].as_item>|<item[book]>|<item[book]>]>
-            - flag server <context.location>:!
 
 item_is_axe:
     type: procedure
@@ -128,8 +120,7 @@ bookshelf:
             - ratelimit <player> 5t
             - define fmt <script[narration].data_key[formatting].parsed>
             - define exists <server.has_flag[<context.location>]>
-            - if <[exists]>:
-                - define book <server.flag[<context.location>].get[1].as_item>
+            - define book <server.flag[<context.location>].get[1].as_item||false>
             - narrate "<[fmt]><tern[<[exists]>].pass[<script[narration].data_key[look]><&nl><reset><[book].book_title><[fmt]> by <reset><[book].book_author>].fail[<script[narration].data_key[none]>]>"
         on player drops written_book:
             - define type remove
@@ -137,18 +128,10 @@ bookshelf:
         on player clicks written_book in player:
             - define type take
             - inject get_rid_of_book
-        on player breaks bookshelf with:wooden_axe:
-            - inject drop_books_if_appropriate
-        on player breaks bookshelf with:stone_axe:
-            - inject drop_books_if_appropriate
-        on player breaks bookshelf with:iron_axe:
-            - inject drop_books_if_appropriate
-        on player breaks bookshelf with:golden_axe:
-            - inject drop_books_if_appropriate
-        on player breaks bookshelf with:diamond_axe:
-            - inject drop_books_if_appropriate
-        on player breaks bookshelf with:netherite_axe:
-           - inject drop_books_if_appropriate
+        on player breaks bookshelf with:+_axe:
+           - if <server.has_flag[<context.location>]>:
+            - determine passively <list[<server.flag[<context.location>].get[1].as_item>|<item[book]>|<item[book]>]>
+            - flag server <context.location>:!
         on bookshelf burns:
             - if <server.has_flag[<context.location>]>:
                 - drop <server.flag[<context.location>].get[1].as_item>|<item[book]>|<item[book]> <context.location>

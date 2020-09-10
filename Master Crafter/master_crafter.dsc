@@ -8,9 +8,9 @@
 # +----------------------
 #
 # @author jumpsplat120
-# @date 08/20/2020
-# @denizen-build b5037-DEV
-# @script-version 1.0
+# @date 09/10/2020
+# @denizen-build b5052-DEV
+# @script-version 1.1
 #
 # Installation:
 # Place the following scripts in your scripts folder and reload:
@@ -40,7 +40,7 @@
 # the level command will default to the player running the command.
 #
 # A more detailed walkthrough of the process and the config can be found
-# here:
+# here: https://www.youtube.com/watch?v=Fc98Id7gP60
 #
 # --------------------END HEADER / START CONFIG--------------------
 
@@ -65,26 +65,26 @@ master_crafter_config:
         enchant_amount_max: 3
         forge_hits: 2
     chainmail:
-        lower_xp_bound: .25
+        lower_xp_bound: .5
         upper_xp_bound: 2
         enchant_level_max: 1
         enchant_amount_max: 3
         forge_hits: 2
     iron:
-        lower_xp_bound: .1
-        upper_xp_bound: 2
+        lower_xp_bound: .5
+        upper_xp_bound: 2.5
         enchant_level_max: 2
         enchant_amount_max: 3
         forge_hits: 3
     golden:
-        lower_xp_bound: .1
-        upper_xp_bound: 1.5
+        lower_xp_bound: .5
+        upper_xp_bound: 2
         enchant_level_max: 4
         enchant_amount_max: 4
         forge_hits: 4
     diamond:
-        lower_xp_bound: .1
-        upper_xp_bound: 1
+        lower_xp_bound: .5
+        upper_xp_bound: 1.5
         enchant_amount_max: 5
         forge_hits: 5
     mastery_multiplier: 2
@@ -706,7 +706,7 @@ mc_result:
                 - run mc_make_item def:<[material]>|<[tool]>|<player.flag[<[item_name]>]>|<player.flag[master_crafter].as_map.get[<[item_name]>]> save:new_item
                 - define item <entry[new_item].created_queue.determination.first>
             - flag server <[crafting_table_loc]>:->:<map.with[item].as[<[item]>].with[is_master].as[<player.flag[master_crafter].as_map.get[<[item_name]>]>].with[gained_mastery].as[<[announce]>]>
-
+#Mentor system??
 master_crafter:
     type: world
     debug: false
@@ -765,7 +765,7 @@ master_crafter:
                 - else:
                     - inventory adjust durability:<player.flag[<[item_id]>].round_down> slot:<player.held_item_slot>
                 - if <[config].data_key[<[material]>].get[forge_hits]> <= <player.flag[mc_forge_hits]>:
-                    - drop <[item]> <context.location.up> save:dropped_tool
+                    - drop <[item]> <context.location.center.up> save:dropped_tool
                     - if <[map].get[gained_mastery]>:
                         - if <[config].data_key[announcements].get[mastery].get[is_announced]>:
                             - announce <proc[mc_mastery_formatter].context[<[context_list]>]>

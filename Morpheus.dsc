@@ -11,6 +11,7 @@ morpheus:
     type: world
     events:
         on player enters bed:
+            - wait 10t
             - flag server sleeping_players:|:<player.uuid>
             - define curr_percent <server.flag[sleeping_players].size.div[<server.online_players.size>]>
             - define req_amt <server.online_players.size.mul[<script[morpheus_config].yaml_key[percent]>].round_down.max[1]>

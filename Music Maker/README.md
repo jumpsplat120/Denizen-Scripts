@@ -1,1 +1,0 @@
-To use these scripts, simply take all of these files and place them in your plugins folder for Denizen. 

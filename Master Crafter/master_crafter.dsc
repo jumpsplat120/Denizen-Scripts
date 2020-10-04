@@ -2,20 +2,20 @@
 # |
 # | MASTER CRAFTER
 # |
-# | A modified form of tool and armor crafting, adding a non-visible 
+# | A modified form of tool and armor crafting, adding a non-visible
 # | leveling system for roleplay gameplay.
 # |
 # +----------------------
 #
 # @author jumpsplat120
-# @date 09/10/2020
-# @denizen-build b5052-DEV
-# @script-version 1.1
+# @date 10/04/2020
+# @denizen-build b5081-DEV
+# @script-version 1.2
 #
 # Installation:
 # Place the following scripts in your scripts folder and reload:
 #     * master_crafter.dsc
-#     * utilities.dsc
+#     * /utilities
 #
 # Usage:
 # Craft a hammer using basic vanilla materials:
@@ -46,6 +46,7 @@
 
 master_crafter_config:
     type: data
+    custom_model_data_offset: 0
     wooden:
         lower_xp_bound: 1
         upper_xp_bound: 3
@@ -584,9 +585,6 @@ mc_sorted_enchants:
         aqua_affinity:
             - WATER_WORKER
 
-
-
-
 mc_mastery_formatter:
     type: procedure
     definitions: name|material|tool
@@ -860,7 +858,7 @@ mc_wooden_hammer:
     material: wooden_sword
     display name: <&r>Wooden Hammer
     mechanisms:
-        custom_model_data: 1
+        custom_model_data: <script[master_crafter_config].data_key[custom_model_data_offset].add[1]>
         nbt: flag_id/wooden_000001
     recipes:
         1:
@@ -875,7 +873,7 @@ mc_stone_hammer:
     material: wooden_sword
     display name: <&r>Stone Hammer
     mechanisms:
-        custom_model_data: 2
+        custom_model_data: <script[master_crafter_config].data_key[custom_model_data_offset].add[2]>
         nbt: flag_id/stone_000001
     recipes:
         1:
@@ -890,7 +888,7 @@ mc_iron_hammer:
     material: wooden_sword
     display name: <&r>Iron Hammer
     mechanisms:
-        custom_model_data: 3
+        custom_model_data: <script[master_crafter_config].data_key[custom_model_data_offset].add[3]>
         nbt: flag_id/iron_000001
     recipes:
         1:
@@ -905,7 +903,7 @@ mc_golden_hammer:
     material: wooden_sword
     display name: <&r>Golden Hammer
     mechanisms:
-        custom_model_data: 4
+        custom_model_data: <script[master_crafter_config].data_key[custom_model_data_offset].add[4]>
         nbt: flag_id/golden_000001
     recipes:
         1:
@@ -920,7 +918,7 @@ mc_diamond_hammer:
     material: wooden_sword
     display name: <&r>Diamond Hammer
     mechanisms:
-        custom_model_data: 5
+        custom_model_data: <script[master_crafter_config].data_key[custom_model_data_offset].add[5]>
         nbt: flag_id/diamond_000001
     recipes:
         1:

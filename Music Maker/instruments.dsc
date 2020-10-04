@@ -6,7 +6,7 @@ part_banjo_1:
     material: stick
     display name: <&r>Banjo Drum
     mechanisms:
-        custom_model_data: 3
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[3]>
     recipes:
         1:
             type: shaped
@@ -20,7 +20,7 @@ part_banjo_2:
     material: stick
     display name: <&r>Banjo Neck
     mechanisms:
-        custom_model_data: 4
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[4]>
     recipes:
         1:
             type: shaped
@@ -34,7 +34,7 @@ part_basedrum_1:
     material: stick
     display name: <&r>Bass Drum Head
     mechanisms:
-        custom_model_data: 5
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[5]>
     recipes:
         1:
             type: shaped
@@ -47,7 +47,7 @@ part_bass_1:
     material: stick
     display name: <&r>Bass Neck
     mechanisms:
-        custom_model_data: 6
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[6]>
     recipes:
         1:
             type: shaped
@@ -61,7 +61,7 @@ part_bass_2:
     material: stick
     display name: <&r>Bass Body
     mechanisms:
-        custom_model_data: 7
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[7]>
     recipes:
         1:
             type: shaped
@@ -75,7 +75,7 @@ part_chime_1:
     material: stick
     display name: <&r>Chime Tube
     mechanisms:
-        custom_model_data: 8
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[8]>
     recipes:
         1:
             type: shaped
@@ -89,7 +89,7 @@ part_flute_1:
     material: stick
     display name: <&r>Flute Head
     mechanisms:
-        custom_model_data: 9
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[9]>
     recipes:
         1:
             type: shaped
@@ -103,7 +103,7 @@ part_flute_2:
     material: stick
     display name: <&r>Flute Body
     mechanisms:
-        custom_model_data: 10
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[10]>
     recipes:
         1:
             type: shaped
@@ -116,7 +116,7 @@ part_guitar_1:
     material: stick
     display name: <&r>Guitar Body
     mechanisms:
-        custom_model_data: 11
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[11]>
     recipes:
         1:
             type: shaped
@@ -130,7 +130,7 @@ part_guitar_2:
     material: stick
     display name: <&r>Guitar Neck
     mechanisms:
-        custom_model_data: 12
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[12]>
     recipes:
         1:
             type: shaped
@@ -144,7 +144,7 @@ part_iron_xylophone_1:
     material: stick
     display name: <&r>Iron Xylophone Bars
     mechanisms:
-        custom_model_data: 13
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[13]>
     recipes:
         1:
             type: shaped
@@ -157,7 +157,7 @@ part_any_xylophone_1:
     material: stick
     display name: <&r>Xylophone Mallets
     mechanisms:
-        custom_model_data: 14
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[14]>
     recipes:
         1:
             type: shaped
@@ -170,7 +170,7 @@ part_xylophone_1:
     material: stick
     display name: <&r>Xylophone Bars
     mechanisms:
-        custom_model_data: 15
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[15]>
     recipes:
         1:
             type: shaped
@@ -183,7 +183,7 @@ part_pling_1:
     material: stick
     display name: <&r>Piano Keys
     mechanisms:
-        custom_model_data: 16
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[16]>
     recipes:
         1:
             type: shaped
@@ -197,7 +197,7 @@ instrument_banjo:
     material: wooden_sword
     display name: <&r>Banjo
     mechanisms:
-        custom_model_data: 2
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[2]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -213,7 +213,7 @@ instrument_basedrum:
     material: wooden_sword
     display name: <&r>Bass Drum
     mechanisms:
-        custom_model_data: 3
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[3]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -230,7 +230,7 @@ instrument_bass:
     material: wooden_sword
     display name: <&r>Bass Guitar
     mechanisms:
-        custom_model_data: 4
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[4]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -251,7 +251,7 @@ instrument_bell:
     material: wooden_sword
     display name: <&r>Bell
     mechanisms:
-        custom_model_data: 5
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[5]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -268,7 +268,7 @@ instrument_bit:
     material: wooden_sword
     display name: <&r>Turntable
     mechanisms:
-        custom_model_data: 6
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[6]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -284,7 +284,7 @@ instrument_chime:
     material: wooden_sword
     display name: <&r>Chimes
     mechanisms:
-        custom_model_data: 7
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[7]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -300,7 +300,7 @@ instrument_cow_bell:
     material: wooden_sword
     display name: <&r>Cowbell
     mechanisms:
-        custom_model_data: 8
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[8]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -317,7 +317,7 @@ instrument_didgeridoo:
     material: wooden_sword
     display name: <&r>Didgeridoo
     mechanisms:
-        custom_model_data: 9
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[9]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -331,7 +331,7 @@ instrument_flute:
     material: wooden_sword
     display name: <&r>Flute
     mechanisms:
-        custom_model_data: 10
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[10]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -352,7 +352,7 @@ instrument_guitar:
     material: wooden_sword
     display name: <&r>Guitar
     mechanisms:
-        custom_model_data: 11
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[11]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -373,7 +373,7 @@ instrument_harp:
     material: wooden_sword
     display name: <&r>Harp
     mechanisms:
-        custom_model_data: 12
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[12]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -390,7 +390,7 @@ instrument_hat:
     material: wooden_sword
     display name: <&r>High Hat
     mechanisms:
-        custom_model_data: 13
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[13]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -406,7 +406,7 @@ instrument_iron_xylophone:
     material: wooden_sword
     display name: <&r>Iron Xylophone
     mechanisms:
-        custom_model_data: 14
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[14]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -421,7 +421,7 @@ instrument_pling:
     material: wooden_sword
     display name: <&r>Keytar
     mechanisms:
-        custom_model_data: 15
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[15]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -438,7 +438,7 @@ instrument_snare:
     material: wooden_sword
     display name: <&r>Snare
     mechanisms:
-        custom_model_data: 16
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[16]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
@@ -456,7 +456,7 @@ instrument_xylophone:
     material: wooden_sword
     display name: <&r>Xylophone
     mechanisms:
-        custom_model_data: 17
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[17]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0

@@ -3,7 +3,7 @@ alloy_nugget:
     material: stick
     display name: <&r>Alloy Nugget
     mechanisms:
-        custom_model_data: 1
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[1]>
     recipes:
         1:
             type: shapeless
@@ -20,7 +20,7 @@ alloy_ingot:
     material: stick
     display name: <&r>Alloy Ingot
     mechanisms:
-        custom_model_data: 2
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[2]>
     recipes:
         1:
             type: shapeless
@@ -39,7 +39,7 @@ chisel:
     material: wooden_sword
     display name: <&r>Chisel
     mechanisms:
-        custom_model_data: 1
+        custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[1]>
         hides: attributes|unbreakable
         unbreakable: true
         nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0

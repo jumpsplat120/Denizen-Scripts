@@ -8,8 +8,8 @@
 # +----------------------
 #
 # @author jumpsplat120
-# @date 09/10/2020
-# @denizen-build b5052-DEV
+# @date 10/04/2020
+# @denizen-build b5081-DEV
 # @script-version 2.0
 #
 # Installation:
@@ -29,7 +29,7 @@
 #   long as the message is in all caps (if there are no alphabetic
 #   letters, the message is automatically characterized as all caps.)
 #
-#   For more information, visit here: 
+#   For more information, visit here: https://www.youtube.com/watch?v=8Fn0w_dI0V4
 #
 # --------------------END HEADER / START CONFIG--------------------
 
@@ -48,7 +48,7 @@ local_chat:
         on player chats:
             - determine passively cancelled
             - define config <script[local_chat_config]>
-            - define upper_limit <tern[<proc[is_uppercase].context[<context.message>]>].pass[<[config].data_key[upper_talking_limit]>].fail[<[config].data_key[upper_shouting_limit]>]>
+            - define upper_limit <tern[<proc[is_uppercase].context[<context.message>]>].pass[<[config].data_key[upper_shouting_limit]>].fail[<[config].data_key[upper_talking_limit]>]>
             - define clear <player.location.find.players.within[<[upper_limit].div[<[config].data_key[falloff_point]>].round>]>
             - narrate "<&lt><player.name><&gt> <context.message>" targets:<[clear]>
             - foreach <player.location.find.players.within[<[upper_limit]>].exclude[<[clear]>]>:

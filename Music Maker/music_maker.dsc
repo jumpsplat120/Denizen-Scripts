@@ -1,3 +1,41 @@
+# +----------------------
+# |
+# |      MUSIC MAKER
+# |
+# | Adds instruments to the game.
+# |
+# +----------------------
+#
+# @author jumpsplat120
+# @date 10/04/2020
+# @denizen-build b5081-DEV
+# @script-version 1.1
+#
+# Installation:
+# Place the following scripts in your scripts folder and reload:
+#     * custom_items.dsc
+#     * didgeridoo_craft.dsc
+#     * instruments.dsc
+#     * music.dsc
+#     * music_maker.dsc
+#
+# Don't forget the textures!
+#
+# Usage:
+# Craft any of the instruments, the right click the instrument to play
+# a note. Looking up will play higher notes, while looking down will
+# play lower notes.
+#
+# Feel free to check this video for a more thorough tutorial: https://www.youtube.com/watch?v=54sNH48e9sA
+#
+# --------------------END HEADER / START CONFIG--------------------
+
+music_maker_config:
+    type: data
+    custom_model_data_offset: 0
+
+# --------------------END CONFIG / START CODE--------------------
+
 map:
     type: procedure
     definitions: from_min|from_max|to_min|to_max|input

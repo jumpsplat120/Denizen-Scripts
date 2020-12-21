@@ -42,7 +42,7 @@ chisel:
         custom_model_data: <script[music_maker_config].data_key[custom_model_data_offset].add[1]>
         hides: attributes|unbreakable
         unbreakable: true
-        nbt_attributes: generic.attack_damage/mainhand/0/0.0|generic.attack_speed/mainhand/0/4.0
+        nbt_attributes: generic.attack_damage/mainhand/0/-3.5|generic.attack_speed/mainhand/1/4.0
     recipes:
         1:
             type: shaped

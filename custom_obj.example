@@ -1,0 +1,39 @@
+co_base:
+    type: custom
+    tags:
+        simple:
+            # Nasty bit of object hacking is due to the fact that this will parse an actual
+            # custom object, even when using .as_element. To prevent that, we throw the el@
+            # in front.
+            - determine el@<context.this.before[<&lb>].to_lowercase>
+        scriptname:
+            - determine <context.this.simple.after[custom@].to_lowercase>
+
+co_test_obj:
+    type: custom
+    inherit: co_base
+    tags:
+        id:
+            - if <context.this._id||false> != false:
+                - determine <context.this._id>
+            - else:
+                - debug error "Unable to retrieve ID for <context.this.scriptname>! Did you get a unique item?"
+                - determine false
+        get_unique:
+            - adjust <context.this> _set_id:<util.random.int[1000].to[9999]> save:val
+            - determine <entry[val].result>
+    mechanisms:
+    # | NOTE: You can't have number in mech names. _id works, id works, but id1 does not.
+        _set_id:
+            - adjust <context.this> _id:<context.value> save:val
+            - determine <entry[val].result>
+
+test_s:
+    type: task
+    script:
+        - define cust <custom_object[co_test_obj]>
+        - narrate <[cust].id>
+        - define cust <[cust].get_unique>
+        - narrate <[cust]>
+        - narrate <[cust].id>
+        - narrate <[cust].id>

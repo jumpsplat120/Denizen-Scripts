@@ -1,6 +1,4 @@
 Denizen ideas:
-    Block Swap Minigame
-    Gravity Swap Minigame
     Breach Charge
     Secret Bookshelfs that you can right click to give a redstone charge, like a button
         * Maybe just a whole secret bookshelf component that acts like a door

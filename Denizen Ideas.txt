@@ -3,25 +3,6 @@ Denizen ideas:
     Secret Bookshelfs that you can right click to give a redstone charge, like a button
         * Maybe just a whole secret bookshelf component that acts like a door
         * Right clicking the shelf moves two bookshelves to the left or right for a few seconds
-
-Reborn:
     Brewery in Denizen
-    mythicmob heads/shopkeep bug
-    command blocks to denizen
     XP bookshelf bottling
         * shift+ right click creates xp bottles
-        * xp scoreboard needs updating
-    eggs in item frame/rotate for variations
-    edit_sign is a mech, fix that
-
-weather control station:
-    ocean platform/thunderstorm
-    gunpowder for power
-
-    mountain platform
-    magma blocks
-
-Portal System:
-    Ride minecart through portal to new world
-	
-Placeable gunpowder for fuses

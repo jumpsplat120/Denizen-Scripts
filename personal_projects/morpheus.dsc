@@ -2,26 +2,33 @@
 
 morpheus_config:
     type: data
-    percent: .50
+    percent: 0.5
     wake_message: "Wakey, wakey, rise and shine... good morning everyone!"
 
 # | ===== END OF EDITABLE CONFIG ===== | #
 
-morpheus:
+morpheus_events:
     type: world
     events:
         on player enters bed:
+            - ratelimit player 10t
             - wait 10t
-            - flag server sleeping_players:|:<player.uuid>
-            - define curr_percent <server.flag[sleeping_players].size.div[<server.online_players.size>]>
-            - define req_amt <server.online_players.size.mul[<script[morpheus_config].yaml_key[percent]>].round_down.max[1]>
-            - announce "<player.name> <&e>is now sleeping. <&6><server.flag[sleeping_players].size>/<[req_amt]> (<server.flag[sleeping_players].size.div[<[req_amt]>].mul[100].round><&pc>)"
-            - if <[curr_percent]> >= <script[morpheus_config].yaml_key[percent]>:
+            - flag server morpheus:->:<player>
+            - inject init path:morpheus
+            - announce "<player.name> <&e>is now sleeping. <[msg_addon]>"
+            - if <[amt_of_players_sleeping].div[<[amt_of_players]>]> >= <[percentage]>:
                 - time 0
-                - announce "<&e><script[morpheus_config].yaml_key[wake_message]>"
+                - announce <&e><[config].parsed_key[wake_message]>"
         on player leaves bed:
-            - flag server sleeping_players:<-:<player.uuid>
-            - define period <world[world].time.period>
-            - define req_amt <server.online_players.size.mul[<script[morpheus_config].yaml_key[percent]>].round_down.max[1]>
+            - inject init path:morpheus
+            - flag server morpheus:<-:<player>
+            - define period <player.world.time.period>
             - if <[period]> == dusk || <[period]> == night:
-                - announce "<player.name> <&e>left their bed. <&6><server.flag[sleeping_players].size>/<[req_amt]> (<server.flag[sleeping_players].size.div[<[req_amt]>].mul[100].round><&pc>)"
+                - announce "<player.name> <&e>left their bed. <[msg_addon]>"
+    init:
+        - define config <script[morpheus_config]>
+        - define percentage <[config].data_key[percent]>
+        - define amt_of_players <server.online_players.size>
+        - define amt_of_players_sleeping <server.flag[sleeping_players].size>
+        - define required <[amt_of_players].mul[<[percentage]>].round_down.max[1]>
+        - define msg_addon "<&6><[amt_of_players_sleeping]>/<[required]> (<[amt_of_players_sleeping].div[<[required]>].mul[100].round><&pc>)"

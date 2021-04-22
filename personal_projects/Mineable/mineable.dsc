@@ -73,7 +73,7 @@ cstm_gold_nugget:
             cook_time: 1s
             input: gold_ore_drop
             experience: 2
-    
+
 cstm_iron_nugget:
     type: item
     material: iron_nugget

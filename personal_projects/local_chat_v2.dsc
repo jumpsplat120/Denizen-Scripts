@@ -42,7 +42,7 @@ local_chat_config:
 # --------------------END CONFIG / START CODE--------------------
 
 local_chat:
-	type: world
+    type: world
     debug: false
     events:
         on player chats:

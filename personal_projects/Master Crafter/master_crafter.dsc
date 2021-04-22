@@ -752,7 +752,7 @@ master_crafter:
                 - define context_list <list[<player.name>|<[material]>|<[tool]>]>
                 - playsound <player> sound:BLOCK_ANVIL_LAND pitch:<proc[random_pitch]>
                 - flag player mc_forge_hits:++
-                - define hammer_mat "<context.item.scriptname.split[_].get[2].to_lowercase>"
+                - define hammer_mat <context.item.scriptname.split[_].get[2].to_lowercase>
                 - define adjust <script[mc_durability_key].data_key[<[hammer_mat]>]>
                 - define item_id <context.item.nbt[flag_id]>
                 - flag player <[item_id]>:+:<tern[<player.has_flag[<[item_id]>]>].pass[<[adjust]>].fail[1]>

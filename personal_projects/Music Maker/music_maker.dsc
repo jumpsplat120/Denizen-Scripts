@@ -36,7 +36,7 @@ music_maker_config:
 
 # --------------------END CONFIG / START CODE--------------------
 
-map:
+map_range:
     type: procedure
     definitions: from_min|from_max|to_min|to_max|input
     script:
@@ -60,31 +60,26 @@ rainbow_actionbar:
 
 music_maker:
     type: world
-    modules:
-        set_scale_flags:
-            - if !<player.has_flag[scale]>:
-                - flag player scale_type:1
-                - flag player scale_index:1
-                - flag player scale:!|:<script[music].data_key[scale.<script[music].data_key[scale.list].get[<player.flag[scale_type]>]>.<script[music].data_key[notes.list].get[<player.flag[scale_index]>]>]>
+    set_scale_flags:
+        - if !<player.has_flag[scale]>:
+            - flag player scale_type:1
+            - flag player scale_index:1
+            - flag player scale:!|:<script[music].data_key[scale.<script[music].data_key[scale.list].get[<player.flag[scale_type]>]>.<script[music].data_key[notes.list].get[<player.flag[scale_index]>]>]>
     events:
-        on player left clicks with:instrument_*:
-            - inject locally modules.set_scale_flags
-
+        on player left clicks blocks with:instrument_*:
+            - inject set_scale_flags path:music_maker
             - if <player.is_sneaking>:
                 - flag player scale_type:++
             - else:
                 - flag player scale_index:++
                 - if <player.flag[scale_index]> > <script[music].data_key[scale.<script[music].data_key[scale.list].get[<player.flag[scale_type]>]>].size>:
                     - flag player scale_index:1
-
             - if <player.flag[scale_type]> > <script[music].data_key[scale.list].size>:
                 - flag player scale_type:1
-
             - flag player scale:!|:<script[music].data_key[scale.<script[music].data_key[scale.list].get[<player.flag[scale_type]>]>.<script[music].data_key[notes.list].get[<player.flag[scale_index]>]>]>
             - run rainbow_actionbar def:<script[music].data_key[scale.lang_list].get[<player.flag[scale_type]>]>|<script[music].data_key[notes.lang_list].get[<player.flag[scale_index]>]>
-        on player right clicks with:instrument_*:
-            - inject locally modules.set_scale_flags
-
+        on player right clicks block with:instrument_*:
+            - inject set_scale_flags path:music_maker
             - if <player.is_sneaking>:
                 - flag player advanced_mode:<tern[<player.has_flag[advanced_mode]>].pass[!].fail[true]>
                 - run rainbow_actionbar def:<element[Advanced&spMode:].unescaped>|<tern[<player.has_flag[advanced_mode]>].pass[True].fail[False]>
@@ -95,11 +90,10 @@ music_maker:
                     - define percentage 25
                 - else if <[percentage]> > 75:
                     - define percentage 75
-                - define note <proc[map].context[25|75|0|100|<[percentage]>]>
+                - define note <proc[map_range].context[25|75|0|100|<[percentage]>]>
             - else:
                 - define note <[percentage]>
             - define note <[scale].get[<[note].div[<element[100].div[<[scale].size>]>].add[0.000001].round_up.min[<[scale].size>]>]>
             - define note_frequency <script[music].data_key[notes.<[note]>]>
             - define sound <script[music].data_key[instruments.<context.item.scriptname>]>
-
             - playsound <player.location> sound:<[sound]> volume:1.5 pitch:<[note_frequency]>

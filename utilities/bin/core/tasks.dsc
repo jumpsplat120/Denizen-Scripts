@@ -10,11 +10,13 @@ lib_spawn_falling_block:
             - adjust <entry[entities].spawned_entities.get[1]> passengers:<entry[entities].spawned_entities.get[2]>|<entry[entities].spawned_entities.get[3]>
             - determine passively <entry[entities].spawned_entities>
 
+# - One of these days I gotta fix up a LUT for sounds because neither find_partial or closest_to will match block name to block sound accurately
 lib_simulate_block_placing:
     type: task
-    debug: false
+    debug: true
     definitions: location|material|offhand
     script:
         - animate <player> animation:arm_swing<[offhand].exists.if_true[_offhand].if_false[]>
         - define list <script[lib_generic_data].data_key[block_placing]>
-        - playsound <[location]> block_<[list].get[<[list].find_partial[<[material]>]>].if_null[stone]>_place pitch:<proc[lib_random_pitch]>
+        - define match <[list].find_partial[<[material].name>]>
+        - playsound <[location]> block_<[list].get[<[match].equals[-1].if_true[stone].if_false[<[match]>]>].if_null[stone]>_place pitch:<proc[lib_random_pitch]>

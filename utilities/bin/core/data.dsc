@@ -30,6 +30,21 @@ lib_generic_data:
         C3: 2.70158
         C4: 2.0943951
         C5: 1.3962634
+    #The map was always in the wrong order for some reason? So we store it like this
+    roman:
+        - M/1000
+        - CM/900
+        - D/500
+        - CD/400
+        - C/100
+        - XC/90
+        - L/50
+        - XL/40
+        - X/10
+        - IX/9
+        - V/5
+        - IV/4
+        - I/1
     command:
         usage:
             panic: <[fs]>panic

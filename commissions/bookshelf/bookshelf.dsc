@@ -8,7 +8,7 @@
 #
 # @author jumpsplat120
 # @date 05/17/2021
-# @denizen-build b5081-DEV
+# @denizen-build 1.2.0-b1739-REL
 # @script-version 1.2
 #
 # Installation:
@@ -48,7 +48,7 @@ narration:
 
 bookshelf:
     type: world
-    debug: true
+    debug: false
     events:
         on player left clicks bookshelf:
             - ratelimit <player> 5t

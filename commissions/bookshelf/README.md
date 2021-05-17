@@ -1,10 +1,12 @@
 # FUNCTIONAL BOOKSHELVES
 ## Extra roleplay geared functionality for vanilla bookshelves, made for play.antebellummc.com
 
-```@author jumpsplat120
+```
+@author jumpsplat120
 @date 05/17/2021
 @denizen-build b5081-DEV
-@script-version 1.2```
+@script-version 1.2
+```
 
 ### Installation
 Just put the script in your scripts folder and reload.

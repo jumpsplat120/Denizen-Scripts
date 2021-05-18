@@ -52,5 +52,5 @@ lc_event:
             - determine passively cancelled
             - define m <context.message>
             - define c <script[lc_config]>
-            - define w <[c].data_key[whisper_chr]>
+            - define w <[c].parsed_key[whisper_chr]>
             - narrate <context.full_text> targets:<player.location.find.players.within[<[c].data_key[<[m].ends_with[!].and[<[m].proc[lib_as_alpha].is_uppercase>].if_true[screaming].if_false[<[m].ends_with[!].if_true[shouting].if_false[<[m].starts_with[<[w]>].and[<[m].ends_with[<[w]>]>].if_true[whisper].if_false[talking]>]>]>]>]>

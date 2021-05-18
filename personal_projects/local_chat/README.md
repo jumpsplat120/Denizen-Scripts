@@ -3,7 +3,7 @@
 
 ### Installation
 Place the following scripts in your scripts folder and reload:
-   * v(1/2)/local_chat.dsc
+   * v1 *OR* v2/local_chat.dsc
    * utilities [folder]
 
 ### Usage

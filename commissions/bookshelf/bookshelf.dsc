@@ -25,6 +25,9 @@
 # were the one who put it there. While only the original player can remove
 # the book via shift left clicking, the book will drop automatically
 # if the bookshelf is burned down or exploded.
+#
+# For a demo, visit here: https://www.youtube.com/watch?v=Ayd8OCDylcg
+#
 # --------------------END HEADER / START CONFIG--------------------
 
 # Formatting goes in front of every line. Change the formatting to change how every line appears,

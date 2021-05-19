@@ -8,7 +8,7 @@ lib_rainbow_text:
     debug: false
     definitions: text|color|increment
     script:
-        - define increment <tern[<[increment]||true>].pass[15].fail[<[increment]>]>
+        - define increment <tern[<[increment].if_null[true]>].pass[15].fail[<[increment]>]>
         - define color <tern[<[color]||true>].pass[<proc[lib_random_color_tag]>].fail[<[color]>]>
         - foreach <[text].to_list> as:chr:
             - define result:->:<&color[<[color]>]><[chr]>

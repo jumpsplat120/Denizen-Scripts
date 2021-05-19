@@ -8,6 +8,7 @@
 # sine_wave_increment: Outputs a sine wave in increments. Returns the amount the value will need to beincreased by for the sine wave, compared to the previous amount. Useful for the rotate command. Inputtechnically takes radians, meaning that inputting integer values will most likely move the sine wave too fastto be useful.
 # ease: Ease script takes an ease type, direction, input, as well as an optional speed, range_min, andrange_max. Input goes min 0 to 1, as well as speed, and range_min and range_max is a range in which you wantthe result to be mapped to. Both values must be passed for range to work. If no range is passed, output valuegoes min 0 to 1. When the ease has reached it's maximum value, returns false.
 # romanize: Turn a decimal number into a roman numeral
+# between: Helper function for when you want to create a random int between 1 and x. With the new proc syntax, you can use this very consicely; <[my_value].proc[between]>
 
 lib_map_range:
     type: procedure
@@ -126,3 +127,10 @@ lib_romanize:
                 - define number:-:<[value]>
                 - define result <[result].if_null[]><[key]>
         - determine <[result]>
+
+lib_between:
+    type: procedure
+    debug: false
+    definitions: number
+    script:
+        - determine <util.random.int[1].to[<[number]>]>

@@ -8,7 +8,7 @@
 # block_face: Get's the face of a block that the passed entity is looking up, up to the range passed. If there is no passed entity, attempts to fallback to a linked player, and if there is no range, uses the default of 200.
 # block_facing: Get's the facing vector of the block at location.
 # rainbow_list: Returns a list of just colors. Similar to rainbow text, but doesn't need text, so you can use the colors however and have them be to your spec.
-# unstackable_item: Takes a passed item name, and returns an item with random nbt on it, so it doesn't stack with other items of the same type. Useful for creating non stacking items out of a material that normally stacks, when you don't want to adjust the material in it's entirety.
+# unstackable: Takes a passed item name, and returns an item with random nbt on it, so it doesn't stack with other items of the same type. Useful for creating non stacking items out of a material that normally stacks, when you don't want to adjust the material in it's entirety.
 
 lib_fill_list:
     type: procedure
@@ -124,7 +124,7 @@ lib_rainbow_list:
             - define color <[color].with_hue[<[color].hue.add[15]>]>
         - determine <[color_list]>
 
-lib_unstackable_item:
+lib_unstackable:
     type: procedure
     debug: false
     definitions: item_name

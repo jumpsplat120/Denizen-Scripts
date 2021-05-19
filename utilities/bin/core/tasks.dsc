@@ -20,3 +20,20 @@ lib_simulate_block_placing:
         - define list <script[lib_generic_data].data_key[block_placing]>
         - define match <[list].find_partial[<[material].name>]>
         - playsound <[location]> block_<[list].get[<[match].equals[-1].if_true[stone].if_false[<[match]>]>].if_null[stone]>_place pitch:<proc[lib_random_pitch]>
+
+lib_simulate_item_breaking:
+    type: task
+    debug: false
+    definitions: item
+    script:
+        - playsound <player.location> sound:entity_item_break pitch:<proc[lib_random_pitch]>
+        - repeat 4:
+            - playeffect effect:ITEM_CRACK at:<player.eye_location.forward[.75].right[.75].down[.25]> special_data:<[item]> offset:0.1,0.1,0.1
+
+#under constructions
+lib_copyable:
+    type: task
+    debug: true
+    script:
+        - define result b
+        - announce <[result]>

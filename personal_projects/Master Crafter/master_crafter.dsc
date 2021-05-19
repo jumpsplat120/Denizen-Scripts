@@ -46,7 +46,7 @@
 
 master_crafter_config:
     type: data
-    custom_model_data_offset: 0
+    cmd_offset: 0
     wooden:
         lower_xp_bound: 1
         upper_xp_bound: 3
@@ -710,8 +710,7 @@ master_crafter:
     debug: false
     events:
         on player crafts *_hammer:
-            - define item <context.item>
-            - determine "<[item].with[nbt=flag_id/<[item].display.split[ ].first.to_lowercase>_<util.random.int[100000].to[999999]>;display_name=<&f><[item].display>]>"
+            - determine <context.item.proc[lib_unstackable]>
         on player breaks block with:*_hammer:
             - define item_id <context.item.nbt[flag_id]>
             - flag player <[item_id]>:+:2
@@ -731,7 +730,7 @@ master_crafter:
             - inject mc_result
         on player crafts *_leggings:
             - inject mc_result
-        on player crafts *_chesplate:
+        on player crafts *_chestplate:
             - inject mc_result
         on player crafts *_helmet:
             - inject mc_result
@@ -855,11 +854,10 @@ mc_chainmail_helmet:
 
 mc_wooden_hammer:
     type: item
-    material: wooden_sword
+    material: stick
     display name: <&r>Wooden Hammer
     mechanisms:
-        custom_model_data: <script[master_crafter_config].data_key[custom_model_data_offset].add[1]>
-        nbt: flag_id/wooden_000001
+        custom_model_data: <script[master_crafter_config].data_key[cmd_offset].add[1]>
     recipes:
         1:
             type: shaped
@@ -870,11 +868,10 @@ mc_wooden_hammer:
 
 mc_stone_hammer:
     type: item
-    material: wooden_sword
+    material: stick
     display name: <&r>Stone Hammer
     mechanisms:
-        custom_model_data: <script[master_crafter_config].data_key[custom_model_data_offset].add[2]>
-        nbt: flag_id/stone_000001
+        custom_model_data: <script[master_crafter_config].data_key[cmd_offset].add[2]>
     recipes:
         1:
             type: shaped
@@ -885,11 +882,10 @@ mc_stone_hammer:
 
 mc_iron_hammer:
     type: item
-    material: wooden_sword
+    material: stick
     display name: <&r>Iron Hammer
     mechanisms:
-        custom_model_data: <script[master_crafter_config].data_key[custom_model_data_offset].add[3]>
-        nbt: flag_id/iron_000001
+        custom_model_data: <script[master_crafter_config].data_key[cmd_offset].add[3]>
     recipes:
         1:
             type: shaped
@@ -900,11 +896,10 @@ mc_iron_hammer:
 
 mc_golden_hammer:
     type: item
-    material: wooden_sword
+    material: stick
     display name: <&r>Golden Hammer
     mechanisms:
-        custom_model_data: <script[master_crafter_config].data_key[custom_model_data_offset].add[4]>
-        nbt: flag_id/golden_000001
+        custom_model_data: <script[master_crafter_config].data_key[cmd_offset].add[4]>
     recipes:
         1:
             type: shaped
@@ -915,11 +910,10 @@ mc_golden_hammer:
 
 mc_diamond_hammer:
     type: item
-    material: wooden_sword
+    material: stick
     display name: <&r>Diamond Hammer
     mechanisms:
-        custom_model_data: <script[master_crafter_config].data_key[custom_model_data_offset].add[5]>
-        nbt: flag_id/diamond_000001
+        custom_model_data: <script[master_crafter_config].data_key[cmd_offset].add[5]>
     recipes:
         1:
             type: shaped

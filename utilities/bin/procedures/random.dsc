@@ -15,7 +15,7 @@ lib_random_color:
     debug: false
     definitions: min_sat|min_val
     script:
-        - determine <&color[<proc[lib_random_color_tag].context[<[min_sat].if_null[true]>|<[min_val]>].if_null[true]>]>
+        - determine <&color[<proc[lib_random_color_tag].context[<[min_sat].if_null[true]>|<[min_val].if_null[true]>]>]>
 
 lib_random_color_tag:
     type: procedure

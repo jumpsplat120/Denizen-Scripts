@@ -104,7 +104,8 @@ lib_core_command_error:
     definitions: err_type|usage_name
     script:
         - define color <script[lib_config].parsed_key[color]>
-        - determine <[color].get[error]><script[lib_generic_data].parsed_key[command.error.<[err_type]>]><list[permission|implicit|invalid_player].contains[<[err_type]>].not.if_true[<[color].get[error]><&nl>Usage<&co><&nl><proc[lib_core_command_usage].context[<[usage_name]>]>].if_false[]>
+        - define usage_loc <script[lib_generic_data].data_key[command.usage.<[usage_name]>].if_null[true].if_true[<proc[<[usage_name]>]>].if_false[<proc[lib_core_command_usage].context[<[usage_name]>]>]>
+        - determine <[color].get[error]><script[lib_generic_data].parsed_key[command.error.<[err_type]>]><list[permission|implicit|invalid_player].contains[<[err_type]>].not.if_true[<[color].get[error]><&nl>Usage<&co><&nl><[usage_loc]>].if_false[]>
 
 lib_core_command_extra_keys:
     type: procedure

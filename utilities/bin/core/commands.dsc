@@ -219,7 +219,7 @@ remove_notables:
             - narrate <proc[lib_core_command_error].context[permission]>
     remove:
         - if <list[<[search]>|<[search]>s|all].contains[<[type]>]>:
-            - define notables <server.notables[<[search]>s]>
+            - define notables <server.notes[<[search]>s]>
             - if <[notables].size> > 0:
                 - define note_burned true
                 - foreach <[notables]>:

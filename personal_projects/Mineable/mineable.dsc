@@ -8,9 +8,9 @@
 # +----------------------
 #
 # @author jumpsplat120
-# @date 10/04/2020
-# @denizen-build b5081-DEV
-# @script-version 1.0
+# @date 05/19/21
+# @denizen-build 1.2.0-b1739-REL
+# @script-version 1.0.1
 #
 # Installation:
 # Place the following scripts in your scripts folder and reload:
@@ -45,7 +45,7 @@ mineable_config:
     type: data
     break_percentage: 10
     fortune_multiplier: 3
-    custom_model_data_offset: 0
+    cmd_offset: 0
 
 # --------------------END CONFIG / START CODE--------------------
 
@@ -54,14 +54,17 @@ mineable:
     events:
         on player breaks *_ore:
             - define held <player.item_in_hand>
-            - if <context.location.drops[<[held]>].size> > 0 && <[held].enchantments.level[silk_touch]> == 0:
+            - define loc  <context.location>
+            - if <[loc].drops[<[held]>].size> > 0 && <[held].enchantments.level[silk_touch]> == 0:
                 - determine passively cancelled
                 - define config <script[mineable_config]>
-                - define drop_location <context.location.center.points_between[<player.location>].get[2]||<player.location>>
-                - inventory adjust durability:<[held].durability.add[<tern[<util.random.int[1].to[100].is[LESS].than[<element[100].div[<[held].enchantments.level[unbreaking].add[1]>]>]>].pass[1].fail[0]>]> slot:<player.held_item_slot>
-                - modifyblock <context.location> air <[config].data_key[break_percentage]>
-                - drop <context.material.name>_drop quantity:<util.random.int[1].to[<util.random.int[1].to[<[config].data_key[fortune_multiplier]>].mul[<[held].enchantments.level[fortune]>].add[1]>]> <[drop_location]>
-                - drop xp quantity:<tern[<context.material.name.is[==].to[diamond_ore].or[<context.material.name.is[==].to[emerald_ore]>]>].pass[<util.random.int[1].to[3]>].fail[<util.random.int[0].to[1]>]> <[drop_location]>
+                - define ploc   <player.location>
+                - define dloc   <[loc].center.points_between[<[ploc]>].get[2].if_null[<[ploc]>]>
+                - define mat    <context.material.name>
+                - inventory adjust durability:<[held].durability.add[<util.random.int[1].to[100].is_less_than[<element[100].div[<[held].enchantments.level[unbreaking].add[1]>]>].if_true[1].if_false[0]>]> slot:<player.held_item_slot>
+                - modifyblock <[loc]> air <[config].data_key[break_percentage]>
+                - drop <[mat]>_drop quantity:<util.random.int[1].to[<util.random.int[1].to[<[config].data_key[fortune_multiplier]>].mul[<[held].enchantments.level[fortune]>].add[1]>]> <[dloc]>
+                - drop xp quantity:<list[diamond_ore|emerald_ore].contains[<[mat]>].if_true[<util.random.int[1].to[3]>].if_false[<util.random.int[0].to[1]>]> <[dloc]>
 
 cstm_gold_nugget:
     type: item
@@ -125,21 +128,21 @@ gold_ore_drop:
     material: stick
     display name: <&r>Gold Ore Chunk
     mechanisms:
-        custom_model_data: <script[mineable_config].data_key[custom_model_data_offset].add[1]>
+        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[1]>
 
 iron_ore_drop:
     type: item
     material: stick
     display name: <&r>Iron Ore Chunk
     mechanisms:
-        custom_model_data: <script[mineable_config].data_key[custom_model_data_offset].add[2]>
+        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[2]>
 
 coal_ore_drop:
     type: item
     material: stick
     display name: <&r>Coal Fragment
     mechanisms:
-        custom_model_data: <script[mineable_config].data_key[custom_model_data_offset].add[3]>
+        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[3]>
 
 nether_gold_ore_drop:
     type: item
@@ -156,7 +159,7 @@ diamond_ore_drop:
     material: stick
     display name: <&r>Diamond Fragment
     mechanisms:
-        custom_model_data: <script[mineable_config].data_key[custom_model_data_offset].add[4]>
+        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[4]>
 
 redstone_ore_drop:
     type: item
@@ -168,10 +171,9 @@ emerald_ore_drop:
     material: stick
     display name: <&r>Emerald Fragment
     mechanisms:
-        custom_model_data: <script[mineable_config].data_key[custom_model_data_offset].add[5]>
+        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[5]>
 
 nether_quartz_ore_drop:
     type: item
     material: quartz
     no_id: true
-

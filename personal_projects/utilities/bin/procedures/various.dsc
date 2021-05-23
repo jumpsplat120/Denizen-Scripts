@@ -127,6 +127,6 @@ lib_rainbow_list:
 lib_unstackable:
     type: procedure
     debug: false
-    definitions: item_name
+    definitions: item
     script:
-        - determine <item[<[item_name]>].with[raw_nbt=<map.with[antistack].as[float:<util.random.decimal>]>]>
+        - determine <[item].with[raw_nbt=<map.with[antistack].as[float:<util.random.decimal>]>]>

@@ -20,8 +20,8 @@ lib_animated_rainbow_text:
     debug: false
     definitions: text|color|text_increment|delta_increment|length
     script:
-        - define delta_increment <tern[<[delta_increment]||true>].pass[15].fail[<[delta_increment]>]>
-        - define text_increment <tern[<[text_increment]||true>].pass[15].fail[<[text_increment]>]>
+        - define delta_increment <[delta_increment].if_null[true].if_true[15].if_false[<[delta_increment]>]>
+        - define text_increment <[text_increment].if_null[true].if_true[15].if_false[<[text_increment]>]>
         - define length <tern[<[length]||true>].pass[20].fail[<[length]>]>
         - define color <tern[<[color]||true>].pass[<proc[lib_random_color_tag]>].fail[<[color]>]>
         - define increment_counter 0

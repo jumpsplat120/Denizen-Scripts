@@ -30,6 +30,20 @@ lib_simulate_item_breaking:
         - repeat 4:
             - playeffect effect:ITEM_CRACK at:<player.eye_location.forward[.75].right[.75].down[.25]> special_data:<[item]> offset:0.1,0.1,0.1
 
+lib_animated_actionbar:
+    type: task
+    definitions: list|wait
+    debug: false
+    script:
+        - define unique <util.random.uuid>
+        - define wait 1t if:<[wait].exists.not>
+        - flag player actionbar:<[unique]>
+        - foreach <[list]>:
+            - if <player.flag[actionbar].if_null[null]> != <[unique]>:
+                - foreach stop
+            - actionbar <[value]>
+            - wait <[wait]>
+
 #under constructions
 lib_copyable:
     type: task

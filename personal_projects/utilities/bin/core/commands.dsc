@@ -341,7 +341,7 @@ notable_tool:
                     - else:
                         - narrate <proc[lib_core_command_error].context[extra_keys|notable_tool|<[arg_map].keys.proc[lib_core_command_extra_keys]>]>
                 - else:
-                    - narrate <proc[lib_core_command_error].context[max_args|notable_tool|1|<context.args.size>]>
+                    - narrate <proc[lib_core_command_error].context[min_args|notable_tool|1|<context.args.size>]>
             - else:
                 - narrate <proc[lib_core_command_error].context[implicit]>
         - else:

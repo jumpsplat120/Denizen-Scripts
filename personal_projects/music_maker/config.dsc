@@ -17,7 +17,7 @@
 #       >- events.dsc
 #       >- custom_items.dsc
 #       >- data.dsc
-#     * config
+#     * config.dsc
 #
 # Feel free to use the provided textures, or to make your own.
 #

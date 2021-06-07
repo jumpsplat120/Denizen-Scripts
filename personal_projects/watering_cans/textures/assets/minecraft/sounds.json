@@ -1,0 +1,18 @@
+{
+  "watering_can.water": {
+    "sounds": [
+      { "name": "watering_can/water1" },
+	  { "name": "watering_can/water2" },
+	  { "name": "watering_can/water3" },
+	  { "name": "watering_can/water4" },
+	  { "name": "watering_can/water5" },
+	  { "name": "watering_can/water6" },
+	  { "name": "watering_can/water7" },
+	  { "name": "watering_can/water8" },
+	  { "name": "watering_can/water9" },
+	  { "name": "watering_can/water10" },
+	  { "name": "watering_can/water11" }
+    ],
+    "subtitle": "Watering Can Drips"
+  }
+}

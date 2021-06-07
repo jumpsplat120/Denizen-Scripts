@@ -1,0 +1,14 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "item/wooden_sword"
+	},
+	"overrides": [
+		{ "predicate": { "custom_model_data": 1}, "model": "item/wooden_sword/wooden" },
+		{ "predicate": { "custom_model_data": 2}, "model": "item/wooden_sword/stone" },
+		{ "predicate": { "custom_model_data": 3}, "model": "item/wooden_sword/iron" },
+		{ "predicate": { "custom_model_data": 4}, "model": "item/wooden_sword/golden" },
+		{ "predicate": { "custom_model_data": 5}, "model": "item/wooden_sword/diamond" },
+		{ "predicate": { "custom_model_data": 6}, "model": "item/wooden_sword/netherite" }
+	]
+}

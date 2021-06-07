@@ -41,7 +41,7 @@ mm_chisel:
     material: wooden_sword
     display name: <&r>Chisel
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[3]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[1]>
         hides: attributes
         nbt_attributes: generic.attack_damage/mainhand/0/-3.5|generic.attack_speed/mainhand/1/4.0
     allow in material recipes: true
@@ -58,7 +58,7 @@ mm_banjo_p1:
     material: stick
     display name: <reset>Banjo Drum
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[4]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[3]>
     recipes:
         1:
             type: shaped
@@ -73,7 +73,7 @@ mm_banjo_p2:
     material: stick
     display name: <reset>Banjo Neck
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[5]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[4]>
     recipes:
         1:
             type: shaped
@@ -88,7 +88,7 @@ mm_basedrum_p1:
     material: stick
     display name: <reset>Bass Drum Head
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[6]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[5]>
     recipes:
         1:
             type: shaped
@@ -102,7 +102,7 @@ mm_bass_p1:
     material: stick
     display name: <reset>Bass Neck
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[7]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[6]>
     recipes:
         1:
             type: shaped
@@ -117,7 +117,7 @@ mm_bass_p2:
     material: stick
     display name: <reset>Bass Body
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[8]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[7]>
     recipes:
         1:
             type: shaped
@@ -132,7 +132,7 @@ mm_chime_p1:
     material: stick
     display name: <reset>Chime Tube
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[9]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[8]>
     recipes:
         1:
             type: shaped
@@ -147,7 +147,7 @@ mm_flute_p1:
     material: stick
     display name: <reset>Flute Head
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[10]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[9]>
     recipes:
         1:
             type: shaped
@@ -162,7 +162,7 @@ mm_flute_p2:
     material: stick
     display name: <reset>Flute Body
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[11]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[10]>
     recipes:
         1:
             type: shaped
@@ -176,7 +176,7 @@ mm_guitar_p1:
     material: stick
     display name: <reset>Guitar Body
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[12]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[11]>
     recipes:
         1:
             type: shaped
@@ -191,7 +191,7 @@ mm_guitar_p2:
     material: stick
     display name: <reset>Guitar Neck
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[13]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[12]>
     recipes:
         1:
             type: shaped
@@ -206,7 +206,7 @@ mm_iron_xylophone_p1:
     material: stick
     display name: <reset>Iron Xylophone Bars
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[14]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[13]>
     recipes:
         1:
             type: shaped
@@ -220,7 +220,7 @@ mm_any_xylophone_p1:
     material: stick
     display name: <reset>Xylophone Mallets
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[15]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[14]>
     recipes:
         1:
             type: shaped
@@ -234,7 +234,7 @@ mm_xylophone_p1:
     material: stick
     display name: <reset>Xylophone Bars
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[16]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[15]>
     recipes:
         1:
             type: shaped
@@ -248,7 +248,7 @@ mm_pling_p1:
     material: stick
     display name: <reset>Piano Keys
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[17]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[16]>
     recipes:
         1:
             type: shaped
@@ -261,7 +261,7 @@ mm_i_banjo:
     material: stick
     display name: <reset>Banjo
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[18]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[17]>
     recipes:
         1:
             type: shaped
@@ -275,7 +275,7 @@ mm_i_basedrum:
     material: stick
     display name: <reset>Bass Drum
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[19]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[18]>
     recipes:
         1:
             type: shaped
@@ -290,7 +290,7 @@ mm_i_bass:
     material: stick
     display name: <reset>Bass Guitar
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[20]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[19]>
     recipes:
         1:
             type: shaped
@@ -309,7 +309,7 @@ mm_i_bell:
     material: stick
     display name: <reset>Bell
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[21]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[20]>
     recipes:
         1:
             type: shaped
@@ -324,7 +324,7 @@ mm_i_bit:
     material: stick
     display name: <reset>Turntable
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[22]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[21]>
     recipes:
         1:
             type: shaped
@@ -338,7 +338,7 @@ mm_i_chime:
     material: stick
     display name: <reset>Chimes
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[23]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[22]>
     recipes:
         1:
             type: shaped
@@ -352,7 +352,7 @@ mm_i_cow_bell:
     material: stick
     display name: <reset>Cowbell
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[24]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[23]>
     recipes:
         1:
             type: shaped
@@ -369,7 +369,7 @@ mm_i_didgeridoo:
     material: stick
     display name: <reset>Didgeridoo
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[25]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[24]>
     recipes:
         1:
             type: shapeless
@@ -381,7 +381,7 @@ mm_i_flute:
     material: stick
     display name: <reset>Flute
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[26]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[25]>
     recipes:
         1:
             type: shaped
@@ -400,7 +400,7 @@ mm_i_guitar:
     material: stick
     display name: <reset>Guitar
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[27]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[26]>
     recipes:
         1:
             type: shaped
@@ -419,7 +419,7 @@ mm_i_harp:
     material: stick
     display name: <reset>Harp
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[28]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[27]>
     recipes:
         1:
             type: shaped
@@ -434,7 +434,7 @@ mm_i_hat:
     material: stick
     display name: <reset>High Hat
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[29]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[28]>
     recipes:
         1:
             type: shaped
@@ -448,7 +448,7 @@ mm_i_iron_xylophone:
     material: stick
     display name: <reset>Iron Xylophone
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[30]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[29]>
     recipes:
         1:
             type: shaped
@@ -461,7 +461,7 @@ mm_i_pling:
     material: stick
     display name: <reset>Keytar
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[31]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[30]>
     recipes:
         1:
             type: shaped
@@ -476,7 +476,7 @@ mm_i_snare:
     material: stick
     display name: <reset>Snare
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[32]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[31]>
     recipes:
         1:
             type: shaped
@@ -492,7 +492,7 @@ mm_i_xylophone:
     material: stick
     display name: <reset>Xylophone
     mechanisms:
-        custom_model_data: <script[mm_config].data_key[cmd_offset].add[33]>
+        custom_model_data: <script[mm_config].data_key[cmd_offset].add[32]>
     recipes:
         1:
             type: shaped

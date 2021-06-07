@@ -44,6 +44,28 @@ lib_animated_actionbar:
             - actionbar <[value]>
             - wait <[wait]>
 
+lib_grow_mushroom:
+    type: task
+    definitions: loc
+    debug: false
+    script:
+        - define mushroom <[loc].material.name>
+        - define up <[loc].up[3]>
+        - define cuboid <[loc].up[1].to_cuboid[<[up]>].add_member[<[up].relative[3,2,3].to_cuboid[<[up].relative[-3,0,-3]>]>]>
+        - if <[cuboid].blocks.filter_tag[<[filter_value].material.advanced_matches[*_leaves].or[<[filter_value].material.is_solid.not>]>].size.equals[<[cuboid].proc[lib_full_volume]>]>:
+            - modifyblock <[loc]> no_physics air
+            - adjust <[loc]> generate_tree:<[mushroom]>
+
+lib_grow_fungus:
+    type: task
+    definitions: loc
+    debug: false
+    script:
+        - define sapling <[loc].material.name>
+        - if <[loc].down.material.name.before[_]> == <[sapling].before[_]>:
+            - modifyblock <[loc]> no_physics air
+            - adjust <[loc]> generate_tree:<[sapling]>
+
 #under constructions
 lib_copyable:
     type: task

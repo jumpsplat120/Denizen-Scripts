@@ -1,7 +1,6 @@
 # alpha: Returns true if passed string is only composed of alphabetical characters. NON-case sensitive
 # numeric: Checks if a value is numeric. This is simply here for completeness; is_numeric is simply a wrapper for the standard tag .is_decimal, and using this tag will throw a warning in the console about it.
 # alphanumeric: Returns true if passed string is only composed of alphanumeric characters. NON-case sensitive
-# player: Checks that the passed element is a player object. Returns false on any other object type.
 
 lib_is_alpha:
     type: procedure
@@ -25,9 +24,16 @@ lib_is_alphanumeric:
     script:
         - determine <[element].to_lowercase.matches_character_set[<[lib_data].data_key[alphabet_set]><[lib_data].data_key[number_set]>]>
 
-lib_is_player:
+lib_is_material:
     type: procedure
     debug: false
-    definitions: element
+    definitions: location|direction|mat_name
     script:
-        - determine <[element].object_type.equals[Player]>
+        - determine <[location].relative[<[direction].proc[lib_face_to_vector]>].material.name.advanced_matches_text[<[mat_name]>]>
+
+lib_is_air:
+    type: procedure
+    debug: false
+    definitions: location
+    script:
+        - determine <[location].material.name.equals[air]>

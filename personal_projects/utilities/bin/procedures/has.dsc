@@ -30,7 +30,7 @@ lib_has_permission:
     definitions: permission|player
     script:
         - define player <[player].if_null[<player.if_null[null]>]>
-        - if <[player].proc[lib_is_player]>:
+        - if <[player].object_type> == Player:
             - define permission_map <player.flag[jlib.permissions].if_null[null]>
             - define has_permission <[permission_map].deep_get[<[permission]>].if_null[false]>
             - if !<[has_permission]>:

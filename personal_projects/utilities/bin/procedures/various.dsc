@@ -9,7 +9,7 @@
 # block_facing: Get's the facing vector of the block at location.
 # rainbow_list: Returns a list of just colors. Similar to rainbow text, but doesn't need text, so you can use the colors however and have them be to your spec.
 # unstackable: Takes a passed item name, and returns an item with random nbt on it, so it doesn't stack with other items of the same type. Useful for creating non stacking items out of a material that normally stacks, when you don't want to adjust the material in it's entirety.
-
+# face_to_vector: Takes a face (up/down/north/south/east/west) and turns it into a vector (0,1,0/0,-1,0...)
 lib_fill_list:
     type: procedure
     debug: false
@@ -124,9 +124,24 @@ lib_rainbow_list:
             - define color <[color].with_hue[<[color].hue.add[15]>]>
         - determine <[color_list]>
 
+lib_full_volume:
+    type: procedure
+    debug: false
+    definitions: cuboid
+    script:
+        - determine <[cuboid].list_members.parse[volume].sum>
+
 lib_unstackable:
     type: procedure
     debug: false
     definitions: item
     script:
+        - define item <[item].object_type.equals[Item].if_true[<[item]>].if_false[<item[<[item]>]>]>
         - determine <[item].with[raw_nbt=<map.with[antistack].as[float:<util.random.decimal>]>]>
+
+lib_face_to_vector:
+    type: procedure
+    debug: false
+    definitions: face
+    script:
+        - determine <script[lib_generic_data].data_key[face_to_vec].get[<[face].to_lowercase>]>

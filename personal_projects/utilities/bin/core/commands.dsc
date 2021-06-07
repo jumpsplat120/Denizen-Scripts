@@ -8,7 +8,7 @@
 simple_permissions:
     type: command
     name: perm
-    debug: true
+    debug: false
     description: Gives a player a permission, using Denizen's flag system.<&nl><&nl>Not a true permission system. If the player argument is not filled, then command defaults to player running the command. By default, command will only run if you have OP level permissions or higher.<&nl>If the first argument is marked as "view", the command will instead display all of the player's current permissions. If the first is marked as "clear", the command will instead remove all of the specified player's permissions after the specified node.<&nl>Uses a node system. A * node counts as a wildcard for everything below that node. In otherwords, if you have perm1.*, you have permissions for everything underneath perm1. Giving a permission of a higher level, which is to say, perm1 over perm1.subperm1, will overwrite all lower level permissions. In other words, if a perm1 was given, then removed, the player would no longer have any perm1 permissions, including perm1.subperm1.
     usage: <proc[lib_core_command_usage].context[simple_permissions]>
     allowed help:
@@ -25,7 +25,7 @@ simple_permissions:
                         - if <[arg_map].size> != 0 || <context.args.size> == 0:
                             - if <[name]> != server_or_command_block:
                                 - define player <[name].proc[lib_exact_match_offline_player]>
-                                - if <[player].proc[lib_is_player]>:
+                                - if <[player].object_type> == Player:
                                     - define perm_map <[player].flag[jlib.permissions].if_null[<map>]>
                                     - choose <[action]>:
                                         - case set:
@@ -99,7 +99,7 @@ panic_button:
 remove_flags:
     type: command
     name: remove_flags
-    debug: true
+    debug: false
     description: Removes all flags (excluding those on the exclude list) from the server or player or both.<&nl><&nl>If no player name is specified, then it uses the player who ran the command. If the command is run on the server, and you're removing flags from a player, then the player's name is required.
     usage: <proc[lib_core_command_usage].context[remove_flags]>
     aliases:
@@ -119,7 +119,7 @@ remove_flags:
                     - if <[arg_map].size> != 0 || <context.args.size> == 0:
                         - if <[name]> != server_or_command_block:
                             - define player <[name].proc[lib_exact_match_offline_player]>
-                            - if <[player].proc[lib_is_player]>:
+                            - if <[player].object_type> == Player:
                                 - define exclude_flags <script[lib_config].data_key[exclude.flags]>
                                 - define colors        <script[lib_config].parsed_key[color]>
                                 - define notice <[colors].get[hard_server_notice]>
@@ -242,7 +242,7 @@ random_placement:
         - if <proc[lib_has_permission].context[utilities.random_placement|<player.if_null[null]>].if_null[true]>:
             - if <player.exists>:
                 - if <context.args.size> == 0:
-                    - give <proc[lib_unstackable_item].context[lib_random_placer_item]>
+                    - give <proc[lib_unstackable].context[lib_random_placer_item]>
                     - if <player.has_flag[jlib.random_placer].not>:
                         - flag player jlib.random_placer:<map>
                 - else if <context.args.size> <= 3:
@@ -301,7 +301,7 @@ notable_tool:
         - if <proc[lib_has_permission].context[utilities.notable_tool|<player.if_null[null]>].if_null[true]>:
             - if <player.exists>:
                 - if <context.args.size> == 0:
-                    - give <proc[lib_unstackable_item].context[lib_notable_tool_item]>
+                    - give <proc[lib_unstackable].context[lib_notable_tool_item]>
                     - define type location
                     - inject locally actionbar
                 - else if <context.args.size> <= 2:

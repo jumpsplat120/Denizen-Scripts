@@ -23,7 +23,7 @@ lib_events:
             - if <player.is_sneaking>:
                 #change selection type
                 - define valid_types <list[location|cuboid|ellipsoid]>
-                - define type <[valid_types].get[<proc[lib_cycle_value].context[1|3|<[valid_types].find[<[map].get[type]>].add[1]>]>]>
+                - define type <[valid_types].get[<proc[lib_cycle_value].context[<[valid_types].find[<[map].get[type]>].add[1]>|1|3]>]>
                 - flag player jlib.notable:<map.with[type].as[<[type]>]>
                 - inject notable_tool.actionbar
             - else:

@@ -94,8 +94,7 @@ panic_button:
         - else:
             - narrate <proc[lib_core_command_error].context[permission]>
 
-# Removes all flags dependent on passed argument. If no value is passed, defaults to player who ran the command.
-# | Does not remove lib flags
+# Removes all flags, excluding flags listed in config, dependent on passed argument. If no value is passed, defaults to player who ran the command.
 remove_flags:
     type: command
     name: remove_flags
@@ -128,16 +127,16 @@ remove_flags:
                                 - define main   <[colors].get[important]>
                                 - choose <[action]>:
                                     - case all:
-                                        - inject locally remove_server
-                                        - inject locally remove_player
+                                        - inject remove_flags path:remove_server
+                                        - inject remove_flags path:remove_player
                                         - if !<[flag_burned].exists>:
                                             - narrate "<[warn]>No flags to remove for <[notice]>'<[item]><[name]><[notice]>'<[warn]>, or from the <[item]>server<[warn]>."
                                     - case player:
-                                        - inject locally remove_player
+                                        - inject remove_flags path:remove_player
                                         - if !<[flag_burned].exists>:
                                             - narrate "<[warn]>No flags to remove for <[notice]>'<[item]><[name]><[notice]>'<[warn]>."
                                     - case server:
-                                        - inject locally remove_server
+                                        - inject remove_flags path:remove_server
                                         - if !<[flag_burned].exists>:
                                             - narrate "<[warn]>No flags to remove from the <[item]>server<[warn]>."
                                     - default:
@@ -164,12 +163,12 @@ remove_flags:
         - define flags <server.list_flags.exclude[<[exclude_flags]>]>
         - define obj server
         - define from server
-        - inject locally remove_flags
+        - inject remove_flags path:remove_flags
     remove_player:
         - define flags <[player].list_flags.exclude[<[exclude_flags]>]>
         - define obj <[player]>
         - define from <[player].name>
-        - inject locally remove_flags
+        - inject remove_flags path:remove_flags
 
 # Removes all notables dependent on passed argument. If no value is passed, defaults to all notables.
 remove_notables:

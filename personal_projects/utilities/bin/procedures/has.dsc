@@ -38,3 +38,4 @@ lib_has_permission:
                     - define permission <[permission].before_last[.]>
                     - define has_permission <[permission_map].deep_get[<[permission]>.*].if_null[false]>
             - determine <[has_permission]>
+        - determine false

@@ -13,19 +13,19 @@
 lib_map_range:
     type: procedure
     debug: false
-    definitions: in_start|in_end|out_start|out_end|input
+    definitions: input|in_start|in_end|out_start|out_end
     script:
         - determine <[input].sub[<[in_start]>].div[<[in_end].sub[<[in_start]>]>].mul[<[out_end].sub[<[out_start]>]>].add[<[out_start]>]>
 
 lib_cycle_value:
     type: procedure
     debug: false
-    definitions: min|max|input
+    definitions: input|min|max
     script:
         - if <[input]> < <[min]> || <[input]> > <[max]>:
             - define is_more <[input].is[MORE].than[<[max]>]>
             - define delta_1 <[max].sub[<[min]>].add[1]>
-            - define delta_2 <[input].sub[<tern[<[is_more]>].pass[<[max]>].fail[<[min]>]>].div[<[delta_1]>].abs.round_up.mul[<[delta_1]>]>
+            - define delta_2 <[input].sub[<[is_more].if_true[<[max]>].if_false[<[min]>]>].div[<[delta_1]>].abs.round_up.mul[<[delta_1]>]>
             - determine <tern[<[is_more]>].pass[<[input].sub[<[delta_2]>]>].fail[<[input].add[<[delta_2]>]>]>
         - else:
             - determine <[input]>
@@ -78,7 +78,7 @@ lib_normalize:
 lib_clamp:
     type: procedure
     debug: false
-    definitions: min|max|input
+    definitions: input|min|max
     script:
         - determine <tern[<[input].is[MORE].than[<[max]>]>].pass[<[max]>].fail[<tern[<[input].is[LESS].than[<[min]>]>].pass[<[min]>].fail[<[input]>]>]>
 
@@ -105,12 +105,12 @@ lib_sine_wave_increment:
 lib_ease:
     type: procedure
     debug: false
-    definitions: type|dir|input|range_min|range_max
+    definitions: input|type|dir|range_min|range_max
     script:
         - define range_min <tern[<[range_min]||true>].pass[0].fail[<[range_min]>]>
         - define range_max <tern[<[range_max]||true>].pass[1].fail[<[range_max]>]>
         - if <[input]> < 1:
-            - define result <proc[lib_core_ease].context[<[type].to_lowercase>|<[dir].to_lowercase>|<proc[lib_clamp].context[0|1|<[input]>]>]>
+            - define result <proc[lib_core_ease].context[<[type].to_lowercase>|<[dir].to_lowercase>|<proc[lib_clamp].context[<[input]>|0|1]>]>
             - if <[range_min]> != 0 && <[range_max]> != 1:
                 - define result <proc[map_range].context[0|1|<[range_min]>|<[range_max]>|<[result]>]>
         - else:
@@ -134,3 +134,10 @@ lib_between:
     definitions: number
     script:
         - determine <util.random.int[1].to[<[number].round>]>
+
+lib_lerp:
+    type: procedure
+    debug: false
+    definitions: percentage|from|to
+    script:
+        - determine <[percentage].mul[<[to].sub[<[from]>]>].add[<[from]>]>

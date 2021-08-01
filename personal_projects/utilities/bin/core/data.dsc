@@ -56,12 +56,13 @@ lib_generic_data:
         usage:
             panic: <[fs]>panic
             end_queues: <[fs]>end_queues
-            puppet: <[fs]>puppet <[lp]><[lt]>npc:<[nl]>name<[gt]><[rp]>
-            simple_permissions: <[fs]>perm <[lb]>action:<[lc]>set<[rc]><[fs]>clear<[fs]>view<[rb]> <[lb]>node:<[lt]><[nl]>permission_name<[gt]><[rb]> <[lp]>player:<[lt]><[nl]>player_name<[gt]><[rp]>
-            remove_flags: <[fs]>remove_flags <[lb]>action:<[lc]>player<[rc]><[fs]>server<[fs]>all<[rb]> <[lp]>name:<[lt]><[nl]>player_name<[gt]><[rp]>
+            puppet: <[fs]>puppet <[lp]><[lt]>name<[gt]><[rp]>
+            simple_permissions: <[fs]>perm <[lb]>action:<[lc]>set<[rc]><[fs]>clear<[fs]>view<[rb]> <[lb]>node:<[lt]>permission_name<[gt]><[rb]> <[lp]>player:<[lt]>player_name<[gt]><[rp]>
+            remove_flags: <[fs]>remove_flags <[lb]>action:<[lc]>player<[rc]><[fs]>server<[fs]>all<[rb]> <[lp]>name:<[lt]>player_name<[gt]><[rp]>
             remove_notables: <[fs]>remove_notables <[lb]>type:<[lc]>all<[rc]><[fs]>location<[fs]>cuboid<[fs]>ellipsoid<[fs]>inventory<[rb]>
-            random_placement: <[fs]>random_placer <[lp]>action:<[lc]>set<[rc]><[fs]>clear<[rp]> <[lp]>block:<[lt]><[nl]>name<[gt]><[rp]> <[lp]>weight:<[lt]><[nl]>amount<[gt]><[rp]>
-            notable_tool: <[fs]>notable_tool <[lp]>action:<[lc]>save<[rc]><[fs]>clear<[rp]> <[lp]>save:<[lt]><[nl]>name<[gt]><[rp]>
+            random_placement: <[fs]>random_placer <[lp]>action:<[lc]>set<[rc]><[fs]>clear<[rp]> <[lp]>block:<[lt]>name<[gt]><[rp]> <[lp]>weight:<[lt]>amount<[gt]><[rp]>
+            notable_tool: <[fs]>notable_tool <[lp]>action:<[lc]>save<[rc]><[fs]>clear<[rp]> <[lp]>save:<[lt]>name<[gt]><[rp]>
+            denchant: <[fs]>denchant <[lb]><[lt]>name<[gt]><[rb]> <[lp]><[lc]>1<[rc]><[fs]><[lt]>amount<[gt]><[rp]>
         error:
             permission: I<&sq>m sorry, but you do not have permission to perform this command. Please contact the server administrators if you believe that this is in error.
             wrong_args: Command was run with the incorrect amount of arguments! Expected<&co> <[color].get[soft_server_notice]><[3]><[color].get[error]>; Recieved<&co> <[color].get[soft_server_notice]><[4]>
@@ -113,3 +114,59 @@ lib_generic_data:
         - wet_grass
         - wood
         - wool
+    dye_hex_colors:
+        black: 000000
+        red: B02E26
+        green: 5E7C16
+        brown: 835432
+        blue: 3C44AA
+        purple: 8932B8
+        cyan: 169C9C
+        light_gray: 9D9D97
+        gray: 474F52
+        pink: F38BAA
+        lime: 80C71F
+        yellow: FED83D
+        light_blue: 3AB3DA
+        magenta: C74EBD
+        orange: F9801D
+        white: FFFFFF
+    vanilla_enchantment_map:
+        aqua_affinity: 1
+        bane_of_arthropods: 5
+        binding_curse: 1
+        blast_protection: 4
+        channeling: 1
+        depth_strider: 3
+        efficiency: 5
+        feather_falling: 4
+        fire_aspect: 2
+        fire_protection: 4
+        flame: 1
+        fortune: 3
+        frost_walker: 2
+        impaling: 5
+        infinity: 1
+        knockback: 2
+        looting: 3
+        loyalty: 3
+        luck_of_the_sea: 3
+        lure: 3
+        mending: 1
+        multishot: 1
+        piercing: 4
+        power: 5
+        projectile_protection: 4
+        protection: 4
+        punch: 2
+        quick_charge: 3
+        respiration: 3
+        riptide: 3
+        sharpness: 5
+        silk_touch: 1
+        smite: 5
+        soul_speed: 3
+        sweeping: 3
+        thorns: 3
+        unbreaking: 3
+        vanishing_curse: 1

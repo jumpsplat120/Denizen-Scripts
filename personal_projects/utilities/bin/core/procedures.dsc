@@ -1,3 +1,4 @@
+#all the eases used for the front facing easing proc. Math is kept here for simplicity
 lib_core_ease:
     type: procedure
     debug: false
@@ -63,15 +64,16 @@ lib_core_ease:
             - case elastic_inout elastic_in-out elastic_in_out:
                 - determine <tern[<[dt].is[==].to[0]>].pass[0].fail[<tern[<[dt].is[==].to[1]>].pass[1].fail[<tern[<[dt].is[LESS].than[.5]>].pass[<element[2].power[<[dt].mul[20].sub[10]>].mul[<[dt].mul[20].sub[11.125].mul[<[ease_conf].get[C5]>].sin>].mul[-1].div[2]>].fail[<element[2].power[<[dt].mul[-20].add[10]>].mul[<[dt].mul[20].sub[-11.125].mul[<[ease_conf].get[C5]>].sin>].div[2].add[1]>]>]>]>
             - case bounce_in:
-                - determine <element[1].sub[<proc[bo].context[<element[1].sub[<[dt]>]>]>]>
+                - determine <element[1].sub[<proc[lib_core_bo].context[<element[1].sub[<[dt]>]>]>]>
             - case bounce_out:
-                - determine <proc[bo].context[<[dt]>]>
+                - determine <proc[lib_core_bo].context[<[dt]>]>
             - case bounce_inout bounce_in-out bounce_in_out:
-                - determine <tern[<[dt].is[LESS].than[.5]>].pass[<element[1].sub[<proc[bo].context[<element[1].sub[<[dt].mul[2]>]>]>].div[2]>].fail[<proc[bo].context[<[dt].mul[2].sub[1]>].add[1].div[2]>]>
+                - determine <tern[<[dt].is[LESS].than[.5]>].pass[<element[1].sub[<proc[lib_core_bo].context[<element[1].sub[<[dt].mul[2]>]>]>].div[2]>].fail[<proc[lib_core_bo].context[<[dt].mul[2].sub[1]>].add[1].div[2]>]>
             - case default:
                 - debug error "An error occurred!"
                 - determine false
 
+#Used in the bounce in, out and inout of the easing script
 lib_core_bo:
     type: procedure
     debug: false
@@ -79,6 +81,8 @@ lib_core_bo:
     script:
         - determine bo <tern[<[value].is[LESS].than[.363636363]>].pass[<element[7.5625].mul[<[value]>].mul[<[value]>]>].fail[<tern[<[value].is[LESS].than[.727272727]>].pass[<element[7.5625].mul[<[value].sub[.5454545]>].mul[<[value].sub[.5454545]>].add[.75]>].fail[<tern[<[value].is[LESS].than[.909090909]>].pass[<element[7.5625].mul[<[value].sub[.81818181]>].mul[<[value].sub[.81818181]>].add[0.9375]>].fail[<element[7.5625].mul[<[value].sub[.95454545]>].mul[<[value].sub[.95454545]>].add[0.984375]>]>]>]>
 
+#Simplifies colors into two letter tags so they can be used in command usage
+#section of lib_generic_data without being overly repetative and long.
 lib_core_command_usage:
     type: procedure
     debug: false
@@ -89,15 +93,17 @@ lib_core_command_usage:
         - define fs <[c].get[forward_slash]><[l]>
         - define lb <[c].get[left_bracket]><[l]>
         - define rb <[c].get[right_bracket]><[l]>
-        - define lt <[c].get[less_than]><[l]>
+        - define lt <[c].get[less_than]><[c].get[non_literal]>
         - define gt <[c].get[greater_than]><[l]>
         - define lp <[c].get[left_parenthesis]><[l]>
         - define rp <[c].get[right_parenthesis]><[l]>
         - define rc <[c].get[right_curly_bracket]><[l]>
         - define lc <[c].get[left_curly_bracket]><[l]>
-        - define nl <[c].get[non_literal]>
         - determine <script[lib_generic_data].parsed_key[command.usage.<[name]>]>
 
+#Gets an error type from core/data, and the name of the script calling the proc
+#so it can print out errors. Also takes unlisted arguments that are change depending
+#on the error.
 lib_core_command_error:
     type: procedure
     debug: false
@@ -107,9 +113,10 @@ lib_core_command_error:
         - define usage_loc <script[lib_generic_data].data_key[command.usage.<[usage_name]>].if_null[true].if_true[<proc[<[usage_name]>]>].if_false[<proc[lib_core_command_usage].context[<[usage_name]>]>]>
         - determine <[color].get[error]><script[lib_generic_data].parsed_key[command.error.<[err_type]>]><list[permission|implicit|invalid_player].contains[<[err_type]>].not.if_true[<[color].get[error]><&nl>Usage<&co><&nl><[usage_loc]>].if_false[]>
 
+#Like <ListTag.formatted> but it colors the text and commas.
 lib_core_command_extra_keys:
     type: procedure
-    debug: true
+    debug: false
     definitions: list
     script:
         - define last <[list].size>

@@ -9,6 +9,7 @@
 # ease: Ease script takes an ease type, direction, input, as well as an optional speed, range_min, andrange_max. Input goes min 0 to 1, as well as speed, and range_min and range_max is a range in which you wantthe result to be mapped to. Both values must be passed for range to work. If no range is passed, output valuegoes min 0 to 1. When the ease has reached it's maximum value, returns false.
 # romanize: Turn a decimal number into a roman numeral
 # between: Helper function for when you want to create a random int between 1 and x. With the new proc syntax, you can use this very consicely; <[my_value].proc[between]>
+# ordinal: Takes a number, like 5 or 104, and adds the st/nd/rd/th that would follow it. 5 -> 5th
 
 lib_map_range:
     type: procedure
@@ -141,3 +142,10 @@ lib_lerp:
     definitions: percentage|from|to
     script:
         - determine <[percentage].mul[<[to].sub[<[from]>]>].add[<[from]>]>
+
+lib_ordinal:
+    type: procedure
+    debug: false
+    definitions: number
+    script:
+        - determine <[number]><[number].is_more_than[10].and[<[number].is_less_than[20]>].if_true[th].if_false[<[number].char_at[<[number].length>].equals[1].if_true[st].if_false[<[number].char_at[<[number].length>].equals[2].if_true[nd].if_false[<[number].char_at[<[number].length>].equals[3].if_true[rd].if_false[th]>]>]>]>

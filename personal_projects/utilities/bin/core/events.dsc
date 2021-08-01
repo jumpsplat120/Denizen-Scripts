@@ -1,7 +1,29 @@
 lib_events:
     type: world
-    debug: false
+    debug: true
     events:
+        #can't do anything to fix custom enchant names not showing up in enchanting table
+        #on player prepares item enchant:
+        #fix for enchantment lore missing
+        on item enchanted:
+            - define new_item <context.item>
+            - foreach <context.enchants>:
+                - define ench <enchantment[<[key]>]>
+                - adjust def:new_item lore:<[new_item].lore.if_null[<list>].include[<gray><[ench].full_name[<[value]>]>]> if:<[ench].key.before[:].equals[minecraft].not>
+            - determine RESULT:<[new_item]>
+        on player prepares anvil craft item:
+            - define inv <context.inventory.list_contents>
+            - define item <[inv].get[1].if_null[<item[air]>]>
+            - define book <[inv].get[2].if_null[<item[air]>]>
+            - if <[book].material.name> == enchanted_book:
+                - define book_ench_map <[book].enchantment_map>
+                - define ench <enchantment[<[book_ench_map].keys.first>]>
+                #no need to handle vanilla enchants
+                - if <[ench].key.before[:]> != minecraft:
+                    - define book_level <[book_ench_map].values.first>
+                    - define item_level <[item].enchantment_map.if_null[<map>].get[<[ench].name>].if_null[-1]>
+                    - define item_lore <[item].lore.if_null[<list>]>
+                    - determine <context.item.with[lore=<[item_level].is_more_than[<[book_level]>].or[<[item_level].add[1].is_more_than[<[ench].max_level>]>].if_true[<[item_lore]>].if_false[<[item_level].equals[-1].if_true[<[item_lore].include[<gray><[ench].full_name[<[book_level]>]>]>].if_false[<[item_lore].set[<gray><[ench].full_name[<[book_level].add[<[item_level].is_less_than[<[book_level]>].if_true[0].if_false[1]>]>]>].at[<[item_lore].find_partial[<[ench].full_name[<[item_level]>]>]>]>]>]>]>
         on player right clicks block with:lib_random_placer_item:
             - ratelimit <player> 0.5t
             - if <proc[lib_has_permission].context[utilities.random_placement|<player>]>:

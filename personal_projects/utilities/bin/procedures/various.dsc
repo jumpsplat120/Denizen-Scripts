@@ -10,6 +10,8 @@
 # rainbow_list: Returns a list of just colors. Similar to rainbow text, but doesn't need text, so you can use the colors however and have them be to your spec.
 # unstackable: Takes a passed item name, and returns an item with random nbt on it, so it doesn't stack with other items of the same type. Useful for creating non stacking items out of a material that normally stacks, when you don't want to adjust the material in it's entirety.
 # face_to_vector: Takes a face (up/down/north/south/east/west) and turns it into a vector (0,1,0/0,-1,0...)
+# mix_dyes: Pass in a list of Minecraft Item dyes of any size and get back a ColorTag representing the colors mixed together.
+
 lib_fill_list:
     type: procedure
     debug: false
@@ -117,8 +119,8 @@ lib_rainbow_list:
     debug: false
     definitions: amount|color|increment
     script:
-        - define increment <[increment].if_false[<[increment]>].if_true[15].if_null[15]>
-        - define color <[color].if_false[<[color]>].if_true[<proc[lib_random_color_tag]>].if_null[<proc[lib_random_color_tag]>]>
+        - define increment <[increment].if_true[15].if_false[<[increment]>].if_null[15]>
+        - define color <[color].if_true[<proc[lib_random_color_tag]>].if_false[<[color]>].if_null[<proc[lib_random_color_tag]>]>
         - repeat <[amount]>:
             - define color_list:->:<&color[<[color]>]>
             - define color <[color].with_hue[<[color].hue.add[15]>]>
@@ -145,3 +147,20 @@ lib_face_to_vector:
     definitions: face
     script:
         - determine <script[lib_generic_data].data_key[face_to_vec].get[<[face].to_lowercase>]>
+
+lib_mix_dyes:
+    type: procedure
+    debug: false
+    script:
+        - define colors <queue.definition_map.exclude[raw_context].values.first.parse[material.name.before[_dye]]>
+        - define hex <script[lib_generic_data].data_key[dye_hex_colors]>
+        - define result <color[<&ns><[hex].get[<[colors].get[1].if_null[white]>]>]>
+        - foreach <[colors]>:
+            - define result <[result].mix[<color[<&ns><[hex].get[<[value]>]>]>]>
+        - determine <[result]>
+
+lib_formatted_date:
+    type: procedure
+    debug: false
+    script:
+        - determine "<util.time_now.format[h':'m a',' MMMM '<&lt>element['d'].proc[lib_ordinal]<&gt>' uuuu].parsed>"

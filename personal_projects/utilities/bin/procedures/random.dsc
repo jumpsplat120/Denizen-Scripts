@@ -63,9 +63,16 @@ lib_random_by_weight:
         - if <[map].size> > 0:
             - define rand <util.random.decimal.mul[<[map].values.sum>]>
             - if <[rand]> == 1:
-                - define rand:-:<context.this.epsilon>
+                - define rand:-:<script[lib_generic_data].data_key[epsilon]>
             - foreach <[map]> as:weight:
                 - if <[rand]> <= <[weight]>:
                     - determine <[key]>
                 - define rand:-:<[weight]>
             - determine <[map].keys.first>
+
+lib_one_in_x:
+    type: procedure
+    debug: false
+    definitions: number
+    script:
+        - determine <[number].proc[lib_between].equals[1]>

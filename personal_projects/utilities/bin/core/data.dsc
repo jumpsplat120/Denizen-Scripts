@@ -54,15 +54,15 @@ lib_generic_data:
         west: -1,0,0
     command:
         usage:
-            panic: <[fs]>panic
-            end_queues: <[fs]>end_queues
-            puppet: <[fs]>puppet <[lp]><[lt]>name<[gt]><[rp]>
-            simple_permissions: <[fs]>perm <[lb]>action:<[lc]>set<[rc]><[fs]>clear<[fs]>view<[rb]> <[lb]>node:<[lt]>permission_name<[gt]><[rb]> <[lp]>player:<[lt]>player_name<[gt]><[rp]>
-            remove_flags: <[fs]>remove_flags <[lb]>action:<[lc]>player<[rc]><[fs]>server<[fs]>all<[rb]> <[lp]>name:<[lt]>player_name<[gt]><[rp]>
-            remove_notables: <[fs]>remove_notables <[lb]>type:<[lc]>all<[rc]><[fs]>location<[fs]>cuboid<[fs]>ellipsoid<[fs]>inventory<[rb]>
-            random_placement: <[fs]>random_placer <[lp]>action:<[lc]>set<[rc]><[fs]>clear<[rp]> <[lp]>block:<[lt]>name<[gt]><[rp]> <[lp]>weight:<[lt]>amount<[gt]><[rp]>
-            notable_tool: <[fs]>notable_tool <[lp]>action:<[lc]>save<[rc]><[fs]>clear<[rp]> <[lp]>save:<[lt]>name<[gt]><[rp]>
-            denchant: <[fs]>denchant <[lb]><[lt]>name<[gt]><[rb]> <[lp]><[lc]>1<[rc]><[fs]><[lt]>amount<[gt]><[rp]>
+            panic: /panic
+            end_queues: /end_queues
+            puppet: /puppet (<&lt>name<&gt>)
+            simple_permissions: /perm [action:{set}/clear/view] [node:<&lt>permission_name<&gt>] (player:<&lt>player_name<&gt>)
+            remove_flags: /remove_flags [action:{player}/server/all] (name:<&lt>player_name<&gt>)
+            remove_notables: /remove_notables [type:{all}/location/cuboid/ellipsoid/inventory]
+            random_placement: /random_placer (action:{set}/clear) (block:<&lt>name<&gt>) (weight:<&lt>amount<&gt>)
+            notable_tool: /notable_tool (action:{save}/clear) (save:<&lt>name<&gt>)
+            denchant: /denchant [<&lt>name<&gt>] ({1}/<&lt>amount<&gt>)
         error:
             permission: I<&sq>m sorry, but you do not have permission to perform this command. Please contact the server administrators if you believe that this is in error.
             wrong_args: Command was run with the incorrect amount of arguments! Expected<&co> <[color].get[soft_server_notice]><[3]><[color].get[error]>; Recieved<&co> <[color].get[soft_server_notice]><[4]>
@@ -170,3 +170,11 @@ lib_generic_data:
         thorns: 3
         unbreaking: 3
         vanishing_curse: 1
+    duration:
+        t: tick
+        s: second
+        m: minute
+        h: hour
+        d: day
+        w: week
+        y: year

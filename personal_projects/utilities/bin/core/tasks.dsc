@@ -66,10 +66,59 @@ lib_grow_fungus:
             - modifyblock <[loc]> no_physics air
             - adjust <[loc]> generate_tree:<[sapling]>
 
-#under constructions
-lib_copyable:
-    type: task
-    debug: true
-    script:
-        - define result b
-        - announce <[result]>
+#lib_help:
+#    type: task
+#    definitions: script_name|running_command|is_alias
+#    debug: true
+#    script:
+#        - define width 275
+#        - define is_alias <[is_alias].if_null[false]>
+#        - define script <script[<[script_name]>]>
+#        - define cmd_name <[script].data_key[name]>
+#        - define help_text "<element[<gold>Description: <reset><[script].parsed_key[description]>].split_lines_by_width[<[width]>].split[<n>]>"
+#        - define alias_for "<[is_alias].if_true[<yellow>Alias for <reset>/<[cmd_name]>].if_false[<empty>]>"
+#        - define usage "<element[<gold>Usage: <[script].parsed_key[usage]>].split_lines_by_width[<[width]>].split[<n>]>"
+#        - define aliases "<gold>Aliases: <reset>"
+#        - foreach <[script].data_key[aliases]>:
+#            - define aliases <[aliases]><[value]>,<&sp>
+#        - define aliases <[aliases].substring[1,<[aliases].length.sub[2]>].split_lines_by_width[<[width]>].split[<n>]>
+#        - define pagination <[help_text].size.add[<[usage].size>].add[<[aliases].size>].div[9].round_up>
+#        - define page_counter <[pagination].equals[1].if_true[].if_false[(1/<[pagination]>)]>
+#        - define bar "<yellow>--------- <reset>Help: /<[running_command]> <[page_counter]> <yellow>"
+#        #bar doesn't split between hyphens, and zwsps don't render correctly in minecraft
+#        #we just add one bar at a time until we go over the width, then get rid of the last
+#        #bar and go from there
+#        - repeat 30:
+#            - define bar <[bar]>-
+#            - if <[bar].strip_color.text_width> > <[width]>:
+#                - define bar <[bar].substring[1,<[bar].length.sub[1]>]>
+#                - repeat stop
+#        - define lines 9
+#        - define result:->:<[bar]>
+#        #If command is alias, add "alias for" line
+#        - if <[is_alias]>:
+#            - define lines:--
+#            - define result:->:<[alias_for]>
+#        #description lines
+#        - define amt <[help_text].size.min[<[lines]>]>
+#        - define lines:-:<[amt]>
+#        - define result:->:<[help_text].get[1].to[<[amt]>].separated_by[<n>]>
+#        #if room, usage
+#        - if <[lines]> > 0:
+#            - define amt <[usage].size.min[<[lines]>]>
+#            - define lines:-:<[amt]>
+#            - define result:->:<[usage].get[1].to[<[amt]>].separated_by[<n>]>
+#        #if room, aliases
+#        - if <[lines]> > 0:
+#            - define amt <[aliases].size.min[<[lines]>]>
+#            - define lines:-:<[amt]>
+#            - define result:->:<[aliases].get[1].to[<[amt]>].separated_by[<n>]>
+#        - narrate <[result].separated_by[<n>]>
+
+#under construction
+#lib_copyable:
+#    type: task
+#    debug: true
+#    script:
+#        - define result b
+#        - announce <[result]>

@@ -11,16 +11,17 @@
 # unstackable: Takes a passed item name, and returns an item with random nbt on it, so it doesn't stack with other items of the same type. Useful for creating non stacking items out of a material that normally stacks, when you don't want to adjust the material in it's entirety.
 # face_to_vector: Takes a face (up/down/north/south/east/west) and turns it into a vector (0,1,0/0,-1,0...)
 # mix_dyes: Pass in a list of Minecraft Item dyes of any size and get back a ColorTag representing the colors mixed together.
+# command_usage: Takes a command's usage (ex. /tp <player_name>) and automatically formats it with colors to make it easier to read/parse.
 
 lib_fill_list:
     type: procedure
     debug: false
     definitions: proc_name|number
     script:
-        - define proc_name <[proc_name].if_null[#]>
-        - repeat <[number]>:
-            - define result:->:<proc[<[proc_name]>]>
-        - determine <[result]>
+        - if <[proc_name].exists>:
+            - repeat <[number]>:
+                - define result:->:<proc[<[proc_name]>]>
+            - determine <[result]>
 
 lib_find_nearest_npc_by_name:
     type: procedure
@@ -164,3 +165,25 @@ lib_formatted_date:
     debug: false
     script:
         - determine "<util.time_now.format[h':'m a',' MMMM '<&lt>element['d'].proc[lib_ordinal]<&gt>' uuuu].parsed>"
+
+lib_command_usage:
+    type: procedure
+    debug: false
+    definitions: script_name|key_name
+    script:
+        - define c <script[lib_config].parsed_key[color.command]>
+        - define l <[c].get[literal]>
+        #Replace characters with appropriate coloring (minus < and >)
+        - define format <script[<[script_name]>].parsed_key[<[key_name]>].replace_text[/].with[<[c].get[forward_slash]>/<[l]>].replace_text[<&lb>].with[<[c].get[bracket]><&lb><[l]>].replace_text[<&rb>].with[<[c].get[bracket]><&rb><[l]>].replace_text[(].with[<[c].get[parenthesis]>(<[l]>].replace_text[)].with[<[c].get[parenthesis]>)<[l]>].replace_text[{].with[<[c].get[curly_bracket]>{<[l]>].replace_text[}].with[<[c].get[curly_bracket]>}<[l]>]>
+        #Split lines what's in between <here> and what between >here<
+        - define lines:->:<[format].before[<&lt>]>
+        - define text <&lt><[format].after[<&lt>]>
+        - while <[text].length.is_more_than[1]>:
+            - define lines:->:<[text].after[<&lt>].before[<&gt>]>
+            - define text <&gt><[text].after[<&gt>]>
+            - define lines:->:<[text].after[<&gt>].before[<&lt>]>
+            - define text <&lt><[text].after[<&lt>]>
+        #Even lines replace < and > with color variants, and add non literal coloring over everything in between. Non literal coloring overrides all other coloring because it is non literal stuff, which means any usage of / should not be interpreted as a split, but as it's own raw character.
+        - foreach <[lines]>:
+            - define lines[<[loop_index]>]:<[c].get[less_or_greater_than]><&lt><[c].get[non_literal]><[value].strip_color><[c].get[less_or_greater_than]><&gt><[l]> if:<[loop_index].mod[2].equals[0]>
+        - determine <[lines].unseparated>

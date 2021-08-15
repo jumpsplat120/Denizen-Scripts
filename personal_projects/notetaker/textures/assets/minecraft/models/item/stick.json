@@ -1,0 +1,10 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "item/stick"
+	},
+	"overrides": [
+		{ "predicate": { "custom_model_data": 1}, "model": "item/stick/unwritten_note" },
+		{ "predicate": { "custom_model_data": 2}, "model": "item/stick/written_note" }
+	]
+}

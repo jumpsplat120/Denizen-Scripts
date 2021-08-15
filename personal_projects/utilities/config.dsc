@@ -12,15 +12,11 @@ lib_config:
         command:
             literal: <white>
             non_literal: <gray>
-            forward_slash: <blue>/
-            left_bracket: <dark_aqua><&lb>
-            right_bracket: <dark_aqua><&rb>
-            less_than: <dark_gray><&lt>
-            greater_than: <dark_gray><&gt>
-            left_parenthesis: <dark_aqua>(
-            right_parenthesis: <dark_aqua>)
-            right_curly_bracket: <aqua><&rc>
-            left_curly_bracket: <aqua><&lc>
+            forward_slash: <blue>
+            bracket: <dark_aqua>
+            less_or_greater_than: <dark_gray>
+            parenthesis: <dark_aqua>
+            curly_bracket: <aqua>
     exclude:
         flags:
             - jlib

@@ -1,3 +1,11 @@
+##IgnoreWarning command_script_usage
+##IgnoreWarning tag_trace_failure
+##IgnoreWarning bad_tag_part
+
+#Angry about me using procs for usage, because it doesn't start with a forward slash
+#tag trace and tag part errors are about the enchantment stuff, which was tweaked
+#recently. All the errors are erroneous.
+
 # | [value] == REQUIRED
 # | (value) == OPTIONAL
 # | {value} == DEFAULT
@@ -10,7 +18,7 @@ simple_permissions:
     name: perm
     debug: false
     description: Gives a player a permission, using Denizen's flag system.<&nl><&nl>Not a true permission system. If the player argument is not filled, then command defaults to player running the command. By default, command will only run if you have OP level permissions or higher.<&nl>If the first argument is marked as "view", the command will instead display all of the player's current permissions. If the first is marked as "clear", the command will instead remove all of the specified player's permissions after the specified node.<&nl>Uses a node system. A * node counts as a wildcard for everything below that node. In otherwords, if you have perm1.*, you have permissions for everything underneath perm1. Giving a permission of a higher level, which is to say, perm1 over perm1.subperm1, will overwrite all lower level permissions. In other words, if a perm1 was given, then removed, the player would no longer have any perm1 permissions, including perm1.subperm1.
-    usage: <proc[lib_core_command_usage].context[simple_permissions]>
+    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.simple_permissions]>
     allowed help:
         - determine <player.is_op.if_null[true]>
     script:
@@ -69,7 +77,7 @@ panic_button:
     name: panic
     debug: false
     description: Panic button for the player.<&nl><&nl>Kills all mobs (excluding those on the exclude list) in all loaded chunks in the world the player is in, sets the time to day, heals the player, clears the weather, and feeds the player.
-    usage: <proc[lib_core_command_usage].context[panic]>
+    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.panic]>
     allowed help:
         - determine <proc[lib_has_permission].context[utilities.panic|<player.if_null[null]>].if_null[true]>
     aliases:
@@ -100,7 +108,7 @@ remove_flags:
     name: remove_flags
     debug: false
     description: Removes all flags (excluding those on the exclude list) from the server or player or both.<&nl><&nl>If no player name is specified, then it uses the player who ran the command. If the command is run on the server, and you're removing flags from a player, then the player's name is required.
-    usage: <proc[lib_core_command_usage].context[remove_flags]>
+    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.remove_flags]>
     aliases:
         - removeflags
         - killflags
@@ -176,7 +184,7 @@ remove_notables:
     name: remove_notables
     debug: false
     description: Removes all notables of whatever type was passed, or all notables if no argument passed.
-    usage: <proc[lib_core_command_usage].context[remove_notables]>
+    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.remove_notables]>
     aliases:
         - removenotables
         - killnotables
@@ -231,7 +239,7 @@ random_placement:
     name: random_placer
     debug: false
     description: Gives tool for placing blocks randomly, based on a predefined list, or defines list.<&nl>If running the command with no arguments, recieve the random placement tool. It should look like a bedrock block by default, or if you have the utilities texture pack installed, will be an animated block. When the block is placed, it will choose one of the blocks previously defined with the random_placer command, based on weight. The higher the weight, the more chance the block will be placed. If no blocks have been defined, will recieve an error message.<&nl>If you'd like to add a block to the list, simply type the command, along with the name of the block that you would use if you were using the give command (i.e., redstone_ore instead of Redstone Ore), as well as the weight you'd like for that block. Weights can be any number above 1. If you don't provide a weight, block will be added with a weight of 1. If you'd like to create a new list, you can clear your previous list by simply passing "clear" as the first argument.
-    usage: <proc[lib_core_command_usage].context[random_placement]>
+    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.random_placement]>
     aliases:
         - rand_placer
         - rplace
@@ -291,7 +299,7 @@ notable_tool:
     name: notable_tool
     debug: false
     description: Gives a tool that allows you to specify locations, cuboids and ellipsoids, and save (note) them.<&nl>To recieve the tool, simply pass the command with no arguments. To change between selection type, shift right click. NOTE! If you change selection type, you will LOSE the previous selection.<&nl>For locations, you only need to right click on the single block to set the location. For cuboids, the first right click will set one corner, and every click after will set the other corner. If you need to change the location of the first corner, pass the "clear" argument to the command.<&nl>Ellipsoids are a little more complicated. The first right click will set the center of the ellipsoid. The second, third and fourth clicks will set the X, Y, and Z radii. If you click for a fifth time, you will set the X radius again, the sixth click will set the Y a radius, and so on. If you need to recenter the ellipsoid, pass the "clear" argument.<&nl>Once you've decided you have the right selection, pass the save argument, along with the name of the notable. Make sure there are no spaces in the notable's name or the command will fail.
-    usage: <proc[lib_core_command_usage].context[notable_tool]>
+    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.notable_tool]>
     aliases:
         - ntool
     allowed help:
@@ -362,7 +370,7 @@ puppet_npc:
     name: puppet
     debug: false
     description: Allows you to "puppet" an NPC.<&nl>Run the command with an NPC's name to puppet that NPC on the map specifically, or run it with no name to puppet the closest NPC within 5 blocks. If there are multiple NPC's with the same name, it will puppet the one with the name that is closest to you.<&nl>Run the command a second time to stop puppeting the NPC. Players will be set to survival when beginning the puppet, then set to spectator when cancelling the puppet.
-    usage: <proc[lib_core_command_usage].context[puppet]>
+    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.puppet]>
     allowed help:
         - determine <proc[lib_has_permission].context[utilities.puppet|<player.if_null[null]>].if_null[true]>
     script:
@@ -410,15 +418,13 @@ end_queues:
     name: end_queues
     debug: false
     description: Allows you to end all currently running queues on the server.<&nl>WARNING<&co> This is a nuclear option! This is only meant to be used in cases where you have infintely looping queues that you want to end without wanting to restart the whole server. Do not use this command within a script!
-    usage: <proc[lib_core_command_usage].context[end_queues]>
+    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.end_queues]>
     aliases:
         - killqueues
         - kill_queues
         - killqs
     allowed help:
-        - if <player.exists>:
-            - determine <proc[lib_has_permission].context[utilities.end_queues|<player.if_null[null]>]>
-        - determine true
+        - determine <proc[lib_has_permission].context[utilities.end_queues|<player.if_null[null]>].if_null[true]>
     script:
         - if <proc[lib_has_permission].context[utilities.end_queues|<player.if_null[server_or_command_block]>].if_null[true]>:
             - if <player.exists>:
@@ -442,14 +448,12 @@ denchant:
     type: command
     name: denchant
     debug: false
-    description: A better enchantment command.
-    usage: <proc[lib_core_command_usage].context[denchant]>
+    description: A better enchantment command.<&nl>The denchant command will enchant your item with the enchantment specified, at the level you choose (or at level 1, if no level is specified.) Enchantments pull from properly registered enchantments, which are all vanilla enchantments, custom denizen enchantments, and enchantments from any plugin that registers correctly. Lore is also correctly added (or updated) on the item when required, and uses correct roman numeralization up to ~3000. The command will also let you know if the enchantment is out of range of vanilla, if the enchantment will function like expected on the item, or if the enchantment conflicts with an existing enchantment. The command will not halt if it encounters any of this, it just lets you know if you're trying to keep within vanilla enchantment bounds. The command also will not double enchant an item, and enchanting an item with a higher level or lower level enchant of the same enchant will raise/lower the enchant on the item appropriately. Lastly, when denchant is used on a regular book, it will create an enchantment book, rather than a regular book with an enchantment on it.
+    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.denchant]>
     aliases:
         - dchant
     allowed help:
-        - if <player.exists>:
-            - determine <proc[lib_has_permission].context[utilities.denchant|<player.if_null[null]>]>
-        - determine true
+        - determine <proc[lib_has_permission].context[utilities.denchant|<player.if_null[null]>].if_null[false]>
     tab completions:
         1: <server.enchantment_keys>
         2: <proc[lib_numeric_list].context[<server.enchantment_start_level[<context.args.first>]>|<server.enchantment_max_level[<context.args.first>]>]>
@@ -473,9 +477,7 @@ denchant:
                                 #books, which get turned into enchanted books, are always valid, regardless of what can_enchant says
                                 - define always_valid true if:<[item].advanced_matches[*book]>
                                 - if <[item].material.name> == book:
-                                    - take iteminhand
-                                    - give enchanted_book
-                                    - define item <player.item_in_hand>
+                                    - inventory adjust slot:<player.held_item_slot> material:enchanted_book
                                 - inventory adjust slot:<player.held_item_slot> enchantments:<[item_enchants].with[<[enchantment]>].as[<[level]>]>
                                 - inventory adjust slot:<player.held_item_slot> lore:<[item].lore.if_null[<list>].include[<gray><[enchantment].full_name[<[level]>]>]> if:<[enchantment].key.before[:].equals[minecraft].not>
                                 - narrate "<[colors].get[success]>You successfully enchanted a <[soft]><[item].material.translated_name><[colors].get[success]> with <[colors].get[important]><[enchantment].full_name[<[level]>]>"

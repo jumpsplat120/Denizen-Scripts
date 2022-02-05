@@ -1,3 +1,5 @@
+##IgnoreWarning command_script_usage
+
 # +--------------------
 # |
 # | MASTER CRAFTER
@@ -348,7 +350,7 @@ mc_config:
 
 mc_data:
     type: data
-    command: <[fs]><[l]>set_level <[lp]><[l]>player:<[lt]><[nl]>name<[gt]><[rp]> <[lb]><[l]>item:<[lt]><[nl]>name<[gt]><[rb]> <[lb]><[l]>level:<[lt]><[nl]>number<[gt]><[rb]>
+    command: /set_level (player:<&lt>name<&gt>) [item:<&lt>name<&gt>] [level:<&lt>number<&gt>]
     valid_items:
         prefix:
             - wooden
@@ -651,29 +653,12 @@ master_crafter:
         - adjust <[inv]> matrix:<[inv].matrix.parse_tag[<[parse_value].quantity.is_more_than[0].if_true[<[parse_value].with[quantity=<[parse_value].quantity.sub[<[amt]>]>]>].if_false[air]>]>
         - flag <player.eye_location.precise_cursor_on_block> stored_items:|:<context.item.repeat_as_list[<[amt]>]>
 
-mc_command_proc:
-    type: procedure
-    debug: false
-    script:
-        - define c <script[lib_config].parsed_key[color.command]>
-        - define l <[c].get[literal]>
-        - define fs <[c].get[forward_slash]><[l]>
-        - define lb <[c].get[left_bracket]><[l]>
-        - define rb <[c].get[right_bracket]><[l]>
-        - define lt <[c].get[less_than]><[l]>
-        - define gt <[c].get[greater_than]><[l]>
-        - define lp <[c].get[left_parenthesis]><[l]>
-        - define rp <[c].get[right_parenthesis]><[l]>
-        - define rc <[c].get[right_curly_bracket]><[l]>
-        - define lc <[c].get[left_curly_bracket]><[l]>
-        - define nl <[c].get[non_literal]>
-        - determine <script[mc_data].parsed_key[command]>
-
 mc_command:
     type: command
+    debug: false
     name: set_level
     description: Sets your master crafter level for a specified tool.
-    usage: <proc[mc_command_proc]>
+    usage: <proc[lib_command_usage].context[mc_data|command]>
     allowed help:
         - determine <proc[lib_has_permission].context[master_crafter|<player.if_null[null]>].if_null[true]>
     script:
@@ -719,6 +704,7 @@ mc_command:
 
 mc_chainmail_boots:
     type: item
+    debug: false
     material: chainmail_boots
     recipes:
         1:
@@ -729,6 +715,7 @@ mc_chainmail_boots:
 
 mc_chainmail_leggings:
     type: item
+    debug: false
     material: chainmail_leggings
     recipes:
         1:
@@ -740,6 +727,7 @@ mc_chainmail_leggings:
 
 mc_chainmail_chestplate:
     type: item
+    debug: false
     material: chainmail_chestplate
     recipes:
         1:
@@ -751,6 +739,7 @@ mc_chainmail_chestplate:
 
 mc_chainmail_helmet:
     type: item
+    debug: false
     material: chainmail_helmet
     recipes:
         1:
@@ -761,10 +750,11 @@ mc_chainmail_helmet:
 
 mc_wooden_hammer:
     type: item
+    debug: false
     material: wooden_sword
     display name: <&r>Wooden Hammer
     mechanisms:
-        custom_model_data: <script[mc_config].data_key[cmd_offset].add[1]>
+        custom_model_data: <script[mc_config].data_key[cmd_offset].add[0]>
         hides: attributes
         flag: durability:0
     recipes:
@@ -777,10 +767,11 @@ mc_wooden_hammer:
 
 mc_stone_hammer:
     type: item
+    debug: false
     material: wooden_sword
     display name: <&r>Stone Hammer
     mechanisms:
-        custom_model_data: <script[mc_config].data_key[cmd_offset].add[2]>
+        custom_model_data: <script[mc_config].data_key[cmd_offset].add[1]>
         hides: attributes
         flag: durability:0
     recipes:
@@ -793,10 +784,11 @@ mc_stone_hammer:
 
 mc_iron_hammer:
     type: item
+    debug: false
     material: wooden_sword
     display name: <&r>Iron Hammer
     mechanisms:
-        custom_model_data: <script[mc_config].data_key[cmd_offset].add[3]>
+        custom_model_data: <script[mc_config].data_key[cmd_offset].add[2]>
         hides: attributes
         flag: durability:0
     recipes:
@@ -809,10 +801,11 @@ mc_iron_hammer:
 
 mc_golden_hammer:
     type: item
+    debug: false
     material: wooden_sword
     display name: <&r>Golden Hammer
     mechanisms:
-        custom_model_data: <script[mc_config].data_key[cmd_offset].add[4]>
+        custom_model_data: <script[mc_config].data_key[cmd_offset].add[3]>
         hides: attributes
         flag: durability:0
     recipes:
@@ -825,10 +818,11 @@ mc_golden_hammer:
 
 mc_diamond_hammer:
     type: item
+    debug: false
     material: wooden_sword
     display name: <&r>Diamond Hammer
     mechanisms:
-        custom_model_data: <script[mc_config].data_key[cmd_offset].add[5]>
+        custom_model_data: <script[mc_config].data_key[cmd_offset].add[4]>
         hides: attributes
         flag: durability:0
     recipes:

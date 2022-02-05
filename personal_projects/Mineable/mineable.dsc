@@ -8,9 +8,9 @@
 # +----------------------
 #
 # @author jumpsplat120
-# @date 05/19/21
-# @denizen-build 1.2.0-b1739-REL
-# @script-version 1.0.1
+# @date 12/02/21
+# @denizen-build 1.2.3-b5951-DEV
+# @script-version 1.1.1
 #
 # Installation:
 # Place the following scripts in your scripts folder and reload:
@@ -45,6 +45,28 @@ mineable_config:
     type: data
     break_percentage: 10
     fortune_multiplier: 3
+    xp:
+        coal:
+            - 0
+            - 1
+        nether_gold:
+            - 0
+            - 1
+        diamond:
+            - 2
+            - 4
+        emerald:
+            - 2
+            - 4
+        lapis:
+            - 1
+            - 3
+        nether_quartz:
+            - 1
+            - 3
+        redstone:
+            - 0
+            - 2
     cmd_offset: 0
 
 # --------------------END CONFIG / START CODE--------------------
@@ -55,40 +77,58 @@ mineable:
         on player breaks *_ore:
             - define held <player.item_in_hand>
             - define loc  <context.location>
-            - if <[loc].drops[<[held]>].size> > 0 && <[held].enchantments.level[silk_touch]> == 0:
+            - define enchants <[held].enchantment_map>
+            - if <[loc].drops[<[held]>].size> > 0 && <[enchants].get[silk_touch].if_null[0]> == 0:
                 - determine passively cancelled
                 - define config <script[mineable_config]>
                 - define ploc   <player.location>
-                - define dloc   <[loc].center.points_between[<[ploc]>].get[2].if_null[<[ploc]>]>
+                - define dloc   <[loc].add[<proc[lib_block_facing]>]>
                 - define mat    <context.material.name>
-                - inventory adjust durability:<[held].durability.add[<util.random.int[1].to[100].is_less_than[<element[100].div[<[held].enchantments.level[unbreaking].add[1]>]>].if_true[1].if_false[0]>]> slot:<player.held_item_slot>
+                - define xp     <[config].data_key[xp.<[mat]>].if_null[<list[1|2]>]>
+                - inventory adjust durability:<[held].durability.add[<util.random.int[1].to[100].is_less_than[<element[100].div[<[enchants].get[unbreaking].if_null[0].add[1]>]>].if_true[1].if_false[0]>]> slot:<player.held_item_slot>
                 - modifyblock <[loc]> air <[config].data_key[break_percentage]>
-                - drop <[mat]>_drop quantity:<util.random.int[1].to[<util.random.int[1].to[<[config].data_key[fortune_multiplier]>].mul[<[held].enchantments.level[fortune]>].add[1]>]> <[dloc]>
-                - drop xp quantity:<list[diamond_ore|emerald_ore].contains[<[mat]>].if_true[<util.random.int[1].to[3]>].if_false[<util.random.int[0].to[1]>]> <[dloc]>
+                - drop mineable_<[mat]>_drop quantity:<util.random.int[1].to[<util.random.int[1].to[<[config].data_key[fortune_multiplier]>].mul[<[enchants].get[fortune].if_null[0]>].add[1]>]> <[dloc]>
+                - drop xp quantity:<util.random.int[<[xp].first>].to[<[xp].last>]> <[dloc]>
+        on furnace burns mineable_coal_ore_drop:
+            - determine 20s
 
-cstm_gold_nugget:
+mineable_raw_gold:
     type: item
-    material: gold_nugget
+    material: raw_gold
     no_id: true
     recipes:
         1:
-            type: furnace
-            cook_time: 1s
-            input: gold_ore_drop
-            experience: 2
+            type: shaped
+            input:
+                - mineable_gold_ore_drop|mineable_gold_ore_drop|mineable_gold_ore_drop
+                - mineable_gold_ore_drop|mineable_gold_ore_drop|mineable_gold_ore_drop
+                - mineable_gold_ore_drop|mineable_gold_ore_drop|mineable_gold_ore_drop
 
-cstm_iron_nugget:
+mineable_raw_iron:
     type: item
-    material: iron_nugget
+    material: raw_iron
     no_id: true
     recipes:
         1:
-            type: furnace
-            cook_time: 1s
-            input: iron_ore_drop
-            experience: 1
+            type: shaped
+            input:
+                - mineable_iron_ore_drop|mineable_iron_ore_drop|mineable_iron_ore_drop
+                - mineable_iron_ore_drop|mineable_iron_ore_drop|mineable_iron_ore_drop
+                - mineable_iron_ore_drop|mineable_iron_ore_drop|mineable_iron_ore_drop
 
-cstm_coal:
+mineable_raw_copper:
+    type: item
+    material: raw_copper
+    no_id: true
+    recipes:
+        1:
+            type: shaped
+            input:
+                - mineable_copper_ore_drop|mineable_copper_ore_drop|mineable_copper_ore_drop
+                - mineable_copper_ore_drop|mineable_copper_ore_drop|mineable_copper_ore_drop
+                - mineable_copper_ore_drop|mineable_copper_ore_drop|mineable_copper_ore_drop
+
+mineable_coal:
     type: item
     material: coal
     no_id: true
@@ -96,10 +136,10 @@ cstm_coal:
         1:
             type: shaped
             input:
-                - coal_ore_drop|coal_ore_drop
-                - coal_ore_drop|coal_ore_drop
+                - mineable_coal_ore_drop|mineable_coal_ore_drop
+                - mineable_coal_ore_drop|mineable_coal_ore_drop
 
-cstm_diamond:
+mineable_diamond:
     type: item
     material: diamond
     no_id: true
@@ -107,11 +147,11 @@ cstm_diamond:
         1:
             type: shaped
             input:
-                - diamond_ore_drop|diamond_ore_drop|diamond_ore_drop
-                - diamond_ore_drop|diamond_ore_drop|diamond_ore_drop
-                - diamond_ore_drop|diamond_ore_drop|diamond_ore_drop
+                - air|mineable_diamond_ore_drop|air
+                - mineable_diamond_ore_drop|mineable_diamond_ore_drop|mineable_diamond_ore_drop
+                - air|mineable_diamond_ore_drop|air
 
-cstm_emerald:
+mineable_emerald:
     type: item
     material: emerald
     no_id: true
@@ -119,61 +159,90 @@ cstm_emerald:
         1:
             type: shaped
             input:
-                - emerald_ore_drop|emerald_ore_drop|emerald_ore_drop
-                - emerald_ore_drop|emerald_ore_drop|emerald_ore_drop
-                - emerald_ore_drop|emerald_ore_drop|emerald_ore_drop
+                - air|mineable_emerald_ore_drop|air
+                - mineable_emerald_ore_drop|mineable_emerald_ore_drop|mineable_emerald_ore_drop
+                - air|mineable_emerald_ore_drop|air
 
-gold_ore_drop:
+mineable_netherite:
+    type: item
+    material: netherite_scrap
+    no_id: true
+    recipes:
+        1:
+            type: shaped
+            input:
+                - mineable_ancient_debris_drop|mineable_ancient_debris_drop
+
+mineable_gold_ore_drop:
     type: item
     material: stick
-    display name: <&r>Gold Ore Chunk
+    display name: <&r>Gold Ore Fragment
+    mechanisms:
+        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[0]>
+
+mineable_iron_ore_drop:
+    type: item
+    material: stick
+    display name: <&r>Iron Ore Fragment
     mechanisms:
         custom_model_data: <script[mineable_config].data_key[cmd_offset].add[1]>
 
-iron_ore_drop:
-    type: item
-    material: stick
-    display name: <&r>Iron Ore Chunk
-    mechanisms:
-        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[2]>
-
-coal_ore_drop:
+mineable_coal_ore_drop:
     type: item
     material: stick
     display name: <&r>Coal Fragment
     mechanisms:
+        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[2]>
+    recipes:
+        1:
+            type: shapeless
+            output_quantity: 4
+            input: coal
+
+mineable_diamond_ore_drop:
+    type: item
+    material: stick
+    display name: <&r>Diamond Shard
+    mechanisms:
         custom_model_data: <script[mineable_config].data_key[cmd_offset].add[3]>
 
-nether_gold_ore_drop:
+mineable_emerald_ore_drop:
+    type: item
+    material: stick
+    display name: <&r>Emerald Shard
+    mechanisms:
+        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[4]>
+
+mineable_copper_ore_drop:
+    type: item
+    material: stick
+    display name: <&r>Copper Ore Fragment
+    mechanisms:
+        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[5]>
+
+mineable_ancient_debris_drop:
+    type: item
+    material: stick
+    display name: <&r>Netherite Swarf
+    mechanisms:
+        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[6]>
+
+mineable_nether_gold_ore_drop:
     type: item
     material: gold_nugget
     no_id: true
 
-lapis_ore_drop:
+mineable_lapis_ore_drop:
     type: item
     material: lapis_lazuli
     no_id: true
 
-diamond_ore_drop:
-    type: item
-    material: stick
-    display name: <&r>Diamond Fragment
-    mechanisms:
-        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[4]>
-
-redstone_ore_drop:
+mineable_redstone_ore_drop:
     type: item
     material: redstone
     no_id: true
 
-emerald_ore_drop:
-    type: item
-    material: stick
-    display name: <&r>Emerald Fragment
-    mechanisms:
-        custom_model_data: <script[mineable_config].data_key[cmd_offset].add[5]>
-
-nether_quartz_ore_drop:
+mineable_nether_quartz_ore_drop:
     type: item
     material: quartz
     no_id: true

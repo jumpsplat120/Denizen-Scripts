@@ -52,10 +52,9 @@ morpheus_events:
             - if <[period]> == dusk || <[period]> == night:
                 - announce "<player.name> <yellow>left their bed. <[msg_addon]>"
     init:
-        - define config         <script[morpheus_config]>
-        - define percentage     <[config].data_key[percent]>
-        - define amt_of_players <server.online_players.size>
-        - define amt_of_players_sleeping <server.flag[sleeping_players].size>
-        - define curr_percentage         <[amt_of_players_sleeping].div[<[required]>]>
-        - define required                <[amt_of_players].mul[<[percentage]>].round_down.max[1]>
-        - define msg_addon "<gold><[amt_of_players_sleeping]>/<[required]> (<[curr_percentage].mul[100].round><&pc>)"
+        - define config          <script[morpheus_config]>
+        - define percentage      <[config].data_key[percent]>
+        - define sleeping        <server.flag[morpheus].size>
+        - define required        <server.online_players.size.mul[<[percentage]>].round_down.max[1]>
+        - define curr_percentage <[sleeping].div[<[required]>]>
+        - define msg_addon "<gold><[sleeping]>/<[required]> (<[curr_percentage].mul[100].round><&pc>)"

@@ -149,7 +149,7 @@ get_twitch_chat:
         - announce "<&nl><dark_aqua>===== <aqua>Notice <dark_aqua>=====<&nl><green><[data].get[message]><&nl><dark_aqua>================<&nl>"
     usernotice:
         # Subscriptions/rituals/hype trains are all handled here
-        - annouce "USER NOTICE"
+        - announce "USER NOTICE"
         - announce <[data]>
     roomstate:
         # emote-only: If enabled, only emotes are allowed in chat. Valid values: 0 (disabled) or 1 (enabled).

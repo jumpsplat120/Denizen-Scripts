@@ -9,7 +9,7 @@
 # @author jumpsplat120
 # @date 05/23/21
 # @denizen-build 1.2.0-b1739-REL
-# @script-version 1.0.0
+# @script-version 1.1.0
 #
 # Installation:
 # Place the following scripts in your scripts folder and reload:
@@ -28,14 +28,14 @@
 # Right click your watering can in water to fill it up. All watering cans
 # hold the same amount of water, but higher level cans affect wider ranges
 # of crop, and will grow plants faster. The range and growthTick increase
-# are all configurable in wc_config.
+# are all configurable in watering_can_config.
 #
 # --------------------END HEADER / START CONFIG--------------------
 
-wc_config:
+watering_can_config:
     type: data
-    cmd_offset: 0
-    refill: 0
+    cmd_offset: 5
+    refills: 0
     particles: 10
     wooden:
         range: 1
@@ -67,14 +67,24 @@ wc_config:
         - warped_fungus
         - crimson_fungus
         - wheat
-        - pumpkin_stem
-        - melon_stem
         - beetroots
         - carrots
         - potatoes
         - cocoa
         - nether_wart
         - sweet_berry_bush
+        - vine
+        - bamboo_sapling
+        - bamboo
+        - grass_block
+        #- grass
+        - sunflower
+        - azalea
+        - peony
+        - lilac
+        - rose_bush
+        - glow_lichen
+        - cave_vines
         ##special cases! Unlike the above, specifying these contains extra growing mechanics
         ##to simplify the usage of a watering can.
         #Sugarcane can be grown just by watering the lowest block of sugarcane, and the
@@ -88,108 +98,104 @@ wc_config:
         #on the top of the structure.
         - chorus_flower
         - chorus_plant
-        #Bamboo starts out as a seperate block called bamboo sapling. Both need to be present
-        #for bamboo growth to work correctly. Watering the bottom block of a bamboo tree will
-        #cause the whole tree to grow. Bamboo has a height max of 16 blocks.
-        - bamboo_sapling
-        - bamboo
-        #Vines use a flood fill algorithm to try to find vines that are attached to the inital
-        #vine. Vines that go around corners will not count as attached. All attached vines will
-        #tick when a single vine is watered. There is a limit of 50 blocks for performance
-        #reasons.
-        - vine
+        #pumpkin/melon stems don't use apply_bonemeal as it only grows the stems, but instead
+        #uses vanilla_tick to grow the pumpkin/melons faster. If this behaviour is unwanted,
+        #go into the code, and comment out the pumkpin/melon stem cases in the choose.
+        - pumpkin_stem
+        - melon_stem
 
 # --------------------END CONFIG / START CODE--------------------
 
-wc_events:
+watering_can_events:
     type: world
     debug: false
     events:
-        on player breaks block with:wc_*:
-            - define dura <player.item_in_hand.durability>
-            - define slot <player.held_item_slot>
+        on player breaks block with:watering_can_*:
+            # don't decrease durability
+            - define d <player.item_in_hand.durability>
+            - define s <player.held_item_slot>
             - wait 1t
-            - inventory adjust durability:<[dura]> slot:<[slot]>
-        on player right clicks block with:wc_*:
-            - define config <script[wc_config]>
-            - define item   <context.item>
+            - inventory adjust durability:<[d]> slot:<[s]>
+        on player right clicks block with:watering_can_*:
+            - define config <script[watering_can_config]>
+            - define can    <context.item>
             - define slot   <player.held_item_slot>
-            - define mat    <player.cursor_on[4.5].if_null[<player.eye_location.forward[4.5]>].material.name>
-            - define max_dura  <[item].max_durability>
-            - define water_lvl <[item].flag[water_level]>
-            - define is_water    <[mat].advanced_matches_text[*water]>
-            - define is_growing  <[water_lvl].equals[0].not.and[<[is_water].not>].and[<[mat].equals[air].not>]>
-            - define is_creative <player.gamemode.equals[creative]>
-            - define water_lvl:+:<[is_creative].if_true[0].if_false[<[is_water].and[<[water_lvl].is_less_than[100]>].if_true[2].if_false[<[water_lvl].is_more_than[0].if_true[-1].if_false[0]>]>]>
-            - inventory flag water_level:<[water_lvl]> slot:<[slot]>
-            - inventory flag used_water:<[is_creative].if_true[0].if_false[<[is_water].if_true[0].if_false[<[water_lvl].is_more_than[0].if_true[1].if_false[0]>]>].add[<[item].flag[used_water]>]> slot:<[slot]>
-            - inventory adjust durability:<[max_dura].sub[<[water_lvl].mul[.01].mul[<[max_dura]>]>].round_down> slot:<[slot]>
-            - define item <context.item>
-            - if <[is_growing]> || <player.gamemode> == creative:
-                - define loc      <player.eye_location.precise_cursor_on.up[0.25]>
-                - define data     <[config].data_key[<[item].script.name.after[wc_]>]>
-                - define range    <[data].get[range]>
+            - define material       <player.cursor_on[4.5].material.name.if_null[air]>
+            - define max_durability <[can].max_durability>
+            - define water_level    <[can].flag[water_level]>
+            - define total_water    <[can].flag[total_water]>
+            - define is_water       <[material].advanced_matches_text[*water]>
+            - define is_creative    <player.gamemode.equals[creative]>
+            - define grow_plants    <[water_level].equals[0].not.and[<[is_water].not>].and[<[material].equals[air].not>].or[<[is_creative]>]>
+            - if <[is_water]>:
+                - define water_level:+:2
+                - define total_water:+:0
+            - else if <[grow_plants]>:
+                - define water_level:-:1
+                - define total_water:+:1
+                - define precise_loc <player.eye_location.precise_cursor_on.up[0.25]>
+                - define data   <[config].data_key[<[can].flag[can_type]>]>
+                - define range  <[data].get[range]>
+                - define chance <[data].get[chance]>
+                - define cuboid <[precise_loc].add[<[range]>,1,<[range]>].to_cuboid[<[precise_loc].add[-<[range]>,-1,-<[range]>]>]>
+                - define growables <[config].data_key[growables]>
                 #playing them consecutively looks smoother since it happens in between each "right click"
                 - repeat 5:
-                    - playeffect effect:FALLING_WATER at:<[loc]> quantity:<[range].mul[<[config].data_key[particles]>]> offset:<[range].mul[0.5]>,0,<[range].mul[0.5]>
+                    - playeffect effect:FALLING_WATER at:<[precise_loc]> quantity:<[range].mul[<[config].data_key[particles]>]> offset:<[range].mul[0.5]>,0,<[range].mul[0.5]>
                     - wait 1t
                 - if !<player.has_flag[watering_can.sound]>:
-                    - playsound <[loc]> sound:watering_can.water sound_category:players volume:0.25 custom
+                    - playsound <[precise_loc]> sound:watering_can.water sound_category:players volume:0.25 custom
                     - flag player watering_can.sound expire:10t
-                - foreach <[loc].relative[<[range]>,0.5,<[range]>].to_cuboid[<[loc].relative[-<[range]>,-0.5,-<[range]>]>].blocks.filter_tag[<[config].data_key[growables].contains[<[filter_value].material.name>]>]>:
-                    - if <[config].data_key[<[item].script.name.after[wc_]>].get[chance].proc[lib_between]> == 1:
-                        - define mat <[value].material.name>
-                        - define grew true
-                        - choose <[mat]>:
-                            - case brown_mushroom red_mushroom:
-                                - run lib_grow_mushroom def:<[value]>
-                            - case crimson_fungus warped_fungus:
-                                - run lib_grow_fungus def:<[value]>
+                - foreach <[cuboid].blocks.filter_tag[<[growables].contains[<[filter_value].material.name>]>]>:
+                    - if <[chance].proc[lib_between]> == 1:
+                        - define material <[value].material.name>
+                        - define effect true
+                        - choose <[material]>:
+                            - case pumkpin_stem melon_stem:
+                                - adjust <[value]> vanilla_tick
                             - case chorus_flower chorus_plant:
                                 - define flowers <[value].flood_fill[22].types[chorus_*].filter[material.name.equals[chorus_flower]]>
-                                - define grew <[flowers].size.is_more_than[0]>
+                                # only play effect if you actually are apply the effect
+                                - define effect <[flowers].size.is_more_than[0]>
                                 - foreach <[flowers]>:
                                     - adjust <[value]> vanilla_tick
-                            - case bamboo_sapling bamboo:
-                                - adjust <[mat].equals[bamboo_sapling].if_true[<[value]>].if_false[<[value].highest>]> vanilla_tick
                             - case cactus:
                                 - repeat 10 as:_:
                                     - adjust <[value].highest> vanilla_tick
                             - case sugar_cane:
-                                - define y <[value].y>
                                 - define highest <[value]>
-                                - repeat <element[256].sub[<[y]>]> as:i:
-                                    - define block <[value].with_y[<[y].add[<[i]>]>]>
-                                    - if <[block].material.name> != sugar_cane:
-                                        - repeat stop
+                                - while true:
+                                    - define block <[highest].add[0,1,0]>
+                                    - while stop if:<[block].material.name.equals[sugar_cane].not>
                                     - define highest <[block]>
                                 - repeat 10 as:_:
                                     - adjust <[highest]> vanilla_tick
-                            - case vine:
-                                - define vines <[value].flood_fill[50].types[vine]>
-                                - define grew <[vines].size.is_more_than[0]>
-                                - foreach <[vines]>:
-                                    - repeat 5 as:_:
-                                        - adjust <[value]> vanilla_tick
                             - default:
-                                - repeat 10 as:_:
-                                    - adjust <[value]> vanilla_tick
-                        - playeffect effect:happy_villager at:<[value].center> quantity:6 offset:0.3,0.3,0.3 if:<[grew]>
-            - if <[item].flag[used_water]> >= <[config].data_key[refill].add[1].mul[99]>:
-                - run lib_simulate_item_breaking def:<[item]>
-                - take iteminhand
+                                - adjust <[value]> apply_bonemeal:up
+                                - define effect false
+                        - playeffect effect:happy_villager at:<[value].center> quantity:6 offset:0.3,0.3,0.3 if:<[effect]>
+                    - if <[can].flag[total_water]> >= <[config].data_key[refills].add[1].mul[99]>:
+                        - run lib_simulate_item_breaking def:<[can]>
+                        - take iteminhand
+            - if !<[is_creative]>:
+                - inventory flag water_level:<[water_level]> slot:<[slot]>
+                - inventory flag total_water:<[total_water]> slot:<[slot]>
+                - inventory adjust durability:<[max_durability].sub[<[water_level].mul[.01].mul[<[max_durability]>]>].round_down> slot:<[slot]>
 
-wc_wooden:
+watering_can_wooden:
     type: item
     debug: false
     material: wooden_sword
-    display name: <reset>Watering Can
+    display name: <reset>Wooden Watering Can
     mechanisms:
         hides: attributes
         nbt_attributes: generic.attack_damage/mainhand/0/-3.5|generic.attack_speed/mainhand/1/4.0
-        flag_map: <map.with[water_level].as[0].with[used_water].as[0]>
         durability: <item[wooden_sword].max_durability>
-        custom_model_data: <script[wc_config].data_key[cmd_offset].add[1]>
+        custom_model_data: <script[watering_can_config].data_key[cmd_offset].add[0]>
+    flags:
+        water_level: 0
+        total_water: 0
+        can_type: wooden
     recipes:
         1:
             type: shaped
@@ -198,36 +204,42 @@ wc_wooden:
                 - *_planks|bowl|*_planks
                 - air|*_planks|air
 
-wc_stone:
+watering_can_stone:
     type: item
     debug: false
     material: wooden_sword
-    display name: <reset>Watering Can
+    display name: <reset>Stone Watering Can
     mechanisms:
         hides: attributes
         nbt_attributes: generic.attack_damage/mainhand/0/-3.5|generic.attack_speed/mainhand/1/4.0
-        flag_map: <map.with[water_level].as[0].with[used_water].as[0]>
         durability: <item[wooden_sword].max_durability>
-        custom_model_data: <script[wc_config].data_key[cmd_offset].add[2]>
+        custom_model_data: <script[watering_can_config].data_key[cmd_offset].add[1]>
+    flags:
+        water_level: 0
+        total_water: 0
+        can_type: stone
     recipes:
         1:
             type: shaped
             input:
-                - <server.vanilla_tagged_materials[base_stone_overworld].parse[name].separated_by[/]>/cobblestone|bone_meal|air
-                - <server.vanilla_tagged_materials[base_stone_overworld].parse[name].separated_by[/]>/cobblestone|bowl|<server.vanilla_tagged_materials[base_stone_overworld].parse[name].separated_by[/]>/cobblestone
-                - air|<server.vanilla_tagged_materials[base_stone_overworld].parse[name].separated_by[/]>/cobblestone|air
+                - <server.vanilla_tagged_materials[base_stone_overworld].parse[name].separated_by[/]>|bone_meal|air
+                - <server.vanilla_tagged_materials[base_stone_overworld].parse[name].separated_by[/]>|bowl|<server.vanilla_tagged_materials[base_stone_overworld].parse[name].separated_by[/]>
+                - air|<server.vanilla_tagged_materials[base_stone_overworld].parse[name].separated_by[/]>|air
 
-wc_iron:
+watering_can_iron:
     type: item
     debug: false
     material: wooden_sword
-    display name: <reset>Watering Can
+    display name: <reset>Iron Watering Can
     mechanisms:
         hides: attributes
         nbt_attributes: generic.attack_damage/mainhand/0/-3.5|generic.attack_speed/mainhand/1/4.0
-        flag_map: <map.with[water_level].as[0].with[used_water].as[0]>
         durability: <item[wooden_sword].max_durability>
-        custom_model_data: <script[wc_config].data_key[cmd_offset].add[3]>
+        custom_model_data: <script[watering_can_config].data_key[cmd_offset].add[2]>
+    flags:
+        water_level: 0
+        total_water: 0
+        can_type: iron
     recipes:
         1:
             type: shaped
@@ -236,17 +248,20 @@ wc_iron:
                 - iron_ingot|bowl|iron_ingot
                 - air|iron_ingot|air
 
-wc_golden:
+watering_can_golden:
     type: item
     debug: false
     material: wooden_sword
-    display name: <reset>Watering Can
+    display name: <reset>Golden Watering Can
     mechanisms:
         hides: attributes
         nbt_attributes: generic.attack_damage/mainhand/0/-3.5|generic.attack_speed/mainhand/1/4.0
-        flag_map: <map.with[water_level].as[0].with[used_water].as[0]>
         durability: <item[wooden_sword].max_durability>
-        custom_model_data: <script[wc_config].data_key[cmd_offset].add[4]>
+        custom_model_data: <script[watering_can_config].data_key[cmd_offset].add[3]>
+    flags:
+        water_level: 0
+        total_water: 0
+        can_type: golden
     recipes:
         1:
             type: shaped
@@ -255,17 +270,20 @@ wc_golden:
                 - gold_ingot|bowl|gold_ingot
                 - air|gold_ingot|air
 
-wc_diamond:
+watering_can_diamond:
     type: item
     debug: false
     material: wooden_sword
-    display name: <reset>Watering Can
+    display name: <reset>Diamond Watering Can
     mechanisms:
         hides: attributes
         nbt_attributes: generic.attack_damage/mainhand/0/-3.5|generic.attack_speed/mainhand/1/4.0
-        flag_map: <map.with[water_level].as[0].with[used_water].as[0]>
         durability: <item[wooden_sword].max_durability>
-        custom_model_data: <script[wc_config].data_key[cmd_offset].add[5]>
+        custom_model_data: <script[watering_can_config].data_key[cmd_offset].add[4]>
+    flags:
+        water_level: 0
+        total_water: 0
+        can_type: diamond
     recipes:
         1:
             type: shaped
@@ -274,17 +292,20 @@ wc_diamond:
                 - diamond|bowl|diamond
                 - air|diamond|air
 
-wc_netherite:
+watering_can_netherite:
     type: item
     debug: false
     material: wooden_sword
-    display name: <reset>Watering Can
+    display name: <reset>Netherite Watering Can
     mechanisms:
         hides: attributes
         nbt_attributes: generic.attack_damage/mainhand/0/-3.5|generic.attack_speed/mainhand/1/4.0
-        flag_map: <map.with[water_level].as[0].with[used_water].as[0]>
         durability: <item[wooden_sword].max_durability>
-        custom_model_data: <script[wc_config].data_key[cmd_offset].add[6]>
+        custom_model_data: <script[watering_can_config].data_key[cmd_offset].add[5]>
+    flags:
+        water_level: 0
+        total_water: 0
+        can_type: netherite
     recipes:
         1:
             type: shaped

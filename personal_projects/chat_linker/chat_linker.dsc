@@ -4,7 +4,7 @@ chat_linker:
     events:
         on player chats priority:1000:
             - determine passively cancelled
-            - define message <context.message>
+            - define message <context.full_text>
             - definemap items:
                 main_hand: <player.item_in_hand>
                 off_hand: <player.item_in_offhand>

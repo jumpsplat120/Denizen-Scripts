@@ -6,8 +6,8 @@ chat_linker:
             - determine passively cancelled
             - define message <context.message>
             - definemap items:
-                main_hand: <player.item_in_offhand>
-                off_hand: <player.item_in_hand>
+                main_hand: <player.item_in_hand>
+                off_hand: <player.item_in_offhand>
                 boots: <player.equipment.get[1]>
                 leggings: <player.equipment.get[2]>
                 chestplate: <player.equipment.get[3]>

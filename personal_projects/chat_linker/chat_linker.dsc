@@ -1,6 +1,6 @@
 chat_linker:
     type: world
-    debug: false
+    debug: true
     events:
         on player chats priority:1000:
             - determine passively cancelled

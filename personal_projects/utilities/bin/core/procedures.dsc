@@ -73,13 +73,45 @@ lib_core_ease:
                 - debug error "An error occurred!"
                 - determine false
 
+lib_core_catmull_rom_spline:
+    type: procedure
+    debug: false
+    definitions: p1|p2|p3|p4|density|constant
+    script:
+        - define constant <[constant].mul[0.5]>
+        - define t1 <[p2].x.sub[<[p1].x>].power[2].add[<[p2].y.sub[<[p1].y>].power[2]>].add[<[p2].z.sub[<[p1].z>].power[2]>].sqrt.power[<[constant]>]>
+        - define t2 <[p3].x.sub[<[p2].x>].power[2].add[<[p3].y.sub[<[p2].y>].power[2]>].add[<[p3].z.sub[<[p2].z>].power[2]>].sqrt.power[<[constant]>].add[<[t1]>]>
+        - define t3 <[p4].x.sub[<[p3].x>].power[2].add[<[p4].y.sub[<[p3].y>].power[2]>].add[<[p4].z.sub[<[p3].z>].power[2]>].sqrt.power[<[constant]>].add[<[t2]>]>
+        - define c <[t2].sub[<[t1]>].div[<[density]>]>
+        - repeat <[density]>:
+            - define t:->:<[t1].add[<[c].mul[<[value]>]>]>
+        - define c <[t1]>
+        - foreach <[t]>:
+            - define A1:->:<[p1].mul[<[t1].sub[<[value]>].div[<[c]>]>].add[<[p2].mul[<[value].div[<[c]>]>]>]>
+        - define c <[t2].sub[<[t1]>]>
+        - foreach <[t]>:
+            - define A2:->:<[p2].mul[<[t2].sub[<[value]>].div[<[c]>]>].add[<[p3].mul[<[value].sub[<[t1]>].div[<[c]>]>]>]>
+        - define c <[t3].sub[<[t2]>]>
+        - foreach <[t]>:
+            - define A3:->:<[p3].mul[<[t3].sub[<[value]>].div[<[c]>]>].add[<[p4].mul[<[value].sub[<[t2]>].div[<[c]>]>]>]>
+        - define c <[t2]>
+        - foreach <[t]>:
+            - define B1:->:<[A1].get[<[loop_index]>].mul[<[t2].sub[<[value]>].div[<[c]>]>].add[<[A2].get[<[loop_index]>].mul[<[value].div[<[c]>]>]>]>
+        - define c <[t3].sub[<[t1]>]>
+        - foreach <[t]>:
+            - define B2:->:<[A2].get[<[loop_index]>].mul[<[t3].sub[<[value]>].div[<[c]>]>].add[<[A3].get[<[loop_index]>].mul[<[value].sub[<[t1]>].div[<[c]>]>]>]>
+        - define c <[t2].sub[<[t1]>]>
+        - foreach <[t]>:
+            - define C1:->:<[B1].get[<[loop_index]>].mul[<[t2].sub[<[value]>].div[<[c]>]>].add[<[B2].get[<[loop_index]>].mul[<[value].sub[<[t1]>].div[<[c]>]>]>]>
+        - determine <[C1]>
+
 #Used in the bounce in, out and inout of the easing script
 lib_core_bo:
     type: procedure
     debug: false
     definitions: value
     script:
-        - determine bo <tern[<[value].is[LESS].than[.363636363]>].pass[<element[7.5625].mul[<[value]>].mul[<[value]>]>].fail[<tern[<[value].is[LESS].than[.727272727]>].pass[<element[7.5625].mul[<[value].sub[.5454545]>].mul[<[value].sub[.5454545]>].add[.75]>].fail[<tern[<[value].is[LESS].than[.909090909]>].pass[<element[7.5625].mul[<[value].sub[.81818181]>].mul[<[value].sub[.81818181]>].add[0.9375]>].fail[<element[7.5625].mul[<[value].sub[.95454545]>].mul[<[value].sub[.95454545]>].add[0.984375]>]>]>]>
+        - determine <tern[<[value].is[LESS].than[.363636363]>].pass[<element[7.5625].mul[<[value]>].mul[<[value]>]>].fail[<tern[<[value].is[LESS].than[.727272727]>].pass[<element[7.5625].mul[<[value].sub[.5454545]>].mul[<[value].sub[.5454545]>].add[.75]>].fail[<tern[<[value].is[LESS].than[.909090909]>].pass[<element[7.5625].mul[<[value].sub[.81818181]>].mul[<[value].sub[.81818181]>].add[0.9375]>].fail[<element[7.5625].mul[<[value].sub[.95454545]>].mul[<[value].sub[.95454545]>].add[0.984375]>]>]>]>
 
 #Gets an error type from core/data, and the name of the script calling the proc
 #so it can print out errors. Also takes unlisted arguments that are change depending

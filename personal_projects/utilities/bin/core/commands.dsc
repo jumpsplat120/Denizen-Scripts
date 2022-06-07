@@ -1,6 +1,4 @@
 ##IgnoreWarning command_script_usage
-##IgnoreWarning tag_trace_failure
-##IgnoreWarning bad_tag_part
 
 #Angry about me using procs for usage, because it doesn't start with a forward slash
 #tag trace and tag part errors are about the enchantment stuff, which was tweaked
@@ -382,7 +380,7 @@ puppet_npc:
                     - if <[arg_map].exclude[npc].size> == 0:
                         - if <[arg_map].size> != 0 || <context.args.size> == 0:
                             - define colors <script[lib_config].parsed_key[color]>
-                            - define npc <context.args.size.equals[1].if_true[<player.location.find.npcs.within[5].first.if_null[null]>].if_false[<proc[lib_find_nearest_npc_by_name].context[<[name]>|<player.location>]>].if_null[null]>
+                            - define npc <context.args.size.equals[1].if_true[<player.location.find_npcs_within[5].first.if_null[null]>].if_false[<proc[lib_find_nearest_npc_by_name].context[<[name]>|<player.location>]>].if_null[null]>
                             - if <[npc]> != null:
                                 - if <player.has_flag[jlib.puppet]>:
                                     - spawn <player.flag[jlib.puppet.npc]> <player.location>
@@ -426,78 +424,17 @@ end_queues:
     allowed help:
         - determine <proc[lib_has_permission].context[utilities.end_queues|<player.if_null[null]>].if_null[true]>
     script:
-        - if <proc[lib_has_permission].context[utilities.end_queues|<player.if_null[server_or_command_block]>].if_null[true]>:
-            - if <player.exists>:
-                - if <context.args.size> == 0:
-                    - define warn <script[lib_config].parsed_key[color.warning]>
-                    - define soft <script[lib_config].parsed_key[color.soft_server_notice]>
-                    - if <queue.list.size> > 1:
-                        - foreach <queue.list.exclude[<queue>]> as:queue:
-                            - narrate "<[warn]>Ending queue <[soft]><[queue].id>..."
-                            - queue stop <[queue]>
-                    - else:
-                        - narrate "<[warn]>No currently running queues!"
-                - else:
-                    - narrate <proc[lib_core_command_error].context[wrong_args|end_queues|0|<context.args.size>]>
-            - else:
-                - narrate <proc[lib_core_command_error].context[implicit]>
+        - define warn <script[lib_config].parsed_key[color.warning]>
+        - define soft <script[lib_config].parsed_key[color.soft_server_notice]>
+        - if !<proc[lib_has_permission].context[utilities.end_queues|<player.if_null[server_or_command_block]>].if_null[true]>:
+           - narrate <proc[lib_core_command_error].context[permission]>
+        - else if !<player.exists>:
+           - narrate <proc[lib_core_command_error].context[implicit]>
+        - else if <context.args.size> != 0:
+           - narrate <proc[lib_core_command_error].context[wrong_args|end_queues|0|<context.args.size>]>
+        - else if <util.queues.size> <= 1:
+           - narrate "<[warn]>No currently running queues!"
         - else:
-            - narrate <proc[lib_core_command_error].context[permission]>
-#Simpler enchanting command
-denchant:
-    type: command
-    name: denchant
-    debug: false
-    description: A better enchantment command.<&nl>The denchant command will enchant your item with the enchantment specified, at the level you choose (or at level 1, if no level is specified.) Enchantments pull from properly registered enchantments, which are all vanilla enchantments, custom denizen enchantments, and enchantments from any plugin that registers correctly. Lore is also correctly added (or updated) on the item when required, and uses correct roman numeralization up to ~3000. The command will also let you know if the enchantment is out of range of vanilla, if the enchantment will function like expected on the item, or if the enchantment conflicts with an existing enchantment. The command will not halt if it encounters any of this, it just lets you know if you're trying to keep within vanilla enchantment bounds. The command also will not double enchant an item, and enchanting an item with a higher level or lower level enchant of the same enchant will raise/lower the enchant on the item appropriately. Lastly, when denchant is used on a regular book, it will create an enchantment book, rather than a regular book with an enchantment on it.
-    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.denchant]>
-    aliases:
-        - dchant
-    allowed help:
-        - determine <proc[lib_has_permission].context[utilities.denchant|<player.if_null[null]>].if_null[false]>
-    tab completions:
-        1: <server.enchantment_keys>
-        2: <proc[lib_numeric_list].context[<server.enchantment_start_level[<context.args.first>]>|<server.enchantment_max_level[<context.args.first>]>]>
-    script:
-        - if <proc[lib_has_permission].context[utilities.denchant|<player.if_null[server_or_command_block]>].if_null[true]>:
-            - if <player.exists>:
-                - if <context.args.size> <= 2:
-                    - if <context.args.size> >= 1:
-                        - define enchantment <enchantment[<context.args.first>].if_null[null]>
-                        - if <[enchantment]> != null:
-                            - define level <context.args.get[2].if_null[1]>
-                            - define colors <script[lib_config].parsed_key[color]>
-                            - define soft <[colors].get[soft_server_notice]>
-                            - define hard <[colors].get[hard_server_notice]>
-                            - define warn <[colors].get[warning]>
-                            - define item <player.item_in_hand>
-                            - define item_enchants <[item].enchantment_map.if_null[<map>]>
-                            - define prev_enchant <[item_enchants].get[<[enchantment].name>].if_null[null]>
-                            - if <[prev_enchant]> == null || <[prev_enchant]> != <[level]>:
-                                - define item_enchants <[item_enchants].exclude[<[enchantment].name>]> if:<[prev_enchant].equals[null].not>
-                                #books, which get turned into enchanted books, are always valid, regardless of what can_enchant says
-                                - define always_valid true if:<[item].advanced_matches[*book]>
-                                - if <[item].material.name> == book:
-                                    - inventory adjust slot:<player.held_item_slot> material:enchanted_book
-                                - inventory adjust slot:<player.held_item_slot> enchantments:<[item_enchants].with[<[enchantment]>].as[<[level]>]>
-                                - inventory adjust slot:<player.held_item_slot> lore:<[item].lore.if_null[<list>].include[<gray><[enchantment].full_name[<[level]>]>]> if:<[enchantment].key.before[:].equals[minecraft].not>
-                                - narrate "<[colors].get[success]>You successfully enchanted a <[soft]><[item].material.translated_name><[colors].get[success]> with <[colors].get[important]><[enchantment].full_name[<[level]>]>"
-                                - foreach <[item_enchants]>:
-                                    - define ench <enchantment[<[key]>]>
-                                    - define conflicts:->:<[ench].full_name> if:<[enchantment].is_compatible[<[ench]>].not>
-                                - foreach <[conflicts].if_null[<list>]>:
-                                    - define conflict_str "<[conflict_str].if_null[]><[loop_index].equals[1].if_true[].if_false[<[loop_index].equals[<[conflicts].size>].if_true[ and ].if_false[, ]>]><[value]>"
-                                - narrate "<[warn]>The level you enchanted at is outside the range normally obtainable in vanilla." if:<[enchantment].min_level.is_more_than[<[level]>].or[<[level].is_more_than[<[enchantment].max_level>]>]>
-                                - narrate "<[warn]>This enchantment does not work on this item." if:<[enchantment].can_enchant[<[item]>].not.and[<[always_valid].exists.not>]>
-                                - narrate "<[warn]>This enchantment conflicts with <[soft]><[conflict_str]><[warn]>." if:<[conflicts].exists>
-                            - else:
-                                - narrate "<[colors].get[error]>Unable to enchant as the item already has this enchantment on it."
-                        - else:
-                            - narrate <proc[lib_core_command_error].context[invalid_value|denchant|enchantment|<[enchantment]>]>
-                    - else:
-                        - narrate <proc[lib_core_command_error].context[missing_keys|denchant|<context.args.proc[lib_core_command_extra_keys]>]>
-                - else:
-                    - narrate <proc[lib_core_command_error].context[extra_keys|denchant|<context.args.proc[lib_core_command_extra_keys]>]>
-            - else:
-                - narrate <proc[lib_core_command_error].context[implicit]>
-        - else:
-            - narrate <proc[lib_core_command_error].context[permission]>
+            - foreach <util.queues.exclude[<queue>]> as:queue:
+                - narrate "<[warn]>Ending queue <[soft]><[queue].id>..."
+                - queue stop <[queue]>

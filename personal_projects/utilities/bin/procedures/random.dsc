@@ -8,7 +8,7 @@ lib_random_pitch:
     type: procedure
     debug: false
     script:
-        - determine <util.random.gauss.div[6].add[1]>
+        - determine <util.random_gauss.div[6].add[1]>
 
 lib_random_color:
     type: procedure
@@ -45,7 +45,7 @@ lib_random_uppercase:
             - if <[value]> == <&sp>:
                 - define result:->:<&sp>
             - else:
-                - define flip <util.random.boolean>
+                - define flip <util.random_boolean>
                 - define counter <[flip].equals[<[type]>].if_true[<[counter].add[1]>].if_false[1]>
                 - define type <[flip]>
                 - if <[counter]> > 2:
@@ -61,7 +61,7 @@ lib_random_by_weight:
     script:
         - define map <[map].if_null[<map>]>
         - if <[map].size> > 0:
-            - define rand <util.random.decimal.mul[<[map].values.sum>]>
+            - define rand <util.random_decimal.mul[<[map].values.sum>]>
             - if <[rand]> == 1:
                 - define rand:-:<script[lib_generic_data].data_key[epsilon]>
             - foreach <[map]> as:weight:
@@ -75,4 +75,4 @@ lib_one_in_x:
     debug: false
     definitions: number
     script:
-        - determine <[number].proc[lib_between].equals[1]>
+        - determine <util.random.int[1].to[<[number]>].equals[1]>

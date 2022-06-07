@@ -22,7 +22,7 @@ lib_is_alphanumeric:
     debug: false
     definitions: element
     script:
-        - determine <[element].to_lowercase.matches_character_set[<[lib_data].data_key[alphabet_set]><[lib_data].data_key[number_set]>]>
+        - determine <[element].to_lowercase.matches_character_set[<script[lib_generic_data].data_key[alphabet_set]><script[lib_generic_data].data_key[number_set]>]>
 
 lib_is_material:
     type: procedure
@@ -37,3 +37,24 @@ lib_is_air:
     definitions: location
     script:
         - determine <[location].material.name.equals[air]>
+
+lib_is_chicken_jockey:
+    type: procedure
+    debug: false
+    definitions: entity
+    script:
+        - determine <[entity].advanced_matches[zombie].and[<[entity].is_baby>].and[<[entity].advanced_matches[chicken].if_null[false]>].or[<[entity].advanced_matches[chicken].and[<[entity].advanced_matches[zombie].if_null[false]>].and[<[entity].passenger.is_baby.if_null[false]>]>]>
+
+lib_is_spider_jockey:
+    type: procedure
+    debug: false
+    definitions: entity
+    script:
+        - determine <[entity].advanced_matches[*spider].and[<[entity].passenger.advanced_matches[*skeleton|stray].if_null[false]>].or[<[entity].advanced_matches[*skeleton|stray].and[<[entity].vehicle.advanced_matches[*spider].if_null[false]>]>]>
+
+lib_is_skeleton_horseman:
+    type: procedure
+    debug: false
+    definitions: entity
+    script:
+        - determine <[entity].advanced_matches[skeleton_horse].and[<[entity].passenger.advanced_matches[*skeleton|stray].if_null[false]>].or[<[entity].advanced_matches[*skeleton|stray].and[<[entity].vehicle.advanced_matches[skeleton_horse].if_null[false]>]>]>

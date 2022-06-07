@@ -35,7 +35,7 @@ lib_instances_of_character:
     debug: false
     definitions: text|search
     script:
-        - determine <[text].trim_to_character_set[<[search]>].length>
+        - determine <[text].trim_to_character_set[<[search]>].length.div[<[search].size>]>
 
 lib_flipped_case:
     type: procedure

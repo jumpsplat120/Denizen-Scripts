@@ -1,17 +1,40 @@
-# fill_list: Fills a list with a the results of a procedure script, with length 'length'.
+# fill_list: Fills a list with a the results of a procedure script and it's contexts, with length 'length'.
 # find_nearest_npc_by_name: Find the nearest spawned npc to a passed location that matches the name passed.Returns false if no npc with that name is found.
-# player_by_name: Returns the dPlayer of a player, parsed from the passed name. Unlike <&lt>servermatch_offline_player<&gt>, this will only return the player object if the name is matched exactly, excludingcase sensitivity. This is useful for commands that take player names where it's important to verify who acommand is being cast on. For example, if you had a command that wiped a player's inventory, or granted theplayer special permissions. Returns false if the player name does not match a player who has joined yourserver.
+# player_by_name: Returns the dPlayer of a player, parsed from the passed name. Unlike <&lt>server match_offline_player<&gt>, this will only return the player object if the name is matched exactly, excludingcase sensitivity. This is useful for commands that take player names where it's important to verify who acommand is being cast on. For example, if you had a command that wiped a player's inventory, or granted theplayer special permissions. Returns false if the player name does not match a player who has joined yourserver.
 # outline_cuboid: Returns a list of locations that outline the physical cuboid, based in the density parmeter.The higher the density, the more locations returned. If density is not passed, uses a default of 1, which isone location per block. Unlike the outline tag, this CANNOT be used for actual locations, and is usedinternally for the particles in the notable tool. If you want a visual representation of a cuboid forwhatever reason, use this. If not, consider using the actual outline tag.
-# outline_location: Returns a list of locations that outline the block of a location. If the passed locationisn't an actual block, it will highlight an area that is the size of one block, but will be offset from therest of the Minecraft grid.
-# shell_ellipsoid: Returns a list of locations that create a shell of the physical ellipsoid, based on thedenisity parmeter. The higher the denisity, the more locations returned. If denisity is not passed, uses adefault of 1. Unlike the shell tag, this CANNOT be used for actual locations, and is used internally for theparticles in the notable tool. If you want a visual representation of an ellipsoid for whatever reason, usethis. If not, consider using the actual shell tag.
-# center_armor_stand_on_head: Does what it says on the tin; returns a location where the armor stand is centered on the head. This returns the center of a block, so you will most likely need to adjust seperately after using this procedure.
-# block_face: Get's the face of a block that the passed entity is looking up, up to the range passed. If there is no passed entity, attempts to fallback to a linked player, and if there is no range, uses the default of 200.
+# outline_location: Returns a list of locations that outline the block of a location. If the passed location isn't an actual block, it will highlight an area that is the size of one block, but will be offset from therest of the Minecraft grid.
+# shell_ellipsoid: Returns a list of locations that create a shell of the physical ellipsoid, based on the denisity parmeter. The higher the denisity, the more locations returned. If denisity is not passed, uses adefault of 1. Unlike the shell tag, this CANNOT be used for actual locations, and is used internally for the particles in the notable tool. If you want a visual representation of an ellipsoid for whatever reason, use this. If not, consider using the actual shell tag.
+# center_on_head: Does what it says on the tin; returns a location where the armor stand is centered on the head. This returns the center of a block, so you will most likely need to adjust seperately after using this procedure.
+# block_face: Get's the face of a block that the passed entity is looking at, up to the range passed. If there is no passed entity, attempts to fallback to a linked player, and if there is no range, uses the default of 200.
 # block_facing: Get's the facing vector of the block at location.
+# sort_by_distance_to: Sorts a list of location by their distance to another location.
+# full_volume: returns the true full volume of a cuboid, including sub cuboids.
+# formatted_date: returns the current timestamp, formatted in a nice way, or a passed timestamp.
 # rainbow_list: Returns a list of just colors. Similar to rainbow text, but doesn't need text, so you can use the colors however and have them be to your spec.
 # unstackable: Takes a passed item name, and returns an item with random nbt on it, so it doesn't stack with other items of the same type. Useful for creating non stacking items out of a material that normally stacks, when you don't want to adjust the material in it's entirety.
 # face_to_vector: Takes a face (up/down/north/south/east/west) and turns it into a vector (0,1,0/0,-1,0...)
 # mix_dyes: Pass in a list of Minecraft Item dyes of any size and get back a ColorTag representing the colors mixed together.
 # command_usage: Takes a command's usage (ex. /tp <player_name>) and automatically formats it with colors to make it easier to read/parse.
+# tokenize: Breaks words into "syllables". Not super accurate, but it's good enough for most purposes.
+
+lib_tokenize:
+    type: procedure
+    debug: false
+    definitions: element
+    script:
+        - define vowels <list[a|e|i|o|u|y]>
+        - define word <[element].to_list>
+        - foreach <[word]> as:letter:
+            - if <[letter]> == " ":
+                - define result[<[result].size>]:<[result].last><[token].unseparated>
+                - define token:!
+                - foreach next
+            - define token:->:<[letter]>
+            - if <[letter]> in <[vowels]> and <[word].get[<[loop_index].sub[1]>]> not in <[vowels]>:
+                - define result:->:<[token].unseparated>
+                - define token:!
+        - define result[<[result].size>]:<[result].last><[token].unseparated> if:<[token].exists>
+        - determine <[result]>
 
 lib_fill_list:
     type: procedure
@@ -92,12 +115,12 @@ lib_shell_ellipsoid:
             - define result:->:<[center].with_x[<[center].x.add[<[theta_cos].mul[<[lambda].cos>].mul[<[ellipsoid].size.x>]>]>].with_y[<[center].y.add[<[theta_cos].mul[<[lambda].sin>].mul[<[ellipsoid].size.y>]>]>].with_z[<[center].z.add[<[theta].sin.mul[<[ellipsoid].size.z>]>]>]>
         - determine <[result]>
 
-lib_center_armor_stand_on_head:
+lib_center_on_head:
     type: procedure
     debug: false
     definitions: loc
     script:
-        - determine <[loc].center.relative[0,-1.45,0.265]>
+        - determine <[loc].add[-0.01,0.25,0.01]>
 
 lib_block_face:
     type: procedure
@@ -123,9 +146,25 @@ lib_rainbow_list:
         - define increment <[increment].if_true[15].if_false[<[increment]>].if_null[15]>
         - define color <[color].if_true[<proc[lib_random_color_tag]>].if_false[<[color]>].if_null[<proc[lib_random_color_tag]>]>
         - repeat <[amount]>:
-            - define color_list:->:<&color[<[color]>]>
-            - define color <[color].with_hue[<[color].hue.add[15]>]>
+            - define color_list:->:<[color]>
+            - define color <[color].with_hue[<[color].hue.add[<[increment]>]>]>
         - determine <[color_list]>
+
+lib_sort_by_distance_to:
+    type: procedure
+    debug: false
+    definitions: list|location
+    script:
+        - define result <list>
+        - foreach <[list]> as:loc:
+            - define distance <[loc].distance[<[location]>]>
+            - define index 1
+            - foreach <[result]> as:compare_loc:
+                - if <[distance]> <= <[compare_loc].distance[<[location]>]>:
+                    - foreach stop
+                - define index:++
+            - define result <[result].insert[<[loc]>].at[<[index]>]>
+        - determine <[result]>
 
 lib_full_volume:
     type: procedure
@@ -140,7 +179,7 @@ lib_unstackable:
     definitions: item
     script:
         - define item <[item].object_type.equals[Item].if_true[<[item]>].if_false[<item[<[item]>]>]>
-        - determine <[item].with[raw_nbt=<map.with[antistack].as[float:<util.random.decimal>]>]>
+        - determine <[item].with[raw_nbt=<map.with[antistack].as[float:<util.random_decimal>]>]>
 
 lib_face_to_vector:
     type: procedure
@@ -163,8 +202,9 @@ lib_mix_dyes:
 lib_formatted_date:
     type: procedure
     debug: false
+    definitions: time
     script:
-        - determine "<util.time_now.format[h':'m a',' MMMM '<&lt>element['d'].proc[lib_ordinal]<&gt>' uuuu].parsed>"
+        - determine "<[time].if_null[<util.time_now>].format[h':'mm a',' MMMM '<&lt>element['d'].proc[lib_ordinal]<&gt>' uuuu].parsed>"
 
 lib_command_usage:
     type: procedure
@@ -187,3 +227,41 @@ lib_command_usage:
         - foreach <[lines]>:
             - define lines[<[loop_index]>]:<[c].get[less_or_greater_than]><&lt><[c].get[non_literal]><[value].strip_color><[c].get[less_or_greater_than]><&gt><[l]> if:<[loop_index].mod[2].equals[0]>
         - determine <[lines].unseparated>
+
+lib_calculate_xp_drop_from_mobs:
+    type: procedure
+    debug: false
+    definitions: entity
+    script:
+        - define name <[entity].entity_type.to_lowercase>
+        - if <[name]> == player:
+            - define xp <player.xp_level.mul[7].min[100]>
+        - else:
+            - if <[entity].has_passenger> or <[entity].is_inside_vehicle>:
+                - define name ridden_<[name]>
+            - else if <[entity].is_baby.if_null[false]>:
+                - define name baby_<[name]>
+            - else if <[name]> == ender_dragon:
+                - define name summoned_<[name]> if:<server.has_flag[ender_dragon_killed]>
+            - define min_max <script[lib_generic_data].data_key[mob_xp_rates.<[name]>].if_null[null]>
+            - define name <[entity].entity_type.to_lowercase>
+            - define min_max <script[lib_generic_data].data_key[mob_xp_rates.<[name]>]> if:<[min_max].equals[null]>
+            - if <[entity].proc[lib_is_chicken_jockey]> or <[entity].proc[lib_is_spider_jockey]> or <[entity].proc[lib_is_skeleton_horseman]>:
+                - repeat <[entity].passenger.equipment_map.size.if_null[0]>:
+                    - define xp:+:<util.random.int[1].to[3]>
+                - repeat <[entity].vehicle.equipment_map.size.if_null[0]>:
+                    - define xp:+:<util.random.int[1].to[3]>
+            - repeat <[entity].equipment_map.size.if_null[0]>:
+                - define xp:+:<util.random.int[1].to[3]>
+            - define xp:+:<util.random.int[<[min_max].get[min]>].to[<[min_max].get[max]>]>
+        - determine <[xp]>
+
+lib_get_script_recipes:
+    type: procedure
+    debug: false
+    script:
+        - define result  <map>
+        - define recipes <server.recipe_ids.filter[starts_with[denizen]]>
+        - foreach <[recipes]> as:recipe:
+            - define result.<[recipe].after[recipe_].before_last[_]>:->:<[recipe]>
+        - determine <[result]>

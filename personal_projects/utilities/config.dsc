@@ -23,5 +23,5 @@ lib_config:
             - __interact_step
         mobs:
             - player
-            - armor_stand
+            #- armor_stand
             - dropped_item

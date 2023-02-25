@@ -1,9 +1,7 @@
 # --------------------DATA SCRIPTS-------------------- #
 
-lib_generic_data:
+lib_core:
     type: data
-    alphabet_set: abcdefghijklmnopqrstuvwxyz
-    number_set: 0123456789
     phi: 1.618033988749895
     epsilon: 0.0000000000000000000000000000000000000000000000000000000000000001
     ease:
@@ -106,20 +104,6 @@ lib_generic_data:
         - pling
         - snare
         - xylophone
-    roman:
-        - M/1000
-        - CM/900
-        - D/500
-        - CD/400
-        - C/100
-        - XC/90
-        - L/50
-        - XL/40
-        - X/10
-        - IX/9
-        - V/5
-        - IV/4
-        - I/1
     attributes:
         wooden_sword:
             slot: hand
@@ -325,17 +309,6 @@ lib_generic_data:
             armor: 3
             armor_toughness: 2
             knockback_resistance: 1
-    face_to_vec:
-        up: 0,1,0
-        down: 0,-1,0
-        north: 0,0,-1
-        south: 0,0,1
-        east: 1,0,0
-        west: -1,0,0
-        southeast: 1,0,1
-        southwest: -1,0,1
-        northeast: 1,0,-1
-        northwest: -1,0,-1
     mob_xp_rates:
         bat:
             min: 0

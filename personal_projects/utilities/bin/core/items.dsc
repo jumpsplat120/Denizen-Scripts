@@ -1,4 +1,4 @@
-lib_potion_night_vision:
+custom_potion_night_vision:
     type: item
     debug: false
     material: potion
@@ -8,7 +8,7 @@ lib_potion_night_vision:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2020a4]>]>
             - <map[type=night_vision;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_night_vision_extended:
+custom_potion_night_vision_extended:
     type: item
     debug: false
     material: potion
@@ -18,7 +18,7 @@ lib_potion_night_vision_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2020a4]>]>
             - <map[type=night_vision;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_night_vision:
+custom_lingering_potion_night_vision:
     type: item
     debug: false
     material: lingering_potion
@@ -28,7 +28,7 @@ lib_lingering_potion_night_vision:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2020a4]>]>
             - <map[type=night_vision;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_night_vision_extended:
+custom_lingering_potion_night_vision_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -38,7 +38,7 @@ lib_lingering_potion_night_vision_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2020a4]>]>
             - <map[type=night_vision;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_night_vision:
+custom_tipped_arrow_night_vision:
     type: item
     debug: false
     material: tipped_arrow
@@ -48,7 +48,7 @@ lib_tipped_arrow_night_vision:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2020a4]>]>
             - <map[type=night_vision;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_night_vision_extended:
+custom_tipped_arrow_night_vision_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -58,7 +58,7 @@ lib_tipped_arrow_night_vision_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2020a4]>]>
             - <map[type=night_vision;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_night_vision:
+custom_splash_potion_night_vision:
     type: item
     debug: false
     material: splash_potion
@@ -68,7 +68,7 @@ lib_splash_potion_night_vision:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2020a4]>]>
             - <map[type=night_vision;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_night_vision_extended:
+custom_splash_potion_night_vision_extended:
     type: item
     debug: false
     material: splash_potion
@@ -78,7 +78,7 @@ lib_splash_potion_night_vision_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2020a4]>]>
             - <map[type=night_vision;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_invisibility:
+custom_potion_invisibility:
     type: item
     debug: false
     material: potion
@@ -88,7 +88,7 @@ lib_potion_invisibility:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#818595]>]>
             - <map[type=invisibility;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_invisibility:
+custom_splash_potion_invisibility:
     type: item
     debug: false
     material: splash_potion
@@ -98,7 +98,7 @@ lib_splash_potion_invisibility:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#818595]>]>
             - <map[type=invisibility;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_invisibility:
+custom_lingering_potion_invisibility:
     type: item
     debug: false
     material: lingering_potion
@@ -108,7 +108,7 @@ lib_lingering_potion_invisibility:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#818595]>]>
             - <map[type=invisibility;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_invisibility:
+custom_tipped_arrow_invisibility:
     type: item
     debug: false
     material: tipped_arrow
@@ -118,7 +118,7 @@ lib_tipped_arrow_invisibility:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#818595]>]>
             - <map[type=invisibility;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_invisibility_extended:
+custom_potion_invisibility_extended:
     type: item
     debug: false
     material: potion
@@ -128,7 +128,7 @@ lib_potion_invisibility_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#818595]>]>
             - <map[type=invisibility;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_invisibility_extended:
+custom_splash_potion_invisibility_extended:
     type: item
     debug: false
     material: splash_potion
@@ -138,7 +138,7 @@ lib_splash_potion_invisibility_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#818595]>]>
             - <map[type=invisibility;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_invisibility_extended:
+custom_lingering_potion_invisibility_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -148,7 +148,7 @@ lib_lingering_potion_invisibility_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#818595]>]>
             - <map[type=invisibility;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_invisibility_extended:
+custom_tipped_arrow_invisibility_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -158,7 +158,7 @@ lib_tipped_arrow_invisibility_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#818595]>]>
             - <map[type=invisibility;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_jump:
+custom_potion_jump:
     type: item
     debug: false
     material: potion
@@ -168,7 +168,7 @@ lib_potion_jump:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_jump:
+custom_splash_potion_jump:
     type: item
     debug: false
     material: splash_potion
@@ -178,7 +178,7 @@ lib_splash_potion_jump:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_jump:
+custom_lingering_potion_jump:
     type: item
     debug: false
     material: lingering_potion
@@ -188,7 +188,7 @@ lib_lingering_potion_jump:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_jump:
+custom_tipped_arrow_jump:
     type: item
     debug: false
     material: tipped_arrow
@@ -198,7 +198,7 @@ lib_tipped_arrow_jump:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_jump_extended:
+custom_potion_jump_extended:
     type: item
     debug: false
     material: potion
@@ -208,7 +208,7 @@ lib_potion_jump_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_jump_extended:
+custom_splash_potion_jump_extended:
     type: item
     debug: false
     material: splash_potion
@@ -218,7 +218,7 @@ lib_splash_potion_jump_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_jump_extended:
+custom_lingering_potion_jump_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -228,7 +228,7 @@ lib_lingering_potion_jump_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_jump_extended:
+custom_tipped_arrow_jump_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -238,7 +238,7 @@ lib_tipped_arrow_jump_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_jump_upgraded:
+custom_potion_jump_upgraded:
     type: item
     debug: false
     material: potion
@@ -248,7 +248,7 @@ lib_potion_jump_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_jump_upgraded:
+custom_splash_potion_jump_upgraded:
     type: item
     debug: false
     material: splash_potion
@@ -258,7 +258,7 @@ lib_splash_potion_jump_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_jump_upgraded:
+custom_lingering_potion_jump_upgraded:
     type: item
     debug: false
     material: lingering_potion
@@ -268,7 +268,7 @@ lib_lingering_potion_jump_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_jump_upgraded:
+custom_tipped_arrow_jump_upgraded:
     type: item
     debug: false
     material: tipped_arrow
@@ -278,7 +278,7 @@ lib_tipped_arrow_jump_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#23fc4d]>]>
             - <map[type=jump;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_fire_resistance:
+custom_potion_fire_resistance:
     type: item
     debug: false
     material: potion
@@ -288,7 +288,7 @@ lib_potion_fire_resistance:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#e89d3b]>]>
             - <map[type=fire_resistance;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_fire_resistance:
+custom_splash_potion_fire_resistance:
     type: item
     debug: false
     material: splash_potion
@@ -298,7 +298,7 @@ lib_splash_potion_fire_resistance:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#e89d3b]>]>
             - <map[type=fire_resistance;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_fire_resistance:
+custom_lingering_potion_fire_resistance:
     type: item
     debug: false
     material: lingering_potion
@@ -308,7 +308,7 @@ lib_lingering_potion_fire_resistance:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#e89d3b]>]>
             - <map[type=fire_resistance;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_fire_resistance:
+custom_tipped_arrow_fire_resistance:
     type: item
     debug: false
     material: tipped_arrow
@@ -318,7 +318,7 @@ lib_tipped_arrow_fire_resistance:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#e89d3b]>]>
             - <map[type=fire_resistance;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_fire_resistance_extended:
+custom_potion_fire_resistance_extended:
     type: item
     debug: false
     material: potion
@@ -328,7 +328,7 @@ lib_potion_fire_resistance_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#e89d3b]>]>
             - <map[type=fire_resistance;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_fire_resistance_extended:
+custom_splash_potion_fire_resistance_extended:
     type: item
     debug: false
     material: splash_potion
@@ -338,7 +338,7 @@ lib_splash_potion_fire_resistance_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#e89d3b]>]>
             - <map[type=fire_resistance;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_fire_resistance_extended:
+custom_lingering_potion_fire_resistance_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -348,7 +348,7 @@ lib_lingering_potion_fire_resistance_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#e89d3b]>]>
             - <map[type=fire_resistance;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_fire_resistance_extended:
+custom_tipped_arrow_fire_resistance_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -358,7 +358,7 @@ lib_tipped_arrow_fire_resistance_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#e89d3b]>]>
             - <map[type=fire_resistance;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_speed:
+custom_potion_speed:
     type: item
     debug: false
     material: potion
@@ -368,7 +368,7 @@ lib_potion_speed:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_speed:
+custom_splash_potion_speed:
     type: item
     debug: false
     material: splash_potion
@@ -378,7 +378,7 @@ lib_splash_potion_speed:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_speed:
+custom_lingering_potion_speed:
     type: item
     debug: false
     material: lingering_potion
@@ -388,7 +388,7 @@ lib_lingering_potion_speed:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_speed:
+custom_tipped_arrow_speed:
     type: item
     debug: false
     material: tipped_arrow
@@ -398,7 +398,7 @@ lib_tipped_arrow_speed:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_speed_extended:
+custom_potion_speed_extended:
     type: item
     debug: false
     material: potion
@@ -408,7 +408,7 @@ lib_potion_speed_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_speed_extended:
+custom_splash_potion_speed_extended:
     type: item
     debug: false
     material: splash_potion
@@ -418,7 +418,7 @@ lib_splash_potion_speed_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_speed_extended:
+custom_lingering_potion_speed_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -428,7 +428,7 @@ lib_lingering_potion_speed_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_speed_extended:
+custom_tipped_arrow_speed_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -438,7 +438,7 @@ lib_tipped_arrow_speed_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_speed_upgraded:
+custom_potion_speed_upgraded:
     type: item
     debug: false
     material: potion
@@ -448,7 +448,7 @@ lib_potion_speed_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_speed_upgraded:
+custom_splash_potion_speed_upgraded:
     type: item
     debug: false
     material: splash_potion
@@ -458,7 +458,7 @@ lib_splash_potion_speed_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_speed_upgraded:
+custom_lingering_potion_speed_upgraded:
     type: item
     debug: false
     material: lingering_potion
@@ -468,7 +468,7 @@ lib_lingering_potion_speed_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_speed_upgraded:
+custom_tipped_arrow_speed_upgraded:
     type: item
     debug: false
     material: tipped_arrow
@@ -478,7 +478,7 @@ lib_tipped_arrow_speed_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#7eb2ca]>]>
             - <map[type=speed;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_slowness:
+custom_potion_slowness:
     type: item
     debug: false
     material: potion
@@ -488,7 +488,7 @@ lib_potion_slowness:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_slowness:
+custom_splash_potion_slowness:
     type: item
     debug: false
     material: splash_potion
@@ -498,7 +498,7 @@ lib_splash_potion_slowness:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_slowness:
+custom_lingering_potion_slowness:
     type: item
     debug: false
     material: lingering_potion
@@ -508,7 +508,7 @@ lib_lingering_potion_slowness:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_slowness:
+custom_tipped_arrow_slowness:
     type: item
     debug: false
     material: tipped_arrow
@@ -518,7 +518,7 @@ lib_tipped_arrow_slowness:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_slowness_extended:
+custom_potion_slowness_extended:
     type: item
     debug: false
     material: potion
@@ -528,7 +528,7 @@ lib_potion_slowness_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_slowness_extended:
+custom_splash_potion_slowness_extended:
     type: item
     debug: false
     material: splash_potion
@@ -538,7 +538,7 @@ lib_splash_potion_slowness_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_slowness_extended:
+custom_lingering_potion_slowness_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -548,7 +548,7 @@ lib_lingering_potion_slowness_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_slowness_extended:
+custom_tipped_arrow_slowness_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -558,7 +558,7 @@ lib_tipped_arrow_slowness_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_slowness_upgraded:
+custom_potion_slowness_upgraded:
     type: item
     debug: false
     material: potion
@@ -568,7 +568,7 @@ lib_potion_slowness_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_slowness_upgraded:
+custom_splash_potion_slowness_upgraded:
     type: item
     debug: false
     material: splash_potion
@@ -578,7 +578,7 @@ lib_splash_potion_slowness_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_slowness_upgraded:
+custom_lingering_potion_slowness_upgraded:
     type: item
     debug: false
     material: lingering_potion
@@ -588,7 +588,7 @@ lib_lingering_potion_slowness_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_slowness_upgraded:
+custom_tipped_arrow_slowness_upgraded:
     type: item
     debug: false
     material: tipped_arrow
@@ -598,7 +598,7 @@ lib_tipped_arrow_slowness_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#5c6e83]>]>
             - <map[type=slow;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_potion_turtle_master:
+custom_potion_turtle_master:
     type: item
     debug: false
     material: potion
@@ -609,7 +609,7 @@ lib_potion_turtle_master:
             - <map[type=slow;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=2;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_turtle_master:
+custom_splash_potion_turtle_master:
     type: item
     debug: false
     material: splash_potion
@@ -620,7 +620,7 @@ lib_splash_potion_turtle_master:
             - <map[type=slow;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=2;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_turtle_master:
+custom_lingering_potion_turtle_master:
     type: item
     debug: false
     material: lingering_potion
@@ -631,7 +631,7 @@ lib_lingering_potion_turtle_master:
             - <map[type=slow;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=2;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_turtle_master:
+custom_tipped_arrow_turtle_master:
     type: item
     debug: false
     material: tipped_arrow
@@ -642,7 +642,7 @@ lib_tipped_arrow_turtle_master:
             - <map[type=slow;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=2;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_potion_turtle_master_extended:
+custom_potion_turtle_master_extended:
     type: item
     debug: false
     material: potion
@@ -653,7 +653,7 @@ lib_potion_turtle_master_extended:
             - <map[type=slow;amplifier=3;duration=800t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=2;duration=800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_turtle_master_extended:
+custom_splash_potion_turtle_master_extended:
     type: item
     debug: false
     material: splash_potion
@@ -664,7 +664,7 @@ lib_splash_potion_turtle_master_extended:
             - <map[type=slow;amplifier=3;duration=800t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=2;duration=800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_turtle_master_extended:
+custom_lingering_potion_turtle_master_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -675,7 +675,7 @@ lib_lingering_potion_turtle_master_extended:
             - <map[type=slow;amplifier=3;duration=800t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=2;duration=800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_turtle_master_extended:
+custom_tipped_arrow_turtle_master_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -686,7 +686,7 @@ lib_tipped_arrow_turtle_master_extended:
             - <map[type=slow;amplifier=3;duration=800t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=2;duration=800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_turtle_master_upgraded:
+custom_potion_turtle_master_upgraded:
     type: item
     debug: false
     material: potion
@@ -697,7 +697,7 @@ lib_potion_turtle_master_upgraded:
             - <map[type=slow;amplifier=5;duration=400t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_turtle_master_upgraded:
+custom_splash_potion_turtle_master_upgraded:
     type: item
     debug: false
     material: splash_potion
@@ -708,7 +708,7 @@ lib_splash_potion_turtle_master_upgraded:
             - <map[type=slow;amplifier=5;duration=400t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_turtle_master_upgraded:
+custom_lingering_potion_turtle_master_upgraded:
     type: item
     debug: false
     material: lingering_potion
@@ -719,7 +719,7 @@ lib_lingering_potion_turtle_master_upgraded:
             - <map[type=slow;amplifier=5;duration=400t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_turtle_master_upgraded:
+custom_tipped_arrow_turtle_master_upgraded:
     type: item
     debug: false
     material: tipped_arrow
@@ -730,7 +730,7 @@ lib_tipped_arrow_turtle_master_upgraded:
             - <map[type=slow;amplifier=5;duration=400t;ambient=true;particles=true;icon=true]>
             - <map[type=damage_resistance;amplifier=3;duration=400t;ambient=true;particles=true;icon=true]>
 
-lib_potion_water_breathing:
+custom_potion_water_breathing:
     type: item
     debug: false
     material: potion
@@ -740,7 +740,7 @@ lib_potion_water_breathing:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2f549c]>]>
             - <map[type=water_breathing;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_water_breathing:
+custom_splash_potion_water_breathing:
     type: item
     debug: false
     material: splash_potion
@@ -750,7 +750,7 @@ lib_splash_potion_water_breathing:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2f549c]>]>
             - <map[type=water_breathing;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_water_breathing:
+custom_lingering_potion_water_breathing:
     type: item
     debug: false
     material: lingering_potion
@@ -760,7 +760,7 @@ lib_lingering_potion_water_breathing:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2f549c]>]>
             - <map[type=water_breathing;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_water_breathing:
+custom_tipped_arrow_water_breathing:
     type: item
     debug: false
     material: tipped_arrow
@@ -770,7 +770,7 @@ lib_tipped_arrow_water_breathing:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2f549c]>]>
             - <map[type=water_breathing;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_water_breathing_extended:
+custom_potion_water_breathing_extended:
     type: item
     debug: false
     material: potion
@@ -780,7 +780,7 @@ lib_potion_water_breathing_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2f549c]>]>
             - <map[type=water_breathing;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_water_breathing_extended:
+custom_splash_potion_water_breathing_extended:
     type: item
     debug: false
     material: splash_potion
@@ -790,7 +790,7 @@ lib_splash_potion_water_breathing_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2f549c]>]>
             - <map[type=water_breathing;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_water_breathing_extended:
+custom_lingering_potion_water_breathing_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -800,7 +800,7 @@ lib_lingering_potion_water_breathing_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2f549c]>]>
             - <map[type=water_breathing;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_water_breathing_extended:
+custom_tipped_arrow_water_breathing_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -810,7 +810,7 @@ lib_tipped_arrow_water_breathing_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#2f549c]>]>
             - <map[type=water_breathing;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_instant_heal:
+custom_potion_instant_heal:
     type: item
     debug: false
     material: potion
@@ -820,7 +820,7 @@ lib_potion_instant_heal:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fc2524]>]>
             - <map[type=heal;amplifier=0;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_instant_heal:
+custom_splash_potion_instant_heal:
     type: item
     debug: false
     material: splash_potion
@@ -830,7 +830,7 @@ lib_splash_potion_instant_heal:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fc2524]>]>
             - <map[type=heal;amplifier=0;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_instant_heal:
+custom_lingering_potion_instant_heal:
     type: item
     debug: false
     material: lingering_potion
@@ -840,7 +840,7 @@ lib_lingering_potion_instant_heal:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fc2524]>]>
             - <map[type=heal;amplifier=0;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_instant_heal:
+custom_tipped_arrow_instant_heal:
     type: item
     debug: false
     material: tipped_arrow
@@ -850,7 +850,7 @@ lib_tipped_arrow_instant_heal:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fc2524]>]>
             - <map[type=heal;amplifier=0;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_potion_instant_heal_upgraded:
+custom_potion_instant_heal_upgraded:
     type: item
     debug: false
     material: potion
@@ -860,7 +860,7 @@ lib_potion_instant_heal_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fc2524]>]>
             - <map[type=heal;amplifier=1;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_instant_heal_upgraded:
+custom_splash_potion_instant_heal_upgraded:
     type: item
     debug: false
     material: splash_potion
@@ -870,7 +870,7 @@ lib_splash_potion_instant_heal_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fc2524]>]>
             - <map[type=heal;amplifier=1;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_instant_heal_upgraded:
+custom_lingering_potion_instant_heal_upgraded:
     type: item
     debug: false
     material: lingering_potion
@@ -880,7 +880,7 @@ lib_lingering_potion_instant_heal_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fc2524]>]>
             - <map[type=heal;amplifier=1;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_instant_heal_upgraded:
+custom_tipped_arrow_instant_heal_upgraded:
     type: item
     debug: false
     material: tipped_arrow
@@ -890,7 +890,7 @@ lib_tipped_arrow_instant_heal_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fc2524]>]>
             - <map[type=heal;amplifier=1;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_potion_instant_damage:
+custom_potion_instant_damage:
     type: item
     debug: false
     material: potion
@@ -900,7 +900,7 @@ lib_potion_instant_damage:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#440a09]>]>
             - <map[type=harm;amplifier=0;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_instant_damage:
+custom_splash_potion_instant_damage:
     type: item
     debug: false
     material: splash_potion
@@ -910,7 +910,7 @@ lib_splash_potion_instant_damage:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#440a09]>]>
             - <map[type=harm;amplifier=0;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_instant_damage:
+custom_lingering_potion_instant_damage:
     type: item
     debug: false
     material: lingering_potion
@@ -920,7 +920,7 @@ lib_lingering_potion_instant_damage:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#440a09]>]>
             - <map[type=harm;amplifier=0;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_instant_damage:
+custom_tipped_arrow_instant_damage:
     type: item
     debug: false
     material: tipped_arrow
@@ -930,7 +930,7 @@ lib_tipped_arrow_instant_damage:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#440a09]>]>
             - <map[type=harm;amplifier=0;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_potion_instant_damage_upgraded:
+custom_potion_instant_damage_upgraded:
     type: item
     debug: false
     material: potion
@@ -940,7 +940,7 @@ lib_potion_instant_damage_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#440a09]>]>
             - <map[type=harm;amplifier=1;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_instant_damage_upgraded:
+custom_splash_potion_instant_damage_upgraded:
     type: item
     debug: false
     material: splash_potion
@@ -950,7 +950,7 @@ lib_splash_potion_instant_damage_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#440a09]>]>
             - <map[type=harm;amplifier=1;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_instant_damage_upgraded:
+custom_lingering_potion_instant_damage_upgraded:
     type: item
     debug: false
     material: lingering_potion
@@ -960,7 +960,7 @@ lib_lingering_potion_instant_damage_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#440a09]>]>
             - <map[type=harm;amplifier=1;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_instant_damage_upgraded:
+custom_tipped_arrow_instant_damage_upgraded:
     type: item
     debug: false
     material: tipped_arrow
@@ -970,7 +970,7 @@ lib_tipped_arrow_instant_damage_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#440a09]>]>
             - <map[type=harm;amplifier=1;duration=0t;ambient=true;particles=true;icon=true]>
 
-lib_potion_poison:
+custom_potion_poison:
     type: item
     debug: false
     material: potion
@@ -980,7 +980,7 @@ lib_potion_poison:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=0;duration=900t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_poison:
+custom_splash_potion_poison:
     type: item
     debug: false
     material: splash_potion
@@ -990,7 +990,7 @@ lib_splash_potion_poison:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=0;duration=900t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_poison:
+custom_lingering_potion_poison:
     type: item
     debug: false
     material: lingering_potion
@@ -1000,7 +1000,7 @@ lib_lingering_potion_poison:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=0;duration=900t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_poison:
+custom_tipped_arrow_poison:
     type: item
     debug: false
     material: tipped_arrow
@@ -1010,7 +1010,7 @@ lib_tipped_arrow_poison:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=0;duration=900t;ambient=true;particles=true;icon=true]>
 
-lib_potion_poison_extended:
+custom_potion_poison_extended:
     type: item
     debug: false
     material: potion
@@ -1020,7 +1020,7 @@ lib_potion_poison_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_poison_extended:
+custom_splash_potion_poison_extended:
     type: item
     debug: false
     material: splash_potion
@@ -1030,7 +1030,7 @@ lib_splash_potion_poison_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_poison_extended:
+custom_lingering_potion_poison_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -1040,7 +1040,7 @@ lib_lingering_potion_poison_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_poison_extended:
+custom_tipped_arrow_poison_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -1050,7 +1050,7 @@ lib_tipped_arrow_poison_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_poison_upgraded:
+custom_potion_poison_upgraded:
     type: item
     debug: false
     material: potion
@@ -1060,7 +1060,7 @@ lib_potion_poison_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=1;duration=420t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_poison_upgraded:
+custom_splash_potion_poison_upgraded:
     type: item
     debug: false
     material: splash_potion
@@ -1070,7 +1070,7 @@ lib_splash_potion_poison_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=1;duration=420t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_poison_upgraded:
+custom_lingering_potion_poison_upgraded:
     type: item
     debug: false
     material: lingering_potion
@@ -1080,7 +1080,7 @@ lib_lingering_potion_poison_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=1;duration=420t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_poison_upgraded:
+custom_tipped_arrow_poison_upgraded:
     type: item
     debug: false
     material: tipped_arrow
@@ -1090,7 +1090,7 @@ lib_tipped_arrow_poison_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#4f9632]>]>
             - <map[type=poison;amplifier=1;duration=420t;ambient=true;particles=true;icon=true]>
 
-lib_potion_regen:
+custom_potion_regen:
     type: item
     debug: false
     material: potion
@@ -1100,7 +1100,7 @@ lib_potion_regen:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=0;duration=900t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_regen:
+custom_splash_potion_regen:
     type: item
     debug: false
     material: splash_potion
@@ -1110,7 +1110,7 @@ lib_splash_potion_regen:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=0;duration=900t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_regen:
+custom_lingering_potion_regen:
     type: item
     debug: false
     material: lingering_potion
@@ -1120,7 +1120,7 @@ lib_lingering_potion_regen:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=0;duration=900t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_regen:
+custom_tipped_arrow_regen:
     type: item
     debug: false
     material: tipped_arrow
@@ -1130,7 +1130,7 @@ lib_tipped_arrow_regen:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=0;duration=900t;ambient=true;particles=true;icon=true]>
 
-lib_potion_regen_extended:
+custom_potion_regen_extended:
     type: item
     debug: false
     material: potion
@@ -1140,7 +1140,7 @@ lib_potion_regen_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_regen_extended:
+custom_splash_potion_regen_extended:
     type: item
     debug: false
     material: splash_potion
@@ -1150,7 +1150,7 @@ lib_splash_potion_regen_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_regen_extended:
+custom_lingering_potion_regen_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -1160,7 +1160,7 @@ lib_lingering_potion_regen_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_regen_extended:
+custom_tipped_arrow_regen_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -1170,7 +1170,7 @@ lib_tipped_arrow_regen_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_regen_upgraded:
+custom_potion_regen_upgraded:
     type: item
     debug: false
     material: potion
@@ -1180,7 +1180,7 @@ lib_potion_regen_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=1;duration=440t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_regen_upgraded:
+custom_splash_potion_regen_upgraded:
     type: item
     debug: false
     material: splash_potion
@@ -1190,7 +1190,7 @@ lib_splash_potion_regen_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=1;duration=440t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_regen_upgraded:
+custom_lingering_potion_regen_upgraded:
     type: item
     debug: false
     material: lingering_potion
@@ -1200,7 +1200,7 @@ lib_lingering_potion_regen_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=1;duration=440t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_regen_upgraded:
+custom_tipped_arrow_regen_upgraded:
     type: item
     debug: false
     material: tipped_arrow
@@ -1210,7 +1210,7 @@ lib_tipped_arrow_regen_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#d15eae]>]>
             - <map[type=regeneration;amplifier=1;duration=440t;ambient=true;particles=true;icon=true]>
 
-lib_potion_strength:
+custom_potion_strength:
     type: item
     debug: false
     material: potion
@@ -1220,7 +1220,7 @@ lib_potion_strength:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_strength:
+custom_splash_potion_strength:
     type: item
     debug: false
     material: splash_potion
@@ -1230,7 +1230,7 @@ lib_splash_potion_strength:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_strength:
+custom_lingering_potion_strength:
     type: item
     debug: false
     material: lingering_potion
@@ -1240,7 +1240,7 @@ lib_lingering_potion_strength:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_strength:
+custom_tipped_arrow_strength:
     type: item
     debug: false
     material: tipped_arrow
@@ -1250,7 +1250,7 @@ lib_tipped_arrow_strength:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=0;duration=3600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_strength_extended:
+custom_potion_strength_extended:
     type: item
     debug: false
     material: potion
@@ -1260,7 +1260,7 @@ lib_potion_strength_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_strength_extended:
+custom_splash_potion_strength_extended:
     type: item
     debug: false
     material: splash_potion
@@ -1270,7 +1270,7 @@ lib_splash_potion_strength_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_strength_extended:
+custom_lingering_potion_strength_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -1280,7 +1280,7 @@ lib_lingering_potion_strength_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_strength_extended:
+custom_tipped_arrow_strength_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -1290,7 +1290,7 @@ lib_tipped_arrow_strength_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=0;duration=9600t;ambient=true;particles=true;icon=true]>
 
-lib_potion_strength_upgraded:
+custom_potion_strength_upgraded:
     type: item
     debug: false
     material: potion
@@ -1300,7 +1300,7 @@ lib_potion_strength_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_strength_upgraded:
+custom_splash_potion_strength_upgraded:
     type: item
     debug: false
     material: splash_potion
@@ -1310,7 +1310,7 @@ lib_splash_potion_strength_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_strength_upgraded:
+custom_lingering_potion_strength_upgraded:
     type: item
     debug: false
     material: lingering_potion
@@ -1320,7 +1320,7 @@ lib_lingering_potion_strength_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_strength_upgraded:
+custom_tipped_arrow_strength_upgraded:
     type: item
     debug: false
     material: tipped_arrow
@@ -1330,7 +1330,7 @@ lib_tipped_arrow_strength_upgraded:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#962524]>]>
             - <map[type=increase_damage;amplifier=1;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_weakness:
+custom_potion_weakness:
     type: item
     debug: false
     material: potion
@@ -1340,7 +1340,7 @@ lib_potion_weakness:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#494e49]>]>
             - <map[type=weakness;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_weakness:
+custom_splash_potion_weakness:
     type: item
     debug: false
     material: splash_potion
@@ -1350,7 +1350,7 @@ lib_splash_potion_weakness:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#494e49]>]>
             - <map[type=weakness;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_weakness:
+custom_lingering_potion_weakness:
     type: item
     debug: false
     material: lingering_potion
@@ -1360,7 +1360,7 @@ lib_lingering_potion_weakness:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#494e49]>]>
             - <map[type=weakness;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_weakness:
+custom_tipped_arrow_weakness:
     type: item
     debug: false
     material: tipped_arrow
@@ -1370,7 +1370,7 @@ lib_tipped_arrow_weakness:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#494e49]>]>
             - <map[type=weakness;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_weakness_extended:
+custom_potion_weakness_extended:
     type: item
     debug: false
     material: potion
@@ -1380,7 +1380,7 @@ lib_potion_weakness_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#494e49]>]>
             - <map[type=weakness;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_weakness_extended:
+custom_splash_potion_weakness_extended:
     type: item
     debug: false
     material: splash_potion
@@ -1390,7 +1390,7 @@ lib_splash_potion_weakness_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#494e49]>]>
             - <map[type=weakness;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_weakness_extended:
+custom_lingering_potion_weakness_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -1400,7 +1400,7 @@ lib_lingering_potion_weakness_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#494e49]>]>
             - <map[type=weakness;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_weakness_extended:
+custom_tipped_arrow_weakness_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -1410,7 +1410,7 @@ lib_tipped_arrow_weakness_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#494e49]>]>
             - <map[type=weakness;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_luck:
+custom_potion_luck:
     type: item
     debug: false
     material: potion
@@ -1420,7 +1420,7 @@ lib_potion_luck:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#349c00]>]>
             - <map[type=luck;amplifier=0;duration=6000t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_luck:
+custom_splash_potion_luck:
     type: item
     debug: false
     material: splash_potion
@@ -1430,7 +1430,7 @@ lib_splash_potion_luck:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#349c00]>]>
             - <map[type=luck;amplifier=0;duration=6000t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_luck:
+custom_lingering_potion_luck:
     type: item
     debug: false
     material: lingering_potion
@@ -1440,7 +1440,7 @@ lib_lingering_potion_luck:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#349c00]>]>
             - <map[type=luck;amplifier=0;duration=6000t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_luck:
+custom_tipped_arrow_luck:
     type: item
     debug: false
     material: tipped_arrow
@@ -1450,7 +1450,7 @@ lib_tipped_arrow_luck:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#349c00]>]>
             - <map[type=luck;amplifier=0;duration=6000t;ambient=true;particles=true;icon=true]>
 
-lib_potion_slow_falling:
+custom_potion_slow_falling:
     type: item
     debug: false
     material: potion
@@ -1460,7 +1460,7 @@ lib_potion_slow_falling:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fcf4d5]>]>
             - <map[type=slow_falling;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_slow_falling:
+custom_splash_potion_slow_falling:
     type: item
     debug: false
     material: splash_potion
@@ -1470,7 +1470,7 @@ lib_splash_potion_slow_falling:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fcf4d5]>]>
             - <map[type=slow_falling;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_slow_falling:
+custom_lingering_potion_slow_falling:
     type: item
     debug: false
     material: lingering_potion
@@ -1480,7 +1480,7 @@ lib_lingering_potion_slow_falling:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fcf4d5]>]>
             - <map[type=slow_falling;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_slow_falling:
+custom_tipped_arrow_slow_falling:
     type: item
     debug: false
     material: tipped_arrow
@@ -1490,7 +1490,7 @@ lib_tipped_arrow_slow_falling:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fcf4d5]>]>
             - <map[type=slow_falling;amplifier=0;duration=1800t;ambient=true;particles=true;icon=true]>
 
-lib_potion_slow_falling_extended:
+custom_potion_slow_falling_extended:
     type: item
     debug: false
     material: potion
@@ -1500,7 +1500,7 @@ lib_potion_slow_falling_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fcf4d5]>]>
             - <map[type=slow_falling;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_splash_potion_slow_falling_extended:
+custom_splash_potion_slow_falling_extended:
     type: item
     debug: false
     material: splash_potion
@@ -1510,7 +1510,7 @@ lib_splash_potion_slow_falling_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fcf4d5]>]>
             - <map[type=slow_falling;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_lingering_potion_slow_falling_extended:
+custom_lingering_potion_slow_falling_extended:
     type: item
     debug: false
     material: lingering_potion
@@ -1520,7 +1520,7 @@ lib_lingering_potion_slow_falling_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fcf4d5]>]>
             - <map[type=slow_falling;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_tipped_arrow_slow_falling_extended:
+custom_tipped_arrow_slow_falling_extended:
     type: item
     debug: false
     material: tipped_arrow
@@ -1530,18 +1530,18 @@ lib_tipped_arrow_slow_falling_extended:
             - <map[type=awkward;upgraded=false;extended=false;color=<color[#fcf4d5]>]>
             - <map[type=slow_falling;amplifier=0;duration=4800t;ambient=true;particles=true;icon=true]>
 
-lib_random_placer_item:
+custom_random_placer_item:
     type: item
     debug: false
     material: stick
     display name: <reset>Random Placer Tool
     mechanisms:
-        custom_model_data: <script[lib_config].data_key[cmd_offset].add[1]>
+        custom_model_data: <script[custom_config].data_key[cmd_offset].add[1]>
 
-lib_notable_tool_item:
+custom_notable_tool_item:
     type: item
     debug: false
     material: stick
     display name: <reset>Notable Tool
     mechanisms:
-        custom_model_data: <script[lib_config].data_key[cmd_offset].add[2]>
+        custom_model_data: <script[custom_config].data_key[cmd_offset].add[2]>

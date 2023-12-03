@@ -13,9 +13,21 @@ random_pitch:
 random_color:
     type: procedure
     debug: false
-    definitions: min_sat|min_val
+    definitions: map
     script:
-        - determine <&color[<proc[lib_random_color_tag].context[<[min_sat].if_null[true]>|<[min_val].if_null[true]>]>]>
+        - define map <[map].as_map.if_null[<map>]>
+        - define map <[map].default[min_hue].as[0]>
+        - define map <[map].default[max_hue].as[255]>
+        - define map <[map].default[min_saturation].as[100]>
+        - define map <[map].default[min_value].as[100]>
+        - define map <[map].default[max_saturation].as[255]>
+        - define map <[map].default[max_value].as[255]>
+        - determine <&color[<[map].proc[random_color_tag]>]>
+    data:
+        description: Returns a random &color tag, which can be used directly in text. Unlike a color tag, this can not be manipulated with standard colortag tags. By default, the minimum saturation/value are 100, and the maximum saturation/value are 255, while the min hue is 0, and max is 255, allowing the full spectrum.
+        usage:
+            - narrate "<proc[random_color]>This text is randomly colored using the default values."
+            - narrate "<proc[random_color].context[min_hue=50;max_hue=100;min_saturation=200;max_saturation=225;min_value=50;max_value=75]>This text is randomly colored with manually set min/max saturations and values."
 
 random_color_tag:
     type: procedure

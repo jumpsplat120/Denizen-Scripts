@@ -32,7 +32,7 @@ lib_random_text:
     definitions: length
     script:
         - define length <[length].if_null[true].if_true[10].if_false[<[length]>]>
-        - determine <script[lib_generic_data].data_key[alphabet_set].to_list.random[<[length]>].unseparated>
+        - determine <script[lib_core].data_key[alphabet_set].to_list.random[<[length]>].unseparated>
 
 lib_random_uppercase:
     type: procedure
@@ -63,7 +63,7 @@ lib_random_by_weight:
         - if <[map].size> > 0:
             - define rand <util.random_decimal.mul[<[map].values.sum>]>
             - if <[rand]> == 1:
-                - define rand:-:<script[lib_generic_data].data_key[epsilon]>
+                - define rand:-:<script[lib_core].data_key[epsilon]>
             - foreach <[map]> as:weight:
                 - if <[rand]> <= <[weight]>:
                     - determine <[key]>

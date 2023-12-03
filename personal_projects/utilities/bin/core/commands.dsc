@@ -16,7 +16,7 @@ simple_permissions:
     name: perm
     debug: false
     description: Gives a player a permission, using Denizen's flag system.<&nl><&nl>Not a true permission system. If the player argument is not filled, then command defaults to player running the command. By default, command will only run if you have OP level permissions or higher.<&nl>If the first argument is marked as "view", the command will instead display all of the player's current permissions. If the first is marked as "clear", the command will instead remove all of the specified player's permissions after the specified node.<&nl>Uses a node system. A * node counts as a wildcard for everything below that node. In otherwords, if you have perm1.*, you have permissions for everything underneath perm1. Giving a permission of a higher level, which is to say, perm1 over perm1.subperm1, will overwrite all lower level permissions. In other words, if a perm1 was given, then removed, the player would no longer have any perm1 permissions, including perm1.subperm1.
-    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.simple_permissions]>
+    usage: <proc[lib_command_usage].context[lib_core|command.usage.simple_permissions]>
     allowed help:
         - determine <player.is_op.if_null[true]>
     script:
@@ -75,7 +75,7 @@ panic_button:
     name: panic
     debug: false
     description: Panic button for the player.<&nl><&nl>Kills all mobs (excluding those on the exclude list) in all loaded chunks in the world the player is in, sets the time to day, heals the player, clears the weather, and feeds the player.
-    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.panic]>
+    usage: <proc[lib_command_usage].context[lib_core|command.usage.panic]>
     allowed help:
         - determine <proc[lib_has_permission].context[utilities.panic|<player.if_null[null]>].if_null[true]>
     aliases:
@@ -106,7 +106,7 @@ remove_flags:
     name: remove_flags
     debug: false
     description: Removes all flags (excluding those on the exclude list) from the server or player or both.<&nl><&nl>If no player name is specified, then it uses the player who ran the command. If the command is run on the server, and you're removing flags from a player, then the player's name is required.
-    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.remove_flags]>
+    usage: <proc[lib_command_usage].context[lib_core|command.usage.remove_flags]>
     aliases:
         - removeflags
         - killflags
@@ -182,7 +182,7 @@ remove_notables:
     name: remove_notables
     debug: false
     description: Removes all notables of whatever type was passed, or all notables if no argument passed.
-    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.remove_notables]>
+    usage: <proc[lib_command_usage].context[lib_core|command.usage.remove_notables]>
     aliases:
         - removenotables
         - killnotables
@@ -237,7 +237,7 @@ random_placement:
     name: random_placer
     debug: false
     description: Gives tool for placing blocks randomly, based on a predefined list, or defines list.<&nl>If running the command with no arguments, recieve the random placement tool. It should look like a bedrock block by default, or if you have the utilities texture pack installed, will be an animated block. When the block is placed, it will choose one of the blocks previously defined with the random_placer command, based on weight. The higher the weight, the more chance the block will be placed. If no blocks have been defined, will recieve an error message.<&nl>If you'd like to add a block to the list, simply type the command, along with the name of the block that you would use if you were using the give command (i.e., redstone_ore instead of Redstone Ore), as well as the weight you'd like for that block. Weights can be any number above 1. If you don't provide a weight, block will be added with a weight of 1. If you'd like to create a new list, you can clear your previous list by simply passing "clear" as the first argument.
-    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.random_placement]>
+    usage: <proc[lib_command_usage].context[lib_core|command.usage.random_placement]>
     aliases:
         - rand_placer
         - rplace
@@ -297,7 +297,7 @@ notable_tool:
     name: notable_tool
     debug: false
     description: Gives a tool that allows you to specify locations, cuboids and ellipsoids, and save (note) them.<&nl>To recieve the tool, simply pass the command with no arguments. To change between selection type, shift right click. NOTE! If you change selection type, you will LOSE the previous selection.<&nl>For locations, you only need to right click on the single block to set the location. For cuboids, the first right click will set one corner, and every click after will set the other corner. If you need to change the location of the first corner, pass the "clear" argument to the command.<&nl>Ellipsoids are a little more complicated. The first right click will set the center of the ellipsoid. The second, third and fourth clicks will set the X, Y, and Z radii. If you click for a fifth time, you will set the X radius again, the sixth click will set the Y a radius, and so on. If you need to recenter the ellipsoid, pass the "clear" argument.<&nl>Once you've decided you have the right selection, pass the save argument, along with the name of the notable. Make sure there are no spaces in the notable's name or the command will fail.
-    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.notable_tool]>
+    usage: <proc[lib_command_usage].context[lib_core|command.usage.notable_tool]>
     aliases:
         - ntool
     allowed help:
@@ -368,7 +368,7 @@ puppet_npc:
     name: puppet
     debug: false
     description: Allows you to "puppet" an NPC.<&nl>Run the command with an NPC's name to puppet that NPC on the map specifically, or run it with no name to puppet the closest NPC within 5 blocks. If there are multiple NPC's with the same name, it will puppet the one with the name that is closest to you.<&nl>Run the command a second time to stop puppeting the NPC. Players will be set to survival when beginning the puppet, then set to spectator when cancelling the puppet.
-    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.puppet]>
+    usage: <proc[lib_command_usage].context[lib_core|command.usage.puppet]>
     allowed help:
         - determine <proc[lib_has_permission].context[utilities.puppet|<player.if_null[null]>].if_null[true]>
     script:
@@ -416,7 +416,7 @@ end_queues:
     name: end_queues
     debug: false
     description: Allows you to end all currently running queues on the server.<&nl>WARNING<&co> This is a nuclear option! This is only meant to be used in cases where you have infintely looping queues that you want to end without wanting to restart the whole server. Do not use this command within a script!
-    usage: <proc[lib_command_usage].context[lib_generic_data|command.usage.end_queues]>
+    usage: <proc[lib_command_usage].context[lib_core|command.usage.end_queues]>
     aliases:
         - killqueues
         - kill_queues

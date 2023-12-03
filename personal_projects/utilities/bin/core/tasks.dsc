@@ -18,7 +18,7 @@ lib_simulate_block_placing:
     definitions: location|material|offhand
     script:
         - animate <player> animation:arm_swing<[offhand].exists.if_true[_offhand].if_false[]>
-        - define list <script[lib_generic_data].data_key[block_placing]>
+        - define list <script[lib_core].data_key[block_placing]>
         - define match <[list].find_partial[<[material].name>]>
         - playsound <[location]> block_<[list].get[<[match].equals[-1].if_true[stone].if_false[<[match]>]>].if_null[stone]>_place pitch:<proc[lib_random_pitch]>
 

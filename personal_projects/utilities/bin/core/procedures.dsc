@@ -5,7 +5,7 @@ lib_core_ease:
     definitions: type|dir|dt
     script:
         # ~ ~ ~ Eases; based on work from https://easings.net/ ~ ~ ~ #
-        - define ease_conf <script[lib_generic_data].data_key[ease]>
+        - define ease_conf <script[lib_core].data_key[ease]>
         - if <[ease_conf].get[type].contains[<[type]>]> && <[ease_conf].get[dir].contains[<[dir]>]>:
             - define concat <[type]>_<[dir]>
         - choose <[concat]>:
@@ -122,8 +122,8 @@ lib_core_command_error:
     definitions: err_type|usage_name
     script:
         - define color <script[lib_config].parsed_key[color]>
-        - define usage_loc <script[lib_generic_data].data_key[command.usage.<[usage_name]>].if_null[true].if_true[<proc[<[usage_name]>]>].if_false[<proc[lib_command_usage].context[lib_generic_data|command.usage.<[usage_name]>]>]>
-        - determine <[color].get[error]><script[lib_generic_data].parsed_key[command.error.<[err_type]>]><list[permission|implicit|invalid_player].contains[<[err_type]>].not.if_true[<[color].get[error]><&nl>Usage<&co><&nl><[usage_loc]>].if_false[]>
+        - define usage_loc <script[lib_core].data_key[command.usage.<[usage_name]>].if_null[true].if_true[<proc[<[usage_name]>]>].if_false[<proc[lib_command_usage].context[lib_core|command.usage.<[usage_name]>]>]>
+        - determine <[color].get[error]><script[lib_core].parsed_key[command.error.<[err_type]>]><list[permission|implicit|invalid_player].contains[<[err_type]>].not.if_true[<[color].get[error]><&nl>Usage<&co><&nl><[usage_loc]>].if_false[]>
 
 #Like <ListTag.formatted> but it colors the text and commas.
 lib_core_command_extra_keys:

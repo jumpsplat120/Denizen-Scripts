@@ -193,7 +193,7 @@ lib_mix_dyes:
     debug: false
     script:
         - define colors <queue.definition_map.exclude[raw_context].values.first.parse[material.name.before[_dye]]>
-        - define hex <script[lib_generic_data].data_key[dye_hex_colors]>
+        - define hex <script[lib_core].data_key[dye_hex_colors]>
         - define result <color[<&ns><[hex].get[<[colors].get[1].if_null[white]>]>]>
         - foreach <[colors]>:
             - define result <[result].mix[<color[<&ns><[hex].get[<[value]>]>]>]>
@@ -243,9 +243,9 @@ lib_calculate_xp_drop_from_mobs:
                 - define name baby_<[name]>
             - else if <[name]> == ender_dragon:
                 - define name summoned_<[name]> if:<server.has_flag[ender_dragon_killed]>
-            - define min_max <script[lib_generic_data].data_key[mob_xp_rates.<[name]>].if_null[null]>
+            - define min_max <script[lib_core].data_key[mob_xp_rates.<[name]>].if_null[null]>
             - define name <[entity].entity_type.to_lowercase>
-            - define min_max <script[lib_generic_data].data_key[mob_xp_rates.<[name]>]> if:<[min_max].equals[null]>
+            - define min_max <script[lib_core].data_key[mob_xp_rates.<[name]>]> if:<[min_max].equals[null]>
             - if <[entity].proc[lib_is_chicken_jockey]> or <[entity].proc[lib_is_spider_jockey]> or <[entity].proc[lib_is_skeleton_horseman]>:
                 - repeat <[entity].passenger.equipment_map.size.if_null[0]>:
                     - define xp:+:<util.random.int[1].to[3]>

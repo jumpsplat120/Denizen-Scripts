@@ -165,7 +165,7 @@ lib_romanize:
     debug: false
     definitions: number
     script:
-        - foreach <script[lib_generic_data].data_key[roman].to_map>:
+        - foreach <script[lib_core].data_key[roman].to_map>:
             - while <[number]> >= <[value]>:
                 - define number:-:<[value]>
                 - define result <[result].if_null[]><[key]>
@@ -219,7 +219,7 @@ lib_vanilla_breaking_time:
                     - else:
                         - define speed 1.5
                 - else if <[loc_material]> in <server.vanilla_tagged_materials[mineable/<[tool_type]>].if_null[<list>]>:
-                    - define speed <script[lib_generic_data].data_key[tool_speed.<[mat_name].before[_]>]>
+                    - define speed <script[lib_core].data_key[tool_speed.<[mat_name].before[_]>]>
                     - define can_harvest true
                 - else:
                     - define speed 1

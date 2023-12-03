@@ -14,6 +14,14 @@
 # custom_breaking_time: Calculate a custom breaking time following Minecraft block breaking logic, based on the passed item, hardness of the block, and a map of valid tool_types. The map of valid tool_types should be formatted with the tool type as the key name, and the multiplier as the value.
 # round_to: round to a specific number
 
+#determine if a point is within an AABB
+lib_location_in_aabb:
+    type: procedure
+    debug: false
+    definitions: point|min|max
+    script:
+        - determine <[point].x.is_more_than_or_equal_to[<[min].x>].and[<[point].x.is_less_than_or_equal_to[<[max].x>].and[<[point].y.is_more_than_or_equal_to[<[min].y>].and[<[point].y.is_less_than_or_equal_to[<[max].y>].and[<[point].z.is_more_than_or_equal_to[<[min].z>].and[<[point].z.is_less_than_or_equal_to[<[max].z>]>]>]>]>]>]>
+
 lib_map_range:
     type: procedure
     debug: false

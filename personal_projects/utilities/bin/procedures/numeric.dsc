@@ -109,17 +109,39 @@ lib_sine_wave_increment:
 ease_numeric:
     type: procedure
     debug: false
-    definitions: input|type|dir|range_min|range_max
+    definitions: args
     script:
-        - define range_min <tern[<[range_min]||true>].pass[0].fail[<[range_min]>]>
-        - define range_max <tern[<[range_max]||true>].pass[1].fail[<[range_max]>]>
-        - if <[input]> < 1:
-            - define result <proc[lib_core_ease].context[<[type].to_lowercase>|<[dir].to_lowercase>|<proc[lib_clamp].context[<[input]>|0|1]>]>
-            - if <[range_min]> != 0 || <[range_max]> != 1:
-                - define result <[result].proc[lib_map_range].context[0|1|<[range_min]>|<[range_max]>]>
-        - else:
-            - define result <[range_max].if_null[1]>
-        - determine <[result]>
+        - define args <[args].as[map].if_null[<[args]>]> if:<[args].object_type.equals[element]>
+        - define null <util.random_decimal>
+        # ~~~ ARGS ~~~ #
+        - define start     <[args.start].if_null[]>
+        - define end       <[args.end].if_null[]>
+        - define percent   <[args.percent].if_null[]>
+        - define type      <[args.ease_type].if_null[]>
+        - define direction <[args.direction].if_null[]>
+        # ~~~ DEFAULTS ~~~ #
+        - define start     <[null]> if:<[start].equals[]>
+        - define end       <[null]> if:<[end].equals[]>
+        - define percent   <[null]> if:<[percent].equals[]>
+        - define type      sine     if:<[type].equals[]>
+        - define direction in       if:<[direction].equals[]>
+        # ~~~ ERROR CHECKING ~~~ #
+        - define error <proc[error_missing_check].context[start|<[null]>|<[start]>|<queue>]>
+        - define error <proc[error_missing_check].context[end|<[null]>|<[end]>|<queue>]>         if:<[error].not>
+        - define error <proc[error_missing_check].context[percent|<[null]>|<[percent]>|<queue>]> if:<[error].not>
+        - define error <proc[error_type_check].context[start|element|<[start]>|<queue>]>         if:<[error].not>
+        - define error <proc[error_type_check].context[end|element|<[end]>|<queue>]>             if:<[error].not>
+        - define error <proc[error_type_check].context[percent|element|<[percent]>|<queue>]>     if:<[error].not>
+        - define error <proc[error_type_check].context[type|element|<[type]>|<queue>]>           if:<[error].not>
+        - define error <proc[error_type_check].context[direction|element|<[direction]>|<queue>]> if:<[error].not>
+        - define error <proc[error_number_check].context[start|<[start]>|<queue>]>               if:<[error].not>
+        - define error <proc[error_number_check].context[end|<[end]>|<queue>]>                   if:<[error].not>
+        - define error <proc[error_number_check].context[percent|<[percent]>|<queue>]>           if:<[error].not>
+        - determine <empty> if:<[error]>
+        # ~~~ LOGIC ~~~ #
+        - define difference <[end].sub[<[start]>]>
+        - determine <[start]> if:<[difference].equals[0]>
+        - determine <proc[lib_core_ease].context[<[type].to_lowercase>|<[direction].to_lowercase>|<[percent]>].mul[<[difference]>].add[<[start]>]>
 
 lib_catmull_rom_spline:
     type: procedure

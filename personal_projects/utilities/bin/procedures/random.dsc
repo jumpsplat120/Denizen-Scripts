@@ -1,14 +1,19 @@
-# pitch: Returns a random, gaussian distributed value, useful for a random pitch value for a sound. Most values will be between .8 .. 1.2, but will occasionally go down to .5 and up to .1.5. Due to how a gaussian value is created, there's no guarentee you won't get values that create weird sounds. Consider clamping the range if that will be an issue.
-# color: Returns a random color, which can be used directly in text. Unlike a color tag, this can not be manipulated. The random.color will return a color tag with default saturation and brightness values (100, 100).
-# color_tag: Returns a random color tag color, clamped to certain values. Default saturation and brightness have a minimum value of 100, to lower the amount of white/grey/black colors.
-# by_weight: Return a value min a map, where each key in the map has a weight value, and it returns a random value, weighted towards items with higher weights. A weight of 0 or less will never return. If no value can be returned, because there is no value to return or because all values are weights of zero, then returns false.
 # uppercase: Returns an element with random upper and lowercased letters. Not truely random, since it prevents more than 2 letters being in a row being the same case.
+# by_weight: Return a value min a map, where each key in the map has a weight value, and it returns a random value, weighted towards items with higher weights. A weight of 0 or less will never return. If no value can be returned, because there is no value to return or because all values are weights of zero, then returns false.
 
 random_pitch:
     type: procedure
     debug: false
     script:
         - determine <util.random_gauss.div[6].add[1]>
+    data:
+        description: Returns a random, gaussian distributed value, useful for a random pitch value for a sound. Most values will be between .8 .. 1.2, but will occasionally go down to .5 and up to .1.5. Due to how a gaussian value is created, there's no guarentee you won't get values that create weird sounds. Consider clamping the range if that will be an issue.
+        usage:
+            - narrate "The following notes will all be played at the same, random pitch."
+            - define pitch <proc[random_pitch]>
+            - foreach banjo|basedrum|bass|bell|bit|chime|cow_bell|didgeridoo|flute|guitar|harp|hat|iron_xylophone|pling|snare|xylophone:
+                - playsound sound:block_note_block_<[value]> pitch:<[pitch]>
+                - wait 10t
 
 random_color:
     type: procedure

@@ -181,12 +181,23 @@ lib_unstackable:
         - define item <[item].object_type.equals[Item].if_true[<[item]>].if_false[<item[<[item]>]>]>
         - determine <[item].with[raw_nbt=<map.with[antistack].as[float:<util.random_decimal>]>]>
 
-lib_face_to_vector:
+face_to_vector:
     type: procedure
     debug: false
     definitions: face
     script:
-        - determine <script[lib_generic_data].data_key[face_to_vec].get[<[face].to_lowercase>]>
+        - definemap map:
+            up: 0,1,0
+            down: 0,-1,0
+            north: 0,0,-1
+            south: 0,0,1
+            east: 1,0,0
+            west: -1,0,0
+            southeast: 1,0,1
+            southwest: -1,0,1
+            northeast: 1,0,-1
+            northwest: -1,0,-1
+        - determine <[map].get[<[face].to_lowercase>]>
 
 lib_mix_dyes:
     type: procedure

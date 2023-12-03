@@ -4,20 +4,20 @@
 # by_weight: Return a value min a map, where each key in the map has a weight value, and it returns a random value, weighted towards items with higher weights. A weight of 0 or less will never return. If no value can be returned, because there is no value to return or because all values are weights of zero, then returns false.
 # uppercase: Returns an element with random upper and lowercased letters. Not truely random, since it prevents more than 2 letters being in a row being the same case.
 
-lib_random_pitch:
+random_pitch:
     type: procedure
     debug: false
     script:
         - determine <util.random_gauss.div[6].add[1]>
 
-lib_random_color:
+random_color:
     type: procedure
     debug: false
     definitions: min_sat|min_val
     script:
         - determine <&color[<proc[lib_random_color_tag].context[<[min_sat].if_null[true]>|<[min_val].if_null[true]>]>]>
 
-lib_random_color_tag:
+random_color_tag:
     type: procedure
     debug: false
     definitions: min_sat|min_val
@@ -26,7 +26,7 @@ lib_random_color_tag:
         - define min_val <[min_val].if_null[true].if_true[100].if_false[<[min_val]>]>
         - determine <color[255,0,0].with_hue[<util.random.int[0].to[255]>].with_saturation[<util.random.int[<[min_sat]>].to[255]>].with_brightness[<util.random.int[<[min_val]>].to[255]>]>
 
-lib_random_text:
+random_text:
     type: procedure
     debug: false
     definitions: length
@@ -34,7 +34,7 @@ lib_random_text:
         - define length <[length].if_null[true].if_true[10].if_false[<[length]>]>
         - determine <script[lib_core].data_key[alphabet_set].to_list.random[<[length]>].unseparated>
 
-lib_random_uppercase:
+random_uppercase:
     type: procedure
     debug: false
     definitions: element
@@ -54,7 +54,7 @@ lib_random_uppercase:
                 - define result:->:<[flip].if_true[<[value].to_uppercase>].if_false[<[value].to_lowercase>]>
         - determine <[result].unseparated>
 
-lib_random_by_weight:
+random_by_weight:
     type: procedure
     debug: false
     definitions: map
@@ -70,7 +70,7 @@ lib_random_by_weight:
                 - define rand:-:<[weight]>
             - determine <[map].keys.first>
 
-lib_one_in_x:
+one_in_x:
     type: procedure
     debug: false
     definitions: number

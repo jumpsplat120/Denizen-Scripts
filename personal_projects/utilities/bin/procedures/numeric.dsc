@@ -106,7 +106,7 @@ lib_sine_wave_increment:
         - define frequency <tern[<[frequency]||true>].pass[1].fail[<[frequency]>]>
         - determine <proc[sine_wave].context[<[input]>|<[offset]>|<[amplitude]>|<[frequency]>].sub[<proc[sine_wave].context[<[input].sub[<[frequency]>]>|<[offset]>|<[amplitude]>|<[frequency]>]>]>
 
-lib_ease:
+ease_numeric:
     type: procedure
     debug: false
     definitions: input|type|dir|range_min|range_max

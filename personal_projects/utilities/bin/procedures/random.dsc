@@ -32,11 +32,23 @@ random_color:
 random_color_tag:
     type: procedure
     debug: false
-    definitions: min_sat|min_val
+    definitions: map
     script:
-        - define min_sat <[min_sat].if_null[true].if_true[100].if_false[<[min_sat]>]>
-        - define min_val <[min_val].if_null[true].if_true[100].if_false[<[min_val]>]>
-        - determine <color[255,0,0].with_hue[<util.random.int[0].to[255]>].with_saturation[<util.random.int[<[min_sat]>].to[255]>].with_brightness[<util.random.int[<[min_val]>].to[255]>]>
+        - define map <[map].as_map.if_null[<map>]>
+        - define map <[map].default[min_hue].as[0]>
+        - define map <[map].default[max_hue].as[255]>
+        - define map <[map].default[min_saturation].as[100]>
+        - define map <[map].default[min_value].as[100]>
+        - define map <[map].default[max_saturation].as[255]>
+        - define map <[map].default[max_value].as[255]>
+        - determine <color[255,0,0].with_hue[<util.random.int[<[map.min_hue]>].to[<[map.max_hue]>]>].with_saturation[<util.random.int[<[map.min_saturation]>].to[<[map.max_saturation]>]>].with_brightness[<util.random.int[<[map.min_value]>].to[<[map.max_value]>]>]>
+    data:
+        description: Returns a random color tag color. By default, the minimum saturation/value are 100, and the maximum saturation/value are 255, while the min hue is 0, and max is 255, allowing the full spectrum.
+        usage:
+            - define color_a <proc[random_color_tag]>
+            - define color_b <proc[random_color_tag].context[min_hue=50;max_hue=100;min_saturation=200;max_saturation=225;min_value=50;max_value=75]>
+            - narrate "We've picked a random color, which is called <gray><[color_a].name><reset>. It is <[color_a].blue.div[255].mul[100].round_down_to_precision[0.1].color[blue]><&pc> blue, <[color_a].red.div[255].mul[100].round_down_to_precision[0.1].color[red]><&pc> red, and <[color_a].green.div[255].mul[100].round_down_to_precision[0.1].color[green]><&pc> green. It looks like <&color[<[color_a]>]>this!"
+            - narrate "We've picked a random color with manually set values, which is called <gray><[color_b].name><reset>. It is <[color_b].blue.div[255].mul[100].round_down_to_precision[0.1].color[blue]><&pc> blue, <[color_b].red.div[255].mul[100].round_down_to_precision[0.1].color[red]><&pc> red, and <[color_b].green.div[255].mul[100].round_down_to_precision[0.1].color[green]><&pc> green. It looks like <&color[<[color_b]>]>this!"
 
 random_text:
     type: procedure
